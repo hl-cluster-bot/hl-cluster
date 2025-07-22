@@ -29,7 +29,7 @@ function apply_namespaces() {
 
     local -r apps_dir="${ROOT_DIR}/kubernetes/apps"
 
-    if [[ ! -d "${apps_dir}" ]]; then
+    if [[ ! -d ${apps_dir} ]]; then
         log error "Directory does not exist" "directory=${apps_dir}"
     fi
 
@@ -43,9 +43,8 @@ function apply_namespaces() {
         fi
 
         # Apply the namespace resources
-        if kubectl create namespace "${namespace}" --dry-run=client --output=yaml \
-            | kubectl apply --server-side --filename - &>/dev/null;
-        then
+        if kubectl create namespace "${namespace}" --dry-run=client --output=yaml |
+            kubectl apply --server-side --filename - &>/dev/null; then
             log info "Namespace resource applied" "resource=${namespace}"
         else
             log error "Failed to apply namespace resource" "resource=${namespace}"
@@ -116,7 +115,7 @@ function sync_helm_releases() {
 
     local -r helmfile_file="${ROOT_DIR}/bootstrap/helmfile.yaml"
 
-    if [[ ! -f "${helmfile_file}" ]]; then
+    if [[ ! -f ${helmfile_file} ]]; then
         log error "File does not exist" "file=${helmfile_file}"
     fi
 

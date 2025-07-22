@@ -2,7 +2,10 @@
   "recommendations": [
     "blueglassblock.better-json5",
     "irongeek.vscode-env",
+    "mkhl.direnv",
+    "mkhl.shfmt",
     "redhat.vscode-yaml",
-    "signageos.signageos-vscode-sops"
+    "signageos.signageos-vscode-sops",
+    "timonwong.shellcheck"
   ]
 }

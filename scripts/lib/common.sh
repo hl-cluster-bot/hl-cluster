@@ -43,7 +43,7 @@ function log() {
     local data=
     if [[ $# -gt 0 ]]; then
         for item in "$@"; do
-            if [[ "${item}" == *=* ]]; then
+            if [[ ${item} == *=* ]]; then
                 data+="\033[1m\033[38;5;236m${item%%=*}=\033[0m\"${item#*=}\" "
             else
                 data+="${item} "
@@ -53,7 +53,7 @@ function log() {
 
     # Determine output stream based on log level
     local output_stream="/dev/stdout"
-    if [[ "$level" == "error" ]]; then
+    if [[ $level == "error" ]]; then
         output_stream="/dev/stderr"
     fi
 
@@ -62,7 +62,7 @@ function log() {
         "${color}" "${level^^}" "\033[0m" "${msg}" "${data}" >"${output_stream}"
 
     # Exit if the log level is error
-    if [[ "$level" == "error" ]]; then
+    if [[ $level == "error" ]]; then
         exit 1
     fi
 }
@@ -74,7 +74,7 @@ function check_env() {
     local values=()
 
     for env in "${envs[@]}"; do
-        if [[ -z "${!env-}" ]]; then
+        if [[ -z ${!env-} ]]; then
             missing+=("${env}")
         else
             values+=("${env}=${!env}")
