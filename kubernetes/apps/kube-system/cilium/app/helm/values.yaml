@@ -1,7 +1,7 @@
 ---
 autoDirectNodeRoutes: true
 bpf:
-  masquerade: false
+  masquerade: true
 cni:
   # Required for pairing with Multus CNI
   exclusive: false
