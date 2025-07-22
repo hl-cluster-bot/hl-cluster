@@ -1,3 +1,18 @@
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+# Ansible
+ansible/.facts_cache/
+ansible/galaxy
+ansible/tmp
+
 # Secrets
 *.pub
 *.key
@@ -7,15 +22,14 @@
 /github-deploy.key
 /github-deploy.key.pub
 /github-push-token.txt
-# Template config files
-/cluster.yaml
-/nodes.yaml
+
 # Kubernetes
 kubeconfig
-talosconfig
+
 # Misc.
 .private/
 .task/
 .venv/
 .DS_Store
 Thumbs.db
+*.log
