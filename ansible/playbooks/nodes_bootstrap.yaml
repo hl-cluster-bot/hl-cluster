@@ -1,0 +1,9 @@
+---
+- name: Bootstrap nodes
+  hosts:
+    - all
+  become: true
+  gather_facts: true
+  roles:
+    - update_hosts
+    - unattended_upgrades

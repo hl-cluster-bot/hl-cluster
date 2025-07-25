@@ -9,9 +9,11 @@ devenv.local.nix
 .pre-commit-config.yaml
 
 # Ansible
+.ansible/
 ansible/.facts_cache/
 ansible/galaxy
 ansible/tmp
+ansible/roles/xanmanning.k3s
 
 # Secrets
 *.pub

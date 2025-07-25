@@ -3,6 +3,9 @@
 version: "3"
 
 tasks:
+  nodes:
+    desc: Bootstrap nodes
+    cmd: task nodes:bootstrap
   k3s:
     desc: Bootstrap k3s
     cmd: task k3s:install

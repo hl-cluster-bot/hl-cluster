@@ -1,0 +1,11 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+tasks:
+  bootstrap:
+    desc: Bootstrap nodes
+    cmds:
+      - task ansible:bootstrap
+      - task ansible:ping
+      - task ansible:playbook playbook=nodes_bootstrap

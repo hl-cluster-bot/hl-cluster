@@ -18,6 +18,7 @@ includes:
   ansible: .taskfiles/ansible
   bootstrap: .taskfiles/bootstrap
   k3s: .taskfiles/k3s
+  nodes: .taskfiles/nodes
 
 tasks:
   default: task --list
