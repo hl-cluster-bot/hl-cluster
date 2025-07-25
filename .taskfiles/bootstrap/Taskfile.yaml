@@ -3,6 +3,9 @@
 version: "3"
 
 tasks:
+  k3s:
+    desc: Bootstrap k3s
+    cmd: task k3s:install
   apps:
     desc: Bootstrap apps into the k3s cluster
     cmd: bash {{.SCRIPTS_DIR}}/bootstrap-apps.sh

@@ -15,8 +15,9 @@ env:
   SOPS_AGE_KEY_FILE: "{{.ROOT_DIR}}/age.key"
 
 includes:
+  ansible: .taskfiles/ansible
   bootstrap: .taskfiles/bootstrap
-  # TODO k3s and ansible
+  k3s: .taskfiles/k3s
 
 tasks:
   default: task --list

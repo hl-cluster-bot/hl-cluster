@@ -1,0 +1,15 @@
+---
+k3s_cluster:
+  children:
+    controller:
+      hosts:
+        olympus-hecate:
+          ansible_host: 10.101.0.101
+        olympus-phobos:
+          ansible_host: 10.101.0.102
+        olympus-zephyr:
+          ansible_host: 10.101.0.103
+    worker:
+      hosts:
+        olympus-uranus:
+          ansible_host: 10.101.0.104

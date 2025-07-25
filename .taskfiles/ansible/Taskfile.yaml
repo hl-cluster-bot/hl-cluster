@@ -1,0 +1,78 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+vars:
+  ANSIBLE_DIR: "{{.ROOT_DIR}}/ansible"
+  ANSIBLE_PLAYBOOKS_DIR: "{{.ANSIBLE_DIR}}/playbooks"
+  ANSIBLE_REQUIREMENTS_FILE: "{{.ANSIBLE_DIR}}/requirements.yaml"
+
+env:
+  ANSIBLE_CONFIG: "{{.ROOT_DIR}}/ansible/ansible.cfg"
+
+tasks:
+  default:
+    cmds:
+      - task: bootstrap
+      - task: hosts
+      - task: list
+
+  bootstrap:
+    desc: Bootstrap ansible dependencies
+    cmd: ansible-galaxy install --force -r {{.ANSIBLE_REQUIREMENTS_FILE}}
+    preconditions:
+      - which ansible
+      - test -d {{.ANSIBLE_DIR}}/roles
+      - test -f {{.ANSIBLE_REQUIREMENTS}}
+
+  hosts:
+    desc: List all the hosts in inventory
+    cmd: ansible all --list-hosts
+    preconditions:
+      - which ansible
+      - test -f {{.ANSIBLE_CONFIG}}
+
+  ping:
+    desc: Ping hosts
+    cmd: ansible all --one-line -m 'ping'
+    preconditions:
+      - which ansible
+      - test -f {{.ANSIBLE_CONFIG}}
+
+  uptime:
+    desc: Uptime of hosts
+    cmd: ansible all --one-line -a 'uptime'
+    preconditions:
+      - which ansible
+      - test -f {{.ANSIBLE_CONFIG}}
+
+  list:
+    desc: List all available Ansible playbooks
+    dir: "{{ .ANSIBLE_PLAYBOOKS_DIR }}"
+    cmd: >
+      find . -maxdepth 1
+      -name "*.yml" -o -name "*.yaml"
+      -exec basename {} \;
+      | sed -E 's/\.(ya?ml)$//'
+      | sort
+    preconditions:
+      - test -d {{ .ANSIBLE_PLAYBOOKS_DIR }}
+
+  playbook:
+    desc: Run an Ansible playbook by name
+    dir: "{{ .ANSIBLE_PLAYBOOKS_DIR }}"
+    summary: |
+      Args:
+        playbook: Playbook to run (required)
+      Example:
+        task ansible:playbook playbook='k3s_install'
+        task ansible:playbook playbook='k3s_install' -- '--become'
+    cmd: >
+      playbook_file=$(find . -type f \( -name '{{ .playbook }}.yml' -o -name '{{ .playbook }}.yaml' \) | head -n1)
+      && ansible-playbook $playbook_file {{ .CLI_ARGS }}
+    requires:
+      vars: [playbook]
+    preconditions:
+      - which ansible
+      - sh: find . -name '{{ .playbook }}.yml' -o -name '{{ .playbook }}.yaml' | grep -q .
+        msg: Playbook '{{ .playbook }}' not found

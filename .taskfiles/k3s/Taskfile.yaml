@@ -1,0 +1,17 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+tasks:
+  install:
+    desc: Install k3s
+    cmds:
+      - task ansible:bootstrap
+      - task ansible:ping
+      - task ansible:playbook playbook=k3s_site
+  reset:
+    desc: Reset k3s
+    cmds:
+      - task ansible:bootstrap
+      - task ansible:ping
+      - task ansible:playbook playbook=k3s_reset

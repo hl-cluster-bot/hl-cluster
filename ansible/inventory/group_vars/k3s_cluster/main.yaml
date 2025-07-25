@@ -1,0 +1,24 @@
+---
+# Below vars are for the xanmanning.k3s role
+# See: https://github.com/PyratLabs/ansible-role-k3s
+
+k3s_become: true
+k3s_etcd_datastore: true
+k3s_install_hard_links: true
+k3s_registries:
+  mirrors:
+    docker.io:
+    gcr.io:
+    ghcr.io:
+    k8s.gcr.io:
+    lscr.io:
+    mcr.microsoft.com:
+    public.ecr.aws:
+    quay.io:
+    registry.k8s.io:
+# renovate: datasource=github-releases depName=k3s-io/k3s
+k3s_release_version: v1.33.1+k3s1
+k3s_use_unsupported_config: true
+
+cluster_cidr: 10.42.0.0/16
+service_cidr: 10.43.0.0/16
