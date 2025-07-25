@@ -19,7 +19,3 @@ spec:
     - { key: node-role.kubernetes.io/etcd, operator: Exists }
   upgrade:
     image: rancher/k3s-upgrade
-  drain:
-    timeout: 60
-    gracePeriod: -1
-    skipWaitForDeleteTimeout: 30
