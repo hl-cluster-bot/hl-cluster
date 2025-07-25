@@ -65,8 +65,8 @@ tasks:
       Args:
         playbook: Playbook to run (required)
       Example:
-        task ansible:playbook playbook='k3s_install'
-        task ansible:playbook playbook='k3s_install' -- '--become'
+        task ansible:playbook playbook='k3s_reset'
+        task ansible:playbook playbook='k3s_site' -- '--become'
     cmd: >
       playbook_file=$(find . -type f \( -name '{{ .playbook }}.yml' -o -name '{{ .playbook }}.yaml' \) | head -n1)
       && ansible-playbook $playbook_file {{ .CLI_ARGS }}
