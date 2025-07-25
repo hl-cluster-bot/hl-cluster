@@ -32,3 +32,6 @@ spec:
       retries: 3
   values:
     fullnameOverride: kured
+    configuration:
+      lockTtl: 10m
+      lockReleaseDelay: 5m
