@@ -1,4 +1,4 @@
 ---
 retrieve_kubeconfig_server_address: "{{ play_hosts[0] }}"
 retrieve_kubeconfig_server_port: 6443
-retrieve_kubeconfig_local_path: "{{ playbook_dir }}/../../kubeconfig"
+retrieve_kubeconfig_local_path: "~/.kube/kubeconfig"
