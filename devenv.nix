@@ -36,7 +36,9 @@
     check-yaml.enable = true;
     end-of-file-fixer.enable = true;
     gptcommit.enable = true;
+    pre-commit-hook-ensure-sops.enable = true;
     shfmt.enable = true;
+    trufflehog.enable = true;
     yamllint.enable = true;
   };
 

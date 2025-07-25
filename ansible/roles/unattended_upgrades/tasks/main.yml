@@ -1,4 +1,5 @@
 ---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks
 - name: Install unattended-upgrades
   when: ansible_facts.get('distribution') == "Ubuntu"
   notify: Restart unattended-upgrades
