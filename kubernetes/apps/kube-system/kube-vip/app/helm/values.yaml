@@ -22,3 +22,6 @@ env:
   svc_election: "false"
   # Enable VIP leader election
   vip_leaderelection: "true"
+
+nodeSelector:
+  node-role.kubernetes.io/control-plane: "true"
