@@ -34,4 +34,6 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: kube-vip-values
-  values: {}
+  values:
+    podAnnotations:
+      reloader.stakater.com/auto: "true"

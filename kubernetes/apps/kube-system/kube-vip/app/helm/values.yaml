@@ -8,7 +8,7 @@ env:
   vip_interface: ""
   # Enable ARP for VIP
   vip_arp: "true"
-  # Enable load balancer functionality
+  # Enable load balancer functionality for control plane only
   lb_enable: "true"
   # Load balancer port (default kube-api port)
   lb_port: "6443"
@@ -16,9 +16,9 @@ env:
   vip_cidr: "32"
   # Enable control plane mode (create VIP for API server)
   cp_enable: "true"
-  # Enable service load balancing
-  svc_enable: "true"
-  # Disable service election (use leader election instead)
+  # Disable service load balancing (Cilium handles this)
+  svc_enable: "false"
+  # Disable service election since svc_enable is false
   svc_election: "false"
   # Enable VIP leader election
   vip_leaderelection: "true"
