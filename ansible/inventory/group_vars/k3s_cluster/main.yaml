@@ -20,5 +20,8 @@ k3s_registries:
 k3s_release_version: v1.33.2+k3s1
 k3s_use_unsupported_config: true
 
+kube_vip_addr: 10.101.0.100
 cluster_cidr: 10.42.0.0/16
 service_cidr: 10.43.0.0/16
+
+retrieve_kubeconfig_server_address: "{{ k3s_registration_address | default(kube_vip_addr) }}"

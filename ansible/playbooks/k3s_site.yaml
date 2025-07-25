@@ -9,6 +9,4 @@
       become: true
       vars:
         k3s_state: installed
-  post_tasks:
-    - name: Kubeconfig
-      ansible.builtin.include_tasks: tasks/kubeconfig.yaml
+    - role: retrieve_kubeconfig

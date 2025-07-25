@@ -1,0 +1,16 @@
+---
+- name: Retrieve kubeconfig
+  when: inventory_hostname == play_hosts[0]
+  ansible.builtin.fetch:
+    src: /etc/rancher/k3s/k3s.yaml
+    dest: "{{ retrieve_kubeconfig_local_path }}"
+    flat: true
+
+- name: Update kubeconfig with the correct address
+  delegate_to: localhost
+  become: false
+  run_once: true
+  ansible.builtin.replace:
+    path: "{{ retrieve_kubeconfig_local_path }}"
+    regexp: https://127.0.0.1:6443
+    replace: https://{{ retrieve_kubeconfig_server_address }}:{{ retrieve_kubeconfig_server_port }}

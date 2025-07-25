@@ -15,3 +15,7 @@ tasks:
       - task ansible:bootstrap
       - task ansible:ping
       - task ansible:playbook playbook=k3s_reset
+  kubeconfig:
+    desc: Retrieve kubeconfig
+    cmds:
+      - task ansible:playbook playbook=retrieve_kubeconfig
