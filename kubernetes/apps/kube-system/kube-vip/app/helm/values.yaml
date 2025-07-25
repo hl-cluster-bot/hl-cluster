@@ -22,20 +22,3 @@ env:
   svc_election: "false"
   # Enable VIP leader election
   vip_leaderelection: "true"
-
-securityContext:
-  capabilities:
-    add:
-      - NET_ADMIN
-      - NET_RAW
-    drop:
-      - ALL
-
-tolerations:
-  - effect: NoSchedule
-    key: node-role.kubernetes.io/control-plane
-    operator: Exists
-
-# Node selector to ensure kube-vip runs only on control plane nodes
-nodeSelector:
-  node-role.kubernetes.io/control-plane: ""
