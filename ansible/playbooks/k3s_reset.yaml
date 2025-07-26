@@ -14,3 +14,4 @@
       ansible.builtin.reboot:
         reboot_command: "{{ custom_reboot_command | default(omit) }}"
         reboot_timeout: 3600
+      changed_when: false

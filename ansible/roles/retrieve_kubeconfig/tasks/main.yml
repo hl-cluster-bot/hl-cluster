@@ -6,6 +6,7 @@
     src: /etc/rancher/k3s/k3s.yaml
     dest: "{{ retrieve_kubeconfig_local_path }}"
     flat: true
+  changed_when: false
 
 - name: Update kubeconfig with the correct address
   delegate_to: localhost
@@ -15,3 +16,4 @@
     path: "{{ retrieve_kubeconfig_local_path }}"
     regexp: https://127.0.0.1:6443
     replace: https://{{ retrieve_kubeconfig_server_address }}:{{ retrieve_kubeconfig_server_port }}
+  changed_when: false
