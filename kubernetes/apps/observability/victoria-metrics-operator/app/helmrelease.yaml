@@ -33,7 +33,6 @@ spec:
     remediation:
       retries: 3
   values:
-    # Victoria Metrics Operator configuration
     operator:
       # Enable cluster-wide resources management
       enable_converter_ownership: true
