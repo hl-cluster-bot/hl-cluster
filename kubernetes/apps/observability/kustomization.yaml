@@ -6,5 +6,5 @@ namespace: observability
 components:
   - ../../components/common
 resources:
-  - ./victoria-metrics/ks.yaml
+  - ./victoria-metrics-operator/ks.yaml
   - ./kromgo/ks.yaml
