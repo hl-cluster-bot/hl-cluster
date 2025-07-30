@@ -9,7 +9,8 @@ cgroup:
   automount:
     enabled: false
   hostRoot: /sys/fs/cgroup
-devices: end+
+# NOTE: devices might need to be set if you have more than one active NIC on your hosts
+# devices: eno+ eth+
 dashboards:
   enabled: true
 endpointRoutes:
@@ -21,6 +22,8 @@ envoy:
       enabled: true
 gatewayAPI:
   enabled: true
+  hostNetwork:
+    enabled: true
 hubble:
   enabled: false
 ipam:
