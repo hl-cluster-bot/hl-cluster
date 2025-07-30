@@ -4,18 +4,20 @@ bandwidthManager:
   enabled: true
   bbr: true
 bpf:
+  datapathMode: netkit
   masquerade: true
-cni:
-  # Required for pairing with Multus CNI
-  exclusive: false
+  preallocateMaps: true
+bpfClockProbe: true
 cgroup:
   automount:
     enabled: false
   hostRoot: /sys/fs/cgroup
-# NOTE: devices might need to be set if you have more than one active NIC on your hosts
-# devices: eno+ eth+
+cni:
+  exclusive: false
 dashboards:
   enabled: true
+devices: end+
+enableIPv4BIGTCP: true
 endpointRoutes:
   enabled: true
 envoy:
@@ -25,13 +27,13 @@ envoy:
       enabled: true
 gatewayAPI:
   enabled: true
-  hostNetwork:
-    enabled: true
+  enableAlpn: true
+  xffNumTrustedHops: 1
 hubble:
   enabled: false
 ipam:
   mode: kubernetes
-ipv4NativeRoutingCIDR: "10.42.0.0/16"
+ipv4NativeRoutingCIDR: 10.42.0.0/16
 k8sServiceHost: 127.0.0.1
 k8sServicePort: 6444
 kubeProxyReplacement: true
@@ -40,7 +42,7 @@ l2announcements:
   enabled: true
 loadBalancer:
   algorithm: maglev
-  mode: "dsr"
+  mode: dsr
 localRedirectPolicy: true
 operator:
   dashboards:
@@ -78,5 +80,3 @@ securityContext:
       - NET_ADMIN
       - SYS_ADMIN
       - SYS_RESOURCE
-socketLB:
-  hostNamespaceOnly: true
