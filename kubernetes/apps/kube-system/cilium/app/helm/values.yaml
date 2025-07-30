@@ -22,6 +22,8 @@ envoy:
       enabled: true
 gatewayAPI:
   enabled: true
+  hostNetwork:
+    enabled: true
 hubble:
   enabled: false
 ipam:
