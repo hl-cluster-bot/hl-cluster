@@ -2,8 +2,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/kashalls/kromgo/main/config.schema.json
 metrics:
   - name: k3s_version
-    query: label_replace(kubernetes_build_info{service="kubernetes"}, "git_version", "$1", "git_version", "v(.+)")
-    label: git_version
+    query: kube_node_info
+    label: kubelet_version
     title: K3S
 
   - name: flux_version
@@ -12,7 +12,7 @@ metrics:
     title: Flux
 
   - name: cluster_node_count
-    query: count(count by (node) (kube_node_status_condition{node=~"m[0-9]+", condition="Ready"}))
+    query: count(count by (node) (kube_node_status_condition{condition="Ready"}))
     colors:
       - { color: "50B93A", min: 0, max: 9999 }
 
@@ -22,7 +22,7 @@ metrics:
       - { color: "50B93A", min: 0, max: 9999 }
 
   - name: cluster_age_days
-    query: round((time() - min(kube_node_created{node=~"m[0-9]+"}) ) / 86400)
+    query: round((time() - min(kube_node_created)) / 86400)
     suffix: "d"
     colors:
       - { color: "red", min: 0, max: 30 }
