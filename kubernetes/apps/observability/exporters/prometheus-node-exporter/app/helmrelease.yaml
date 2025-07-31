@@ -33,69 +33,24 @@ spec:
     remediation:
       retries: 3
   values:
-    collectors:
-      enabled:
-        - arp
-        - bcache
-        - bonding
-        - btrfs
-        - buddyinfo
-        - conntrack
-        - cpu
-        - cpufreq
-        - diskstats
-        - dmi
-        - drbd
-        - edac
-        - entropy
-        - fibrechannel
-        - filefd
-        - filesystem
-        - hwmon
-        - infiniband
-        - ipvs
-        - loadavg
-        - mdadm
-        - meminfo
-        - meminfo_numa
-        - mountstats
-        - netclass
-        - netdev
-        - netstat
-        - nfs
-        - nfsd
-        - nvme
-        - os
-        - powersupplyclass
-        - pressure
-        - rapl
-        - schedstat
-        - selinux
-        - sockstat
-        - softnet
-        - stat
-        - tapestats
-        - textfile
-        - thermal_zone
-        - time
-        - timex
-        - udp_queues
-        - uname
-        - vmstat
-        - xfs
-        - zfs
-      disabled:
-        - processes
-
     extraArgs:
-      collector.systemd: ""
-      collector.processes: ""
-      collector.cpu.info: ""
-
+      - --collector.systemd
+      - --collector.processes
+      - --collector.cpu.info
+      - --collector.filesystem
+      - --collector.diskstats
+      - --collector.netdev
+      - --collector.meminfo
+      - --collector.loadavg
+      - --collector.cpu
+      - --collector.time
+      - --collector.uname
+      - --collector.vmstat
+      - --collector.hwmon
     prometheus:
       monitor:
         enabled: true
         interval: 30s
         scrapeTimeout: 30s
-        labels:
+        additionalLabels:
           release: victoria-metrics
