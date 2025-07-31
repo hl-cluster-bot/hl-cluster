@@ -33,3 +33,7 @@ k3s_server:
     - bind-address=0.0.0.0 # Required to monitor kube-controller-manager with kube-prometheus-stack
   kube-scheduler-arg:
     - bind-address=0.0.0.0 # Required to monitor kube-scheduler with kube-prometheus-stack
+
+# kubeconfig
+retrieve_kubeconfig_server_address: "{{ k3s_registration_address | default(kube_vip_addr) }}"
+retrieve_kubeconfig_local_path: "{{ playbook_dir }}/../../kubeconfig"

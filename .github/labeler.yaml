@@ -11,6 +11,10 @@ area/github:
   - changed-files:
       - any-glob-to-any-file:
           - .github/**/*
+area/k3s:
+  - changed-files:
+      - any-glob-to-any-file:
+          - k3s/**/*
 area/kubernetes:
   - changed-files:
       - any-glob-to-any-file:
@@ -29,7 +33,3 @@ area/taskfile:
       - any-glob-to-any-file:
           - .taskfiles/**/*
           - Taskfile.yaml
-area/templates:
-  - changed-files:
-      - any-glob-to-any-file:
-          - templates/**/*
