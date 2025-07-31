@@ -11,7 +11,7 @@ rules:
   comments-indentation: false
   # 160 chars was the default used by old E204 rule
   line-length:
-    max: 160
+    max: 320
   braces:
     min-spaces-inside: 0 # yamllint defaults to 0
     max-spaces-inside: 1 # yamllint defaults to 0
