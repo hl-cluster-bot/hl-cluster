@@ -3,6 +3,10 @@ area/bootstrap:
   - changed-files:
       - any-glob-to-any-file:
           - bootstrap/**/*
+area/devenv:
+  - changed-files:
+      - any-glob-to-any-file:
+          - devenv.*
 area/docs:
   - changed-files:
       - any-glob-to-any-file:

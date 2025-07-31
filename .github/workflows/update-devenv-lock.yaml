@@ -1,0 +1,46 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: "Update devenv.lock"
+
+on: # yamllint disable-line rule:truthy
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * 1 # Runs at 00:00 on Monday UTC
+
+jobs:
+  update-devenv-lock:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: cachix/install-nix-action@v26
+      - uses: cachix/cachix-action@v14
+        with:
+          name: devenv
+
+      - name: Install devenv.sh
+        run: nix profile install nixpkgs#devenv
+
+      - name: Run devenv update
+        run: devenv update
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          add-paths: |
+            devenv.lock
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update-devenv-lock
+          title: "feat(devenv)!: Update devenv.lock"
+          body: |
+            Automated update of devenv.lock file.
+
+            This PR was automatically created by the scheduled workflow.
+          commit-message: "feat(devenv)!: Update devenv.lock"
+          delete-branch: true
