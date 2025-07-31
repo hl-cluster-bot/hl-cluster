@@ -19,5 +19,8 @@ jobs:
       - name: Install devenv.sh
         run: nix profile install nixpkgs#devenv
 
+      - name: Preinstall roles for ansible-lint
+        run: devenv shell task ansible:bootstrap
+
       - name: Run devenv test
         run: devenv test
