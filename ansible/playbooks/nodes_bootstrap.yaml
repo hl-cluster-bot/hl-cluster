@@ -6,6 +6,6 @@
   become: true
   gather_facts: true
   roles:
-    - bbr
+    - update_sysctl
     - update_hosts
     - unattended_upgrades
