@@ -33,7 +33,47 @@ spec:
     remediation:
       retries: 3
   values:
+    extraArgs:
+      metric-labels-allowlist: "pods=[*],nodes=[*],deployments=[*],services=[*],namespaces=[*]"
+      metric-annotations-allowlist: "pods=[*],nodes=[*]"
+    kubeResources:
+      certificatesigningrequests: true
+      configmaps: true
+      cronjobs: true
+      daemonsets: true
+      deployments: true
+      endpoints: true
+      horizontalpodautoscalers: true
+      ingresses: true
+      jobs: true
+      leases: true
+      limitranges: true
+      mutatingwebhookconfigurations: true
+      namespaces: true
+      networkpolicies: true
+      nodes: true
+      persistentvolumeclaims: true
+      persistentvolumes: true
+      poddisruptionbudgets: true
+      pods: true
+      replicasets: true
+      replicationcontrollers: true
+      resourcequotas: true
+      secrets: true
+      services: true
+      statefulsets: true
+      storageclasses: true
+      validatingwebhookconfigurations: true
+      volumeattachments: true
+    customResourceState:
+      enabled: true
+      configuration: {}
+    resourcesPreset: "small"
     serviceMonitor:
       enabled: true
       interval: 30s
       scrapeTimeout: 30s
+      labels:
+        release: victoria-metrics
+    selfMonitor:
+      enabled: true
