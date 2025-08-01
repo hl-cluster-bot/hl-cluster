@@ -76,6 +76,16 @@ spec:
           enabled: true
           replicaCount: 2
 
+    vmagent:
+      spec:
+        extraArgs:
+          promscrape.maxScrapeSize: 50MiB
+          promscrape.streamParse: "true"
+          promscrape.dropOriginalLabels: "true"
+        resources:
+          requests:
+            cpu: 500m
+
     prometheus-node-exporter:
       vmScrape:
         spec:
