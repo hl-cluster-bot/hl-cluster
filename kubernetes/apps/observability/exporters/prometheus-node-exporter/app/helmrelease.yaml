@@ -33,24 +33,13 @@ spec:
     remediation:
       retries: 3
   values:
-    extraArgs:
-      - --collector.systemd
-      - --collector.processes
-      - --collector.cpu.info
-      - --collector.filesystem
-      - --collector.diskstats
-      - --collector.netdev
-      - --collector.meminfo
-      - --collector.loadavg
-      - --collector.cpu
-      - --collector.time
-      - --collector.uname
-      - --collector.vmstat
-      - --collector.hwmon
+    fullnameOverride: node-exporter
     prometheus:
       monitor:
         enabled: true
-        interval: 30s
-        scrapeTimeout: 30s
-        additionalLabels:
-          release: victoria-metrics
+        relabelings:
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels: ["__meta_kubernetes_pod_node_name"]
+            targetLabel: kubernetes_node
