@@ -35,3 +35,4 @@ spec:
     configuration:
       lockTtl: 10m
       lockReleaseDelay: 5m
+      notifyUrl: "${KURED_NOTIFY_URL}"
