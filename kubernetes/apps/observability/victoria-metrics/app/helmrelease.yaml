@@ -73,6 +73,15 @@ spec:
         vminsert:
           enabled: true
           replicaCount: 2
+    prometheus-node-exporter:
+      vmScrape:
+        spec:
+          endpoints:
+            - port: metrics
+              relabelConfigs:
+                - source_labels:
+                    - __meta_kubernetes_endpoint_node_name
+                  target_label: kubernetes_node
     defaultDashboards:
       enabled: false
     grafana:
