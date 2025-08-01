@@ -173,6 +173,11 @@ spec:
                   key: PUSHOVER_USER_KEY
                 url_title: View in Alertmanager
 
+    vmalert:
+      spec:
+        extraArgs:
+          external.url: https://vm.${SECRET_DOMAIN}
+
     grafana:
       enabled: false
 
