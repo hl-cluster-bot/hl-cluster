@@ -9,9 +9,9 @@ spec:
   layerSelector:
     mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
     operation: copy
-  url: oci://registry-1.docker.io/bitnamicharts/kube-state-metrics
+  url: oci://ghcr.io/prometheus-community/charts/kube-state-metrics
   ref:
-    tag: 5.0.14
+    tag: "6.1.0"
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
 apiVersion: helm.toolkit.fluxcd.io/v2
@@ -33,47 +33,8 @@ spec:
     remediation:
       retries: 3
   values:
-    extraArgs:
-      metric-labels-allowlist: "pods=[*],nodes=[*],deployments=[*],services=[*],namespaces=[*]"
-      metric-annotations-allowlist: "pods=[*],nodes=[*]"
-    kubeResources:
-      certificatesigningrequests: true
-      configmaps: true
-      cronjobs: true
-      daemonsets: true
-      deployments: true
-      endpoints: true
-      horizontalpodautoscalers: true
-      ingresses: true
-      jobs: true
-      leases: true
-      limitranges: true
-      mutatingwebhookconfigurations: true
-      namespaces: true
-      networkpolicies: true
-      nodes: true
-      persistentvolumeclaims: true
-      persistentvolumes: true
-      poddisruptionbudgets: true
-      pods: true
-      replicasets: true
-      replicationcontrollers: true
-      resourcequotas: true
-      secrets: true
-      services: true
-      statefulsets: true
-      storageclasses: true
-      validatingwebhookconfigurations: true
-      volumeattachments: true
-    customResourceState:
-      enabled: true
-      configuration: {}
-    resourcesPreset: "small"
-    serviceMonitor:
-      enabled: true
-      interval: 30s
-      scrapeTimeout: 30s
-      labels:
-        release: victoria-metrics
+    prometheus:
+      monitor:
+        enabled: true
     selfMonitor:
       enabled: true
