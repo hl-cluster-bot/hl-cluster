@@ -35,10 +35,6 @@ spec:
   values:
     selfMonitor:
       enabled: true
-      metricLabelsAllowlist:
-        - pods=[*]
-        - deployments=[*]
-        - persistentvolumeclaims=[*]
       prometheus:
         monitor:
           enabled: true
