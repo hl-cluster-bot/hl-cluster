@@ -38,8 +38,10 @@ spec:
     victoria-metrics-operator:
       operator:
         enable_converter_ownership: true # Required to allow VM to remove VM rules it imports if a prometheus rule is deleted
+
     vmsingle:
       enabled: false
+
     vmcluster:
       enabled: true
       spec:
@@ -73,6 +75,7 @@ spec:
         vminsert:
           enabled: true
           replicaCount: 2
+
     prometheus-node-exporter:
       vmScrape:
         spec:
@@ -82,7 +85,73 @@ spec:
                 - source_labels:
                     - __meta_kubernetes_endpoint_node_name
                   target_label: kubernetes_node
-    defaultDashboards:
-      enabled: false
+
+    alertmanager:
+      useManagedConfig: true
+      config:
+        route:
+          group_by: ["alertname", "job"]
+          group_interval: 10m
+          group_wait: 1m
+          receiver: pushover
+          repeat_interval: 12h
+          routes:
+            - receiver: "null"
+              matchers:
+                - alertname=InfoInhibitor
+            - receiver: heartbeat
+              group_interval: 15s
+              group_wait: 0s
+              repeat_interval: 5m
+              matchers:
+                - alertname=Watchdog
+            - receiver: pushover
+              matchers:
+                - severity=~"warning|critical"
+        inhibit_rules:
+          - source_matchers:
+              - severity = "critical"
+            target_matchers:
+              - severity = "warning"
+            equal: ["alertname", "namespace"]
+        receivers:
+          - name: "null"
+          - name: pushover
+            pushover_configs:
+              - html: true
+                message: |-
+                  {{- range .Alerts }}
+                    {{- if ne .Annotations.description "" }}
+                      {{ .Annotations.description }}
+                    {{- else if ne .Annotations.summary "" }}
+                      {{ .Annotations.summary }}
+                    {{- else if ne .Annotations.message "" }}
+                      {{ .Annotations.message }}
+                    {{- else }}
+                      Alert description not available
+                    {{- end }}
+                    {{- if gt (len .Labels.SortedPairs) 0 }}
+                      <small>
+                        {{- range .Labels.SortedPairs }}
+                          <b>{{ .Name }}:</b> {{ .Value }}
+                        {{- end }}
+                      </small>
+                    {{- end }}
+                  {{- end }}
+                priority: |-
+                  {{ if eq .Status "firing" }}1{{ else }}0{{ end }}
+                send_resolved: true
+                sound: gamelan
+                title: >-
+                  [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}]
+                  {{ .CommonLabels.alertname }}
+                ttl: 86400s
+                token: ${PUSHOVER_ALERTMANAGER_TOKEN}
+                user_key: ${PUSHOVER_USER_KEY}
+                url_title: View in Alertmanager
+
     grafana:
+      enabled: false
+
+    defaultDashboards:
       enabled: false
