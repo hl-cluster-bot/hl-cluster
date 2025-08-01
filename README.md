@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/k3s/icon/color/k3s-icon-color.svg" align="center" width="175px" height="175px"/>
+
 ## My HomeLab Cluster <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2604_fe0f/512.gif" alt="☄" width="32" height="32">
 
 ... managed with Flux and Renovate <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.gif" alt="🤖" width="16" height="16">
