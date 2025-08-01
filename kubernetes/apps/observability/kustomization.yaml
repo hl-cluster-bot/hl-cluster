@@ -6,8 +6,6 @@ namespace: observability
 components:
   - ../../components/common
 resources:
-  - ./exporters
   - ./grafana/ks.yaml
-  - ./victoria-metrics-operator/ks.yaml
   - ./kromgo/ks.yaml
-  - ./kube-state-metrics/ks.yaml
+  - ./victoria-metrics/ks.yaml
