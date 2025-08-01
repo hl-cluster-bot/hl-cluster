@@ -85,6 +85,10 @@ spec:
         resources:
           requests:
             cpu: 500m
+            memory: 500Mi
+          limits:
+            cpu: 1500m
+            memory: 1Gi
 
     prometheus-node-exporter:
       vmScrape:
