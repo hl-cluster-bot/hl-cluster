@@ -10,6 +10,7 @@
 
 [![k3s](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.popov.wtf%2Fk3s_version&style=for-the-badge&logo=k3s&logoColor=white&color=blue)](https://k3s.io/)&nbsp;&nbsp;
 [![Flux](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.popov.wtf%2Fflux_version&style=for-the-badge&logo=flux&logoColor=white&color=blue&label=Flux)](https://fluxcd.io)&nbsp;&nbsp;
+[![Linux](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.popov.wtf%2Flinux_version&style=for-the-badge&logo=linux&logoColor=white&color=blue&label=Linux)](https://kernel.org/)
 
 </div>
 

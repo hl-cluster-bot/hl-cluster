@@ -10,6 +10,11 @@ metrics:
     label: kubelet_version
     title: K3S
 
+  - name: linux_version
+    query: label_replace(node_uname_info{kubernetes_node!=""}, "version", "$1", "release", "([0-9]+\\.[0-9]+\\.[0-9]+).*")
+    label: version
+    title: Linux
+
   - name: flux_version
     query: label_replace(flux_instance_info, "revision", "$1", "revision", "v(.+)@sha256:.+")
     label: revision
