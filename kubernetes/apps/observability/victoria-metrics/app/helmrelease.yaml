@@ -61,7 +61,7 @@ spec:
                 storageClassName: openebs-hostpath
         vmselect:
           enabled: true
-          replicaCount: 2
+          replicaCount: 1
           cacheMountPath: "/select-cache"
           storage:
             volumeClaimTemplate:
@@ -72,11 +72,20 @@ spec:
                   requests:
                     storage: 2Gi
                 storageClassName: openebs-hostpath
+          resources:
+            requests:
+              cpu: 0.5
+              memory: 500Mi
+            limits:
+              cpu: 1
+              memory: 1Gi
         vminsert:
           enabled: true
-          replicaCount: 2
+          replicaCount: 1
 
     vmagent:
+      enabled: true
+      replicaCount: 1
       spec:
         extraArgs:
           promscrape.maxScrapeSize: 50MiB
@@ -84,10 +93,10 @@ spec:
           promscrape.dropOriginalLabels: "true"
         resources:
           requests:
-            cpu: 500m
+            cpu: 0.5
             memory: 500Mi
           limits:
-            cpu: 1500m
+            cpu: 1
             memory: 1Gi
 
     prometheus-node-exporter:
@@ -101,6 +110,8 @@ spec:
                   target_label: kubernetes_node
 
     alertmanager:
+      spec:
+        externalURL: https://am.${SECRET_DOMAIN}
       useManagedConfig: true
       config:
         route:
