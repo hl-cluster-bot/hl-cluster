@@ -73,7 +73,7 @@ spec:
         vminsert:
           enabled: true
           replicaCount: 2
-        defaultDashboards:
-          enabled: false
-        grafana:
-          enabled: false
+    defaultDashboards:
+      enabled: false
+    grafana:
+      enabled: false

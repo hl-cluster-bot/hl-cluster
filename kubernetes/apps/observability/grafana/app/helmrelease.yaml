@@ -60,7 +60,7 @@ spec:
             type: prometheus
             uid: prometheus
             access: proxy
-            url: http://vmselect-victoria-metrics-cluster.observability.svc.cluster.local:8481/select/0/prometheus
+            url: http://vmselect-stack.observability.svc.cluster.local.:8481/select/0/prometheus
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
