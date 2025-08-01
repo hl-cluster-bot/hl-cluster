@@ -68,10 +68,6 @@ spec:
             port: *port
           health:
             port: *healthPort
-    serviceMonitor:
-      app:
-        endpoints:
-          - port: http
     route:
       app:
         hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
