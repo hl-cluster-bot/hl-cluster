@@ -38,6 +38,8 @@ spec:
     victoria-metrics-operator:
       operator:
         enable_converter_ownership: true # Required to allow VM to remove VM rules it imports if a prometheus rule is deleted
+    vmsingle:
+      enabled: false
     vmcluster:
       enabled: true
       spec:
