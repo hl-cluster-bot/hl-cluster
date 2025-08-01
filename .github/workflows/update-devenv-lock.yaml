@@ -44,3 +44,5 @@ jobs:
             This PR was automatically created by the scheduled workflow.
           commit-message: "feat(devenv)!: Update devenv.lock"
           delete-branch: true
+          labels: |
+            area/devenv
