@@ -82,6 +82,13 @@ spec:
         vminsert:
           enabled: true
           replicaCount: 1
+          resources:
+            requests:
+              cpu: 500m
+              memory: 500Mi
+            limits:
+              cpu: 1000m
+              memory: 1Gi
 
     vmagent:
       enabled: true
