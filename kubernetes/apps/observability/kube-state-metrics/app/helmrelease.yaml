@@ -33,6 +33,11 @@ spec:
     remediation:
       retries: 3
   values:
+    extraLabels:
+      cluster: "hl-cluster"
+    metricLabelsAllowlist:
+      - "nodes=[*]"
+      - "pods=[*]"
     selfMonitor:
       enabled: true
       prometheus:
