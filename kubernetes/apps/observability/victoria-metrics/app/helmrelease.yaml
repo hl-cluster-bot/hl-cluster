@@ -38,40 +38,40 @@ spec:
     victoria-metrics-operator:
       operator:
         enable_converter_ownership: true # Required to allow VM to remove VM rules it imports if a prometheus rule is deleted
-vmcluster:
-  enabled: true
-  spec:
-    retentionPeriod: "1y"
-    replicationFactor: 2
-    vmstorage:
-      replicaCount: 3
-      storageDataPath: /vm-data
-    storage:
-      volumeClaimTemplate:
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 50Gi
-          storageClassName: openebs-hostpath
-    vmselect:
+    vmcluster:
       enabled: true
-      replicaCount: 2
-      cacheMountPath: "/select-cache"
-      storage:
-        volumeClaimTemplate:
-          spec:
-            accessModes:
-              - ReadWriteOnce
-            resources:
-              requests:
-                storage: 2Gi
-            storageClassName: openebs-hostpath
-    vminsert:
-      enabled: true
-      replicaCount: 2
-    defaultDashboards:
-      enabled: false
-    grafana:
-      enabled: false
+      spec:
+        retentionPeriod: "1y"
+        replicationFactor: 2
+        vmstorage:
+          replicaCount: 3
+          storageDataPath: /vm-data
+        storage:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 50Gi
+              storageClassName: openebs-hostpath
+        vmselect:
+          enabled: true
+          replicaCount: 2
+          cacheMountPath: "/select-cache"
+          storage:
+            volumeClaimTemplate:
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 2Gi
+                storageClassName: openebs-hostpath
+        vminsert:
+          enabled: true
+          replicaCount: 2
+        defaultDashboards:
+          enabled: false
+        grafana:
+          enabled: false
