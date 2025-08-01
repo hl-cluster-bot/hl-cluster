@@ -146,8 +146,16 @@ spec:
                   [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}]
                   {{ .CommonLabels.alertname }}
                 ttl: 86400s
-                token: ${PUSHOVER_ALERTMANAGER_TOKEN}
-                user_key: ${PUSHOVER_USER_KEY}
+                token:
+                  valueFrom:
+                    secretKeyRef:
+                      name: &secret cluster-secrets
+                      key: PUSHOVER_ALERTMANAGER_TOKEN
+                user_key:
+                  valueFrom:
+                    secretKeyRef:
+                      name: *secret
+                      key: PUSHOVER_USER_KEY
                 url_title: View in Alertmanager
 
     grafana:
