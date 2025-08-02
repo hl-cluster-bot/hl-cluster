@@ -1,12 +1,18 @@
-<div align="center">
+<!-- markdownlint-disable -->
+<h1 align="center">
+	<img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1faa9/512.gif" width="150" alt="Logo"/><br/>
+	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
+	My HomeLab Cluster
+</picture>
+	<img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/misc/transparent.png" height="30" width="0px"/>
+</h1>
 
-<img src="https://raw.githubusercontent.com/cncf/artwork/refs/heads/main/projects/k3s/icon/color/k3s-icon-color.svg" align="center" width="175px" height="175px"/>
-
-## My HomeLab Cluster <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2604_fe0f/512.gif" alt="☄" width="32" height="32">
-
-... managed with Flux and Renovate <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.gif" alt="🤖" width="16" height="16">
-
-</div>
+<p align="center">
+  ... managed with Flux, Renovate, and GitHub Actions  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.gif" alt="🤖" width="16" height="16">
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="400" />
+</p>
 
 <div align="center">
 
@@ -27,14 +33,17 @@
 [![Alerts](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.popov.wtf%2Fcluster_alert_count&style=flat-square&label=Alerts)](https://github.com/kashalls/kromgo)
 
 </div>
-
-</div>
+<!-- markdownlint-enable -->
 
 ## Overview
 
 This repository is my home Kubernetes cluster in a declarative state. [Flux](https://github.com/fluxcd/flux2) watches the [kubernetes](./kubernetes/) folder and will make the changes to the cluster based on the YAML manifests.
 
+<!-- markdownlint-disable -->
+
 ### <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f4a1/512.gif" alt="💡" width="16" height="16"> Core Components
+
+<!-- markdownlint-enable -->
 
 Core components that form the foundation of the cluster:
 
@@ -44,17 +53,32 @@ Core components that form the foundation of the cluster:
 - [rancher/system-upgrade-controller](https://github.com/rancher/system-upgrade-controller): Handles k3s upgrades automatically.
 - [kubereboot/kured](https://github.com/kubereboot/kured): Kubernetes reboot daemon that performs safe automatic node reboots when needed.
 
+<!-- markdownlint-disable -->
+
 ### <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a8/512.gif" alt="🚨" width="16" height="16"> Observability
+
+<!-- markdownlint-enable -->
 
 For observability and monitoring of the cluster the following software is used:
 
+- [grafana/grafana](https://github.com/grafana/grafana): Data visualization platform.
+- [prometheus/alertmanager](https://github.com/prometheus/alertmanager): Handles processing and sending alerts.
+- [pushover](https://pushover.net): Handles receiving alerts on my devices.
 - [VictoriaMetrics/VictoriaMetrics](https://github.com/VictoriaMetrics/VictoriaMetrics): Time series database, drop-in replacement for Prometheus.
 
+<!-- markdownlint-disable -->
+
 ### <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.gif" alt="🤖" width="16" height="16"> Automation
+
+<!-- markdownlint-enable -->
 
 - [Github Actions](https://docs.github.com/en/actions) for checking code formatting and running periodic jobs
 - [Renovate](https://github.com/renovatebot/renovate) keeps the application charts and container images up-to-date
 
+<!-- markdownlint-disable -->
+
 ## <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/270f_fe0f/512.gif" alt="✏" width="16" height="16"> License
+
+<!-- markdownlint-enable -->
 
 See [LICENSE](./LICENSE)
