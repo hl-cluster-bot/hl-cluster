@@ -131,6 +131,12 @@ spec:
             - receiver: "null"
               matchers:
                 - alertname=InfoInhibitor
+            - receiver: heartbeat
+              group_interval: 15s
+              group_wait: 0s
+              repeat_interval: 5m
+              matchers:
+                - alertname=Watchdog
             - receiver: pushover
               matchers:
                 - severity=~"warning|critical"
@@ -142,6 +148,11 @@ spec:
             equal: ["alertname", "namespace"]
         receivers:
           - name: "null"
+          - name: heartbeat
+            webhook_configs:
+              - url_secret:
+                  name: &secret cluster-secrets
+                  key: ALERTMANAGER_HEARTBEAT_URL
           - name: pushover
             pushover_configs:
               - html: true
@@ -173,7 +184,7 @@ spec:
                   {{ .CommonLabels.alertname }}
                 ttl: 86400s
                 token:
-                  name: &secret cluster-secrets
+                  name: *secret
                   key: PUSHOVER_ALERTMANAGER_TOKEN
                 user_key:
                   name: *secret
