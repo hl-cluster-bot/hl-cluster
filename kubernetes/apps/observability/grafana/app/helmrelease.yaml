@@ -39,6 +39,10 @@ spec:
       GF_ANALYTICS_REPORTING_ENABLED: "false"
       GF_EXPLORE_ENABLED: true
     grafana.ini:
+      news:
+        news_feed_enabled: false
+      server:
+        root_url: https://grafana.${SECRET_DOMAIN}
       analytics:
         check_for_updates: false
         check_for_plugin_updates: false
@@ -48,8 +52,8 @@ spec:
         org_id: 1
         org_name: Main Org.
         org_role: Viewer
-      news:
-        news_feed_enabled: false
+      log:
+        mode: console
     datasources:
       datasources.yaml:
         apiVersion: 1
@@ -61,6 +65,13 @@ spec:
             uid: prometheus
             access: proxy
             url: http://vmselect-stack.observability.svc.cluster.local.:8481/select/0/prometheus
+          - name: Alertmanager
+            type: alertmanager
+            uid: alertmanager
+            access: proxy
+            url: http://vmalertmanager-stack.observability.svc.cluster.local:9093
+            jsonData:
+              implementation: prometheus
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
@@ -183,6 +194,34 @@ spec:
         vmauth:
           url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/vmauth.json
           datasource: Prometheus
+    sidecar:
+      image:
+        registry: ghcr.io
+        repository: home-operations/k8s-sidecar
+        tag: 1.30.7@sha256:3b6444d91c6e69a9e07c5e55419452d967d18c833d88b36277dc2021b708f621
+      dashboards:
+        enabled: true
+        searchNamespace: ALL
+        labelValue: ""
+        label: grafana_dashboard
+        folderAnnotation: grafana_folder
+        provider:
+          disableDelete: true
+          foldersFromFilesStructure: true
+      datasources:
+        enabled: true
+        searchNamespace: ALL
+        labelValue: ""
+        label: grafana_datasource
+    testFramework:
+      enabled: false
+    plugins:
+      - grafana-clock-panel
+      - grafana-piechart-panel
+      - grafana-worldmap-panel
+      - natel-discrete-panel
+      - pr0ps-trackmap-panel
+      - vonage-status-panel
     serviceMonitor:
       enabled: true
     route:
@@ -194,6 +233,4 @@ spec:
             namespace: kube-system
             sectionName: https
     persistence:
-      enabled: false
-    testFramework:
       enabled: false
