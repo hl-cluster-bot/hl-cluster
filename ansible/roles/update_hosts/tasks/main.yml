@@ -3,13 +3,13 @@
 - name: Get the current hostname
   ansible.builtin.command:
     cmd: hostname
-  register: current_hostname
+  register: update_hosts_current_hostname
   changed_when: false
 
 - name: Set the new hostname
   ansible.builtin.hostname:
     name: "{{ inventory_hostname }}"
-  when: current_hostname.stdout != inventory_hostname
+  when: update_hosts_current_hostname.stdout != inventory_hostname
   notify:
     - Restart hostname-dependent services
 
@@ -19,7 +19,7 @@
     line: "{{ inventory_hostname }}"
     create: true
     mode: "0644"
-  when: current_hostname.stdout != inventory_hostname
+  when: update_hosts_current_hostname.stdout != inventory_hostname
 
 - name: Update /etc/hosts
   ansible.builtin.template:

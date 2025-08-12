@@ -27,13 +27,13 @@
 
 - name: Ensure BBR is in available congestion algorithms
   ansible.builtin.command: sysctl net.ipv4.tcp_available_congestion_control
-  register: cc_algos
+  register: update_sysctl_cc_algos
   changed_when: false
 
 - name: Fail if BBR is not available
   ansible.builtin.fail:
     msg: "BBR is not available. Check kernel config: CONFIG_TCP_CONG_BBR"
-  when: "'bbr' not in cc_algos.stdout"
+  when: "'bbr' not in update_sysctl_cc_algos.stdout"
 
 - name: Set congestion control to bbr immediately
   ansible.posix.sysctl:
