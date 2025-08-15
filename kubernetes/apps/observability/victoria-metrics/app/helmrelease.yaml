@@ -59,6 +59,13 @@ spec:
                   requests:
                     storage: 50Gi
                 storageClassName: openebs-hostpath
+          resources:
+            requests:
+              cpu: 500m
+              memory: 500Mi
+            limits:
+              cpu: 1000m
+              memory: 1Gi
         vmselect:
           enabled: true
           replicaCount: 2
