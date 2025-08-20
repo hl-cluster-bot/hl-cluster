@@ -41,3 +41,13 @@ spec:
         lbipam.cilium.io/ips: "10.101.0.200"
       externalTrafficPolicy: Cluster
     watchedResources: ["HTTPRoute", "Service"]
+    fallthrough:
+      enabled: true
+    forward:
+      enabled: true
+      servers:
+        - "1.1.1.1"
+        - "1.0.0.1"
+    options:
+      timeout: 5s
+      edns0: true
