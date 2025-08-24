@@ -19,7 +19,7 @@ k3s_server:
   disable-network-policy: true
   docker: false
   embedded-registry: true
-  etcd-expose-metrics: true # Required to monitor etcd with kube-prometheus-stack
+  etcd-expose-metrics: true
   # This needs to be in quotes
   flannel-backend: "none" # yamllint disable-line rule:quoted-strings
   write-kubeconfig-mode: "644"
@@ -30,10 +30,11 @@ k3s_server:
   kube-apiserver-arg:
     - anonymous-auth=true # Required for HAProxy health-checks
   kube-controller-manager-arg:
-    - bind-address=0.0.0.0 # Required to monitor kube-controller-manager with kube-prometheus-stack
+    - bind-address=0.0.0.0
   kube-scheduler-arg:
-    - bind-address=0.0.0.0 # Required to monitor kube-scheduler with kube-prometheus-stack
+    - bind-address=0.0.0.0
 
 # kubeconfig
-retrieve_kubeconfig_server_address: "{{ k3s_registration_address | default(kube_vip_addr) }}"
+retrieve_kubeconfig_server_address:
+  "{{ k3s_registration_address | default(kube_vip_addr) }}"
 retrieve_kubeconfig_local_path: "{{ playbook_dir }}/../../kubeconfig"
