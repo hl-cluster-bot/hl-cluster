@@ -24,8 +24,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/tolkonepiu/rockpi-23w-poe-docker
-              tag: v0.0.5
+              repository: ghcr.io/tolkonepiu/rockpi-poe-controller
+              tag: v0.1.0
             securityContext:
               runAsUser: 0
               runAsGroup: 0
