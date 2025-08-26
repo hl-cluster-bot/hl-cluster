@@ -1,2 +1,11 @@
 ---
 ansible_user: root
+
+# Armbian overlays for Rock Pi 4B
+# See: https://popov.wtf/first-boot-of-armbian-on-rock-pi-4b
+armbian_overlays_prefix: rockchip
+armbian_overlays_std_list:
+  - rk3399-pcie-gen2
+armbian_overlays_user_list:
+  - name: rockpi-poe
+    url: https://github.com/radxa/23w-poe/raw/refs/heads/master/dist/dtb/rockpi-poe.dtbo

@@ -1,0 +1,8 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks
+- name: Mark reboot required
+  become: true
+  ansible.builtin.file:
+    path: "/var/run/reboot-required"
+    state: touch
+    mode: "0644"

@@ -1,0 +1,77 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks
+- name: Armbian overlays
+  when:
+    - armbian is defined
+    - armbian.get('vendor') == "Armbian"
+  block:
+    - name: Ensure overlay directory exists (user overlays)
+      become: true
+      ansible.builtin.file:
+        path: "{{ armbian_overlays_user_dir }}"
+        state: directory
+        mode: "0755"
+    - name: Download user overlay dtbo files
+      become: true
+      ansible.builtin.get_url:
+        url: "{{ item.url }}"
+        dest: "{{ armbian_overlays_user_dir }}/{{ item.name }}.dtbo"
+        mode: "0644"
+        force: false
+      loop: "{{ armbian_overlays_user_list }}"
+      loop_control:
+        label: "{{ item.name }}"
+      when:
+        - item.name is defined
+        - item.url is defined
+    - name: Validate standard overlays exist
+      become: true
+      ansible.builtin.stat:
+        path:
+          "{{ armbian.overlay_dir }}/{{ armbian_overlays_prefix |
+          ternary(armbian_overlays_prefix ~ '-', '') }}{{ item }}.dtbo"
+      register: armbian_overlays_std_list_stats
+      loop: "{{ armbian_overlays_std_list }}"
+      when:
+        - armbian_overlays_std_list | length > 0
+    - name: Fail if a configured standard overlay is missing
+      ansible.builtin.fail:
+        msg: "Missing overlay: {{ item.item }}"
+      when:
+        - armbian_overlays_std_list_stats | length > 0
+        - item.stat.exists is not defined or not item.stat.exists
+      loop: "{{ armbian_overlays_std_list_stats.results | default([]) }}"
+      loop_control:
+        label: "{{ item.item }}"
+    - name: Write overlay_prefix in armbianEnv
+      become: true
+      ansible.builtin.lineinfile:
+        path: "{{ armbian_overlays_env_file }}"
+        regexp: "^overlay_prefix="
+        line: "overlay_prefix={{ armbian_overlays_prefix }}"
+        create: true
+        mode: "0644"
+      when: armbian_overlays_prefix | length > 0
+      notify: Mark reboot required
+    - name: Write overlays list in armbianEnv
+      become: true
+      ansible.builtin.lineinfile:
+        path: "{{ armbian_overlays_env_file }}"
+        regexp: "^overlays="
+        line: "overlays={{ armbian_overlays_std_list | join(' ') }}"
+        create: true
+        mode: "0644"
+      when: armbian_overlays_std_list | length > 0
+      notify: Mark reboot required
+    - name: Write user_overlays list in armbianEnv
+      become: true
+      ansible.builtin.lineinfile:
+        path: "{{ armbian_overlays_env_file }}"
+        regexp: "^user_overlays="
+        line:
+          "user_overlays={{ armbian_overlays_user_list | map(attribute='name') |
+          list | join(' ') }}"
+        create: true
+        mode: "0644"
+      when: armbian_overlays_user_list | length > 0
+      notify: Mark reboot required

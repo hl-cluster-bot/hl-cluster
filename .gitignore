@@ -11,7 +11,6 @@ devenv.local.nix
 # Ansible
 .ansible/
 ansible/.facts_cache/
-ansible/galaxy
 ansible/tmp
 ansible/roles/xanmanning.k3s
 

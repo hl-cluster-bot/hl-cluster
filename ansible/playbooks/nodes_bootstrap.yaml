@@ -9,3 +9,4 @@
     - update_sysctl
     - update_hosts
     - unattended_upgrades
+    - armbian_overlays

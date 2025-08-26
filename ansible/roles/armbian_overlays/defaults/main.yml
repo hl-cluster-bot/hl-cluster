@@ -1,0 +1,21 @@
+---
+# Overlay prefix string for armbianEnv.txt (overlay_prefix=…)
+# Example: "rockchip-rk3399", "rockchip-rockpro64"
+armbian_overlays_prefix: ""
+
+# List of standard overlays (names without prefix and without .dtbo extension)
+# Example: ["rk3399-pcie-gen2", "i2c0", "spi-spidev"]
+armbian_overlays_std_list: []
+
+# User overlays (custom .dtbo files downloaded or provided externally).
+# Each item:
+# - name: overlay name (without .dtbo)
+# - url:  URL to the source .dtbo
+armbian_overlays_user_list: []
+
+# Paths for overlays and environment configuration
+# Directory for user overlay files
+armbian_overlays_user_dir: "/boot/overlay-user"
+
+# Armbian environment file used by the bootloader
+armbian_overlays_env_file: "/boot/armbianEnv.txt"
