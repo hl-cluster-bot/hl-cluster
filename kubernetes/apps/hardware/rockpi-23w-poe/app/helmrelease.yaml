@@ -1,0 +1,66 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: rockpi-23w-poe
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      rockpi-23w-poe:
+        type: daemonset
+        strategy: RollingUpdate
+        containers:
+          app:
+            image:
+              repository: ghcr.io/tolkonepiu/rockpi-23w-poe-docker
+              tag: v0.0.1
+            securityContext:
+              privileged: true
+              allowPrivilegeEscalation: true
+              capabilities:
+                add:
+                  - SYS_ADMIN
+                  - SYS_RAWIO
+            resources:
+              requests:
+                cpu: 50m
+                memory: 64Mi
+              limits:
+                cpu: 500m
+                memory: 256Mi
+    defaultPodOptions:
+      dnsPolicy: ClusterFirst
+      hostNetwork: false
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          operator: "Exists"
+          effect: "NoSchedule"
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+          effect: "NoSchedule"
+      nodeSelector:
+        kubernetes.io/os: linux
+        kubernetes.io/arch: arm64
+    persistence:
+      dev:
+        type: hostPath
+        hostPath: /dev
+        globalMounts:
+          - path: /dev
+      sys:
+        type: hostPath
+        hostPath: /sys
+        globalMounts:
+          - path: /sys
