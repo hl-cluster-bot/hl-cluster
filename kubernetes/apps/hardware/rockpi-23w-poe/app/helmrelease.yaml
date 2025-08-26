@@ -27,6 +27,8 @@ spec:
               repository: ghcr.io/tolkonepiu/rockpi-23w-poe-docker
               tag: v0.0.1
             securityContext:
+              runAsUser: 0
+              runAsGroup: 0
               privileged: true
               allowPrivilegeEscalation: true
               capabilities:
