@@ -6,4 +6,4 @@ namespace: hardware
 components:
   - ../../components/common
 resources:
-  - ./rockpi-23w-poe/ks.yaml
+  - ./rockpi-poe-controller/ks.yaml
