@@ -28,6 +28,12 @@ spec:
               tag: v0.2.6
             env:
               - name: POE_LV0
+                value: "10"
+              - name: POE_LV1
+                value: "20"
+              - name: POE_LV2
+                value: "30"
+              - name: POE_LV3
                 value: "35"
             securityContext:
               runAsUser: 0
