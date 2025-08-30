@@ -17,6 +17,10 @@ spec:
     remediation:
       retries: 3
   values:
+    global:
+      propagateGlobalMetadataToPods: true
+      labels:
+        node: "{{ .Values.nodeName | default .Values.nodeSelector.kubernetes.io/hostname | default 'unknown' }}"
     controllers:
       rockpi-poe-controller:
         type: daemonset
@@ -81,11 +85,6 @@ spec:
       app:
         endpoints:
           - port: metrics
-        selector:
-          matchLabels:
-            app.kubernetes.io/name: rockpi-poe-controller
-        targetLabels:
-          - kubernetes_node
     persistence:
       proc-cpu-info:
         type: hostPath
