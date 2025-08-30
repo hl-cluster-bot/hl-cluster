@@ -19,8 +19,6 @@ spec:
   values:
     global:
       propagateGlobalMetadataToPods: true
-      labels:
-        node: "{{ .Values.nodeName | default .Values.nodeSelector.kubernetes.io/hostname | default 'unknown' }}"
     controllers:
       rockpi-poe-controller:
         type: daemonset
