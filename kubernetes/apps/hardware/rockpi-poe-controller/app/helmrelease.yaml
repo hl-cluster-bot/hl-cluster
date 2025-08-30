@@ -44,6 +44,7 @@ spec:
               readOnlyRootFilesystem: true
               capabilities:
                 add:
+                  - SYS_ADMIN
                   - SYS_RAWIO
             resources:
               requests:
