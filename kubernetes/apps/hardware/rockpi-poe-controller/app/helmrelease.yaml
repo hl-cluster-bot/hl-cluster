@@ -39,8 +39,8 @@ spec:
               runAsUser: 0
               runAsGroup: 0
               runAsNonRoot: false
-              privileged: false
-              allowPrivilegeEscalation: false
+              privileged: true
+              allowPrivilegeEscalation: true
               readOnlyRootFilesystem: true
               capabilities:
                 drop: ["ALL"]
@@ -64,32 +64,3 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: arm64
-    persistence:
-      proc:
-        type: hostPath
-        hostPath: /proc
-        hostPathType: Directory
-        globalMounts:
-          - path: /proc
-            readOnly: true
-      thermal:
-        type: hostPath
-        hostPath: /sys/class/thermal
-        hostPathType: Directory
-        globalMounts:
-          - path: /sys/class/thermal
-            readOnly: true
-      pwm:
-        type: hostPath
-        hostPath: /sys/class/pwm
-        hostPathType: Directory
-        globalMounts:
-          - path: /sys/class/pwm
-            readOnly: false
-      gpiochip4:
-        type: hostPath
-        hostPath: /dev/gpiochip4
-        hostPathType: CharDevice
-        globalMounts:
-          - path: /dev/gpiochip4
-            readOnly: false
