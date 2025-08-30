@@ -65,12 +65,19 @@ spec:
         kubernetes.io/os: linux
         kubernetes.io/arch: arm64
     persistence:
-      proc-model:
+      proc-cpu-info:
         type: hostPath
-        hostPath: /proc/device-tree/model
+        hostPath: /proc/cpuinfo
         hostPathType: File
         globalMounts:
-          - path: /proc/device-tree/model
+          - path: /proc/cpuinfo
+            readOnly: true
+      proc-device-tree:
+        type: hostPath
+        hostPath: /proc/device-tree
+        hostPathType: Directory
+        globalMounts:
+          - path: /proc/device-tree
             readOnly: true
       thermal:
         type: hostPath
