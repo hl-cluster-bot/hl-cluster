@@ -38,12 +38,12 @@ spec:
             securityContext:
               runAsUser: 0
               runAsGroup: 0
-              privileged: true
-              allowPrivilegeEscalation: true
+              runAsNonRoot: false
+              privileged: false
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
               capabilities:
-                add:
-                  - SYS_ADMIN
-                  - SYS_RAWIO
+                drop: ["ALL"]
             resources:
               requests:
                 cpu: 50m
@@ -65,15 +65,31 @@ spec:
         kubernetes.io/os: linux
         kubernetes.io/arch: arm64
     persistence:
-      dev:
+      proc-model:
         type: hostPath
-        hostPath: /dev
+        hostPath: /proc/device-tree/model
+        hostPathType: File
         globalMounts:
-          - path: /dev
+          - path: /proc/device-tree/model
             readOnly: true
-      sys:
+      thermal:
         type: hostPath
-        hostPath: /sys
+        hostPath: /sys/class/thermal
+        hostPathType: Directory
         globalMounts:
-          - path: /sys
+          - path: /sys/class/thermal
             readOnly: true
+      pwm:
+        type: hostPath
+        hostPath: /sys/class/pwm
+        hostPathType: Directory
+        globalMounts:
+          - path: /sys/class/pwm
+            readOnly: false
+      gpiochip4:
+        type: hostPath
+        hostPath: /dev/gpiochip4
+        hostPathType: File
+        globalMounts:
+          - path: /dev/gpiochip4
+            readOnly: false
