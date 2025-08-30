@@ -27,18 +27,23 @@ spec:
               repository: ghcr.io/tolkonepiu/rockpi-poe-controller
               tag: v0.3.1
             env:
-              - name: POE_LV0
-                value: "40"
-              - name: POE_LV1
-                value: "45"
-              - name: POE_LV2
-                value: "50"
-              - name: POE_LV3
-                value: "55"
-            ports:
-              - name: metrics
-                containerPort: 8000
-                protocol: TCP
+              POE_LV0: 40
+              POE_LV1: 45
+              POE_LV2: 50
+              POE_LV3: 55
+              POE_METRICS_PORT: &port 8000
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
             securityContext:
               runAsUser: 0
               runAsGroup: 0
@@ -69,20 +74,12 @@ spec:
     service:
       app:
         ports:
-          metrics:
-            port: 8000
-            targetPort: metrics
+          http:
+            port: *port
     serviceMonitor:
       app:
         endpoints:
-          - port: metrics
-        selector:
-          matchLabels:
-            app.kubernetes.io/name: rockpi-poe-controller
-        relabelConfigs:
-          - sourceLabels:
-              - __meta_kubernetes_endpoint_node_name
-            targetLabel: kubernetes_node
+          - port: http
     persistence:
       proc-cpu-info:
         type: hostPath
