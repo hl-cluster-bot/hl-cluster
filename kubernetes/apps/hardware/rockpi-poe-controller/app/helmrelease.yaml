@@ -93,6 +93,13 @@ spec:
         globalMounts:
           - path: /sys/class/pwm
             readOnly: false
+      gpiochip0:
+        type: hostPath
+        hostPath: /dev/gpiochip0
+        hostPathType: CharDevice
+        globalMounts:
+          - path: /dev/gpiochip0
+            readOnly: false
       gpiochip1:
         type: hostPath
         hostPath: /dev/gpiochip1
