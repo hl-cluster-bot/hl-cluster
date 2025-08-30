@@ -17,6 +17,8 @@ spec:
     remediation:
       retries: 3
   values:
+    global:
+      propagateGlobalMetadataToPods: true
     controllers:
       rockpi-poe-controller:
         type: daemonset
