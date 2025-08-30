@@ -2,7 +2,7 @@
 ansible_user: root
 
 # Armbian overlays for Rock Pi 4B
-# See: https://popov.wtf/first-boot-of-armbian-on-rock-pi-4b
+# See: https://popov.wtf/advanced-armbian-setup-for-rock-pi-4b
 armbian_overlays_prefix: rockchip
 armbian_overlays_std_list:
   - rk3399-pcie-gen2
