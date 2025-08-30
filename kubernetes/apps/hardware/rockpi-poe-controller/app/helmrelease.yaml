@@ -42,10 +42,6 @@ spec:
               privileged: true
               allowPrivilegeEscalation: true
               readOnlyRootFilesystem: true
-              capabilities:
-                add:
-                  - SYS_ADMIN
-                  - SYS_RAWIO
             resources:
               requests:
                 cpu: 50m
