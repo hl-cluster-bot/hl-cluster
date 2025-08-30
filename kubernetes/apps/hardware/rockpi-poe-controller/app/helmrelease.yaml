@@ -128,3 +128,10 @@ spec:
         globalMounts:
           - path: /dev/gpiochip4
             readOnly: false
+      gpio-sysfs:
+        type: hostPath
+        hostPath: /sys/class/gpio
+        hostPathType: Directory
+        globalMounts:
+          - path: /sys/class/gpio
+            readOnly: false
