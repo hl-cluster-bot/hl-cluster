@@ -79,59 +79,15 @@ spec:
         globalMounts:
           - path: /proc/device-tree
             readOnly: true
-      thermal:
+      dev:
         type: hostPath
-        hostPath: /sys/class/thermal
-        hostPathType: Directory
+        hostPath: /dev
         globalMounts:
-          - path: /sys/class/thermal
+          - path: /dev
             readOnly: true
-      pwm:
+      sys:
         type: hostPath
-        hostPath: /sys/class/pwm
-        hostPathType: Directory
+        hostPath: /sys
         globalMounts:
-          - path: /sys/class/pwm
-            readOnly: false
-      gpiochip0:
-        type: hostPath
-        hostPath: /dev/gpiochip0
-        hostPathType: CharDevice
-        globalMounts:
-          - path: /dev/gpiochip0
-            readOnly: false
-      gpiochip1:
-        type: hostPath
-        hostPath: /dev/gpiochip1
-        hostPathType: CharDevice
-        globalMounts:
-          - path: /dev/gpiochip1
-            readOnly: false
-      gpiochip2:
-        type: hostPath
-        hostPath: /dev/gpiochip2
-        hostPathType: CharDevice
-        globalMounts:
-          - path: /dev/gpiochip2
-            readOnly: false
-      gpiochip3:
-        type: hostPath
-        hostPath: /dev/gpiochip3
-        hostPathType: CharDevice
-        globalMounts:
-          - path: /dev/gpiochip3
-            readOnly: false
-      gpiochip4:
-        type: hostPath
-        hostPath: /dev/gpiochip4
-        hostPathType: CharDevice
-        globalMounts:
-          - path: /dev/gpiochip4
-            readOnly: false
-      gpio-sysfs:
-        type: hostPath
-        hostPath: /sys/class/gpio
-        hostPathType: Directory
-        globalMounts:
-          - path: /sys/class/gpio
-            readOnly: false
+          - path: /sys
+            readOnly: true
