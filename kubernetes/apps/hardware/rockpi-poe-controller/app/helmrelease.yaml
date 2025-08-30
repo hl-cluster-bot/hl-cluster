@@ -35,6 +35,10 @@ spec:
                 value: "50"
               - name: POE_LV3
                 value: "55"
+            ports:
+              - name: metrics
+                containerPort: 8000
+                protocol: TCP
             securityContext:
               runAsUser: 0
               runAsGroup: 0
@@ -62,6 +66,23 @@ spec:
       nodeSelector:
         kubernetes.io/os: linux
         kubernetes.io/arch: arm64
+    service:
+      app:
+        ports:
+          metrics:
+            port: 8000
+            targetPort: metrics
+    serviceMonitor:
+      app:
+        endpoints:
+          - port: metrics
+        selector:
+          matchLabels:
+            app.kubernetes.io/name: rockpi-poe-controller
+        relabelConfigs:
+          - sourceLabels:
+              - __meta_kubernetes_endpoint_node_name
+            targetLabel: kubernetes_node
     persistence:
       proc-cpu-info:
         type: hostPath
