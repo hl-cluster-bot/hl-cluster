@@ -89,7 +89,7 @@ spec:
       gpiochip4:
         type: hostPath
         hostPath: /dev/gpiochip4
-        hostPathType: File
+        hostPathType: CharDevice
         globalMounts:
           - path: /dev/gpiochip4
             readOnly: false
