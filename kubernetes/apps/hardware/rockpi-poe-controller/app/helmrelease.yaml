@@ -34,6 +34,14 @@ spec:
               POE_LV2: 50
               POE_LV3: 55
               POE_METRICS_PORT: &port 8000
+              POE_NODE_NAME:
+                valueFrom:
+                  fieldRef:
+                    fieldPath: spec.nodeName
+              POE_NODE_IP:
+                valueFrom:
+                  fieldRef:
+                    fieldPath: status.hostIP
             probes:
               liveness: &probes
                 enabled: true

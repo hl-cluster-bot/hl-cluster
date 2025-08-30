@@ -9,6 +9,10 @@ spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
+      app.kubernetes.io/component: poe-controller
+      app.kubernetes.io/part-of: hardware-management
+      topology.kubernetes.io/zone: cluster
+      node-type: rockpi
   decryption:
     provider: sops
     secretRef:
