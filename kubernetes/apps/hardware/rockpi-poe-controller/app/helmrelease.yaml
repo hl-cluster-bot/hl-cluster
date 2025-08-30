@@ -74,12 +74,18 @@ spec:
     service:
       app:
         ports:
-          http:
+          metrics:
             port: *port
+            targetPort: metrics
     serviceMonitor:
       app:
         endpoints:
-          - port: http
+          - port: metrics
+        selector:
+          matchLabels:
+            app.kubernetes.io/name: rockpi-poe-controller
+        targetLabels:
+          - kubernetes_node
     persistence:
       proc-cpu-info:
         type: hostPath
