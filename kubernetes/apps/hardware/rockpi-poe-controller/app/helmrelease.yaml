@@ -92,7 +92,7 @@ spec:
     serviceMonitor:
       app:
         endpoints:
-          - port: http
+          - port: metrics
     persistence:
       proc-cpu-info:
         type: hostPath
