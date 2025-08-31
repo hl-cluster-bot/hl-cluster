@@ -26,12 +26,16 @@ spec:
             image:
               repository: ghcr.io/tolkonepiu/rockpi-poe-controller
               tag: v0.3.5
+            ports:
+              - name: http
+                containerPort: &port 8000
+                protocol: TCP
             env:
               POE_LV0: 40
               POE_LV1: 45
               POE_LV2: 50
               POE_LV3: 55
-              POE_METRICS_PORT: &port 8000
+              POE_METRICS_PORT: *port
               POE_NODE_NAME:
                 valueFrom:
                   fieldRef:
@@ -84,11 +88,11 @@ spec:
         ports:
           metrics:
             port: *port
-            targetPort: metrics
+            targetPort: http
     serviceMonitor:
       app:
         endpoints:
-          - port: metrics
+          - port: http
     persistence:
       proc-cpu-info:
         type: hostPath
