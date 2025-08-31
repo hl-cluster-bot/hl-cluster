@@ -52,6 +52,7 @@ spec:
         runAsGroup: 1000
     service:
       app:
+        type: LoadBalancer
         annotations:
           lbipam.cilium.io/ips: "10.101.0.211"
         ports:
