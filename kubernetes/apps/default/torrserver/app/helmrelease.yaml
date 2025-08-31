@@ -1,0 +1,70 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: torrserver
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  dependsOn:
+    - name: cloudflare-tunnel
+      namespace: network
+  values:
+    controllers:
+      torrserver:
+        strategy: RollingUpdate
+        containers:
+          app:
+            image:
+              repository: ghcr.io/yourok/torrserver
+              tag: MatriX.136@sha256:e7663dce47e3977363f9f7ad07403bef219a386741ca626b9bf85afbc830baac
+            env:
+              HTTP_PORT: &port 8090
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 100m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+    service:
+      app:
+        annotations:
+          lbipam.cilium.io/ips: "10.101.0.211"
+        ports:
+          http:
+            port: *port
+    route:
+      app:
+        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: app
+                port: *port
