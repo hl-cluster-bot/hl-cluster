@@ -42,8 +42,8 @@ spec:
                 memory: 128Mi
     persistence:
       config:
-        enabled: true
         type: secret
-        existingClaim: isponsorblocktv-config
+        name: isponsorblocktv-config
         globalMounts:
           - path: /app/data
+            readOnly: true
