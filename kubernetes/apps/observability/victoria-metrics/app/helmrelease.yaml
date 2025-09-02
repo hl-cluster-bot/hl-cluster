@@ -62,10 +62,10 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 500Mi
+              memory: 256Mi
             limits:
               cpu: 2000m
-              memory: 1Gi
+              memory: 512Mi
         vmselect:
           enabled: true
           replicaCount: 2
@@ -82,20 +82,20 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 500Mi
+              memory: 256Mi
             limits:
               cpu: 1000m
-              memory: 1Gi
+              memory: 512Mi
         vminsert:
           enabled: true
           replicaCount: 2
           resources:
             requests:
               cpu: 500m
-              memory: 500Mi
+              memory: 256Mi
             limits:
               cpu: 1000m
-              memory: 1Gi
+              memory: 512Mi
 
     vmagent:
       enabled: true
@@ -108,10 +108,10 @@ spec:
         resources:
           requests:
             cpu: 500m
-            memory: 500Mi
+            memory: 256Mi
           limits:
             cpu: 1000m
-            memory: 1Gi
+            memory: 512Mi
 
     prometheus-node-exporter:
       vmScrape:
