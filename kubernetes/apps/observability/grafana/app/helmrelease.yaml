@@ -36,12 +36,12 @@ spec:
     deploymentStrategy:
       type: Recreate
     resources:
-      limits:
-        memory: 256Mi
-        cpu: 500m
       requests:
         memory: 128Mi
-        cpu: 100m
+        cpu: 200m
+      limits:
+        memory: 256Mi
+        cpu: 1000m
     env:
       GF_ANALYTICS_REPORTING_ENABLED: "false"
       GF_EXPLORE_ENABLED: true
@@ -207,13 +207,6 @@ spec:
         registry: ghcr.io
         repository: home-operations/k8s-sidecar
         tag: 1.30.10@sha256:dd3b1f0c4e6b4512b2deb50c58acf65fd0f0927120a59a95eec854d32a6c9ce3
-      resources:
-        limits:
-          memory: 64Mi
-          cpu: 100m
-        requests:
-          memory: 32Mi
-          cpu: 10m
       dashboards:
         enabled: true
         searchNamespace: ALL
