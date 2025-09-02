@@ -37,11 +37,11 @@ spec:
       type: Recreate
     resources:
       requests:
-        memory: 128Mi
+        memory: 256Mi
         cpu: 200m
       limits:
-        memory: 256Mi
-        cpu: 1000m
+        memory: 512Mi
+        cpu: 2000m
     env:
       GF_ANALYTICS_REPORTING_ENABLED: "false"
       GF_EXPLORE_ENABLED: true
@@ -242,3 +242,10 @@ spec:
             sectionName: https
     persistence:
       enabled: false
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: node-role.kubernetes.io/control-plane
+                  operator: DoesNotExist
