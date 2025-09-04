@@ -62,10 +62,10 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 256Mi
+              memory: 512Mi
             limits:
               cpu: 2000m
-              memory: 512Mi
+              memory: 1Gi
         vmselect:
           enabled: true
           replicaCount: 2
