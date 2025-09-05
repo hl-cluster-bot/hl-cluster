@@ -32,7 +32,10 @@
 
   git-hooks.hooks = {
     alejandra.enable = true;
-    ansible-lint.enable = true;
+    ansible-lint = {
+      enable = true;
+      settings.subdir = "ansible";
+    };
     check-yaml.enable = true;
     deadnix.enable = true;
     shellcheck.enable = true;

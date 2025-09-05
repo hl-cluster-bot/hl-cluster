@@ -34,14 +34,14 @@ tasks:
 
   ping:
     desc: Ping hosts
-    cmd: ansible all --one-line -m 'ping'
+    cmd: ANSIBLE_STDOUT_CALLBACK=ansible.posix.minimal ansible all -m 'ping'
     preconditions:
       - which ansible
       - test -f {{.ANSIBLE_CONFIG}}
 
   uptime:
     desc: Uptime of hosts
-    cmd: ansible all --one-line -a 'uptime'
+    cmd: ANSIBLE_STDOUT_CALLBACK=ansible.posix.minimal ansible all -a 'uptime'
     preconditions:
       - which ansible
       - test -f {{.ANSIBLE_CONFIG}}
