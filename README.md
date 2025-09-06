@@ -16,7 +16,7 @@
 
 <div align="center">
 
-[![k3s](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.popov.wtf%2Fk3s_version&style=for-the-badge&logo=k3s&logoColor=white&color=cba6f7&labelColor=45475a)](https://k3s.io/)&nbsp;&nbsp;
+[![k3s](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.popov.wtf%2Fk3s_version&style=for-the-badge&logo=k3s&logoColor=white&color=cba6f7&label=k3s&labelColor=45475a)](https://k3s.io/)&nbsp;&nbsp;
 [![Flux](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.popov.wtf%2Fflux_version&style=for-the-badge&logo=flux&logoColor=white&color=cba6f7&label=Flux&labelColor=45475a)](https://fluxcd.io)&nbsp;&nbsp;
 [![Linux](https://img.shields.io/endpoint?url=https%3A%2F%2Fkromgo.popov.wtf%2Flinux_version&style=for-the-badge&logo=linux&logoColor=white&color=cba6f7&label=Linux&labelColor=45475a)](https://kernel.org/)
 
@@ -39,8 +39,9 @@
 
 This repository is my home Kubernetes cluster in a declarative state.
 [Flux](https://github.com/fluxcd/flux2) watches the [kubernetes](./kubernetes/)
-folder and will make the changes to the cluster based on the YAML manifests. The
-cluster runs on [k3s](https://k3s.io/) and consists of nodes based on
+folder and will make the changes to the cluster based on the YAML manifests.
+
+The cluster runs on [k3s](https://k3s.io/) and consists of nodes based on
 [Rock Pi 4B](https://radxa.com/products/rock4/4b/) single-board computers, each
 equipped with 1TB NVME storage. Power to the boards is supplied through
 [ROCKPI 23W PoE HAT](https://wiki.radxa.com/ROCKPI_23W_PoE_HAT) modules.
