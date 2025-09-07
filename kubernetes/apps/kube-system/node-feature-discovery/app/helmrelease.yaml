@@ -42,7 +42,8 @@ spec:
     worker:
       config:
         core:
-          sources: ["custom", "pci", "usb", "kernel"]
+          sources:
+            ["custom", "cpu", "pci", "usb", "kernel", "network", "system"]
       resources:
         requests:
           cpu: 15m
