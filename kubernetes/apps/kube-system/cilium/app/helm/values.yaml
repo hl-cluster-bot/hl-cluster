@@ -8,6 +8,8 @@ bpf:
   masquerade: true
   preallocateMaps: true
 bpfClockProbe: true
+egressGateway:
+  enabled: true
 cgroup:
   automount:
     enabled: false
