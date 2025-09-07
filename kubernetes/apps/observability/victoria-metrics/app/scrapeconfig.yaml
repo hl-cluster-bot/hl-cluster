@@ -41,7 +41,7 @@ spec:
   staticConfigs:
     - targets:
         - atlas-nl.rya-tone.ts.net:3333
-  metricsPath: /metrics/prometheus
+  metricsPath: /metrics
   relabelings:
     - action: replace
       targetLabel: job
