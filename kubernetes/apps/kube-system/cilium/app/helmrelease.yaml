@@ -37,6 +37,9 @@ spec:
   values:
     egressGateway:
       enabled: true
+    enableIPv4Masquerade: true
+    masqueradeInterfaces:
+      - tailscale0
     hubble:
       enabled: true
       metrics:
