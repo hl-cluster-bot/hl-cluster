@@ -5,7 +5,16 @@ metadata:
   annotations:
     tailscale.com/tailnet-fqdn: atlas-nl.rya-tone.ts.net
   name: atlas-nl
-  namespace: tailscale
+spec:
+  externalName: placeholder
+  type: ExternalName
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    tailscale.com/tailnet-fqdn: atlas-ru.rya-tone.ts.net
+  name: atlas-ru
 spec:
   externalName: placeholder
   type: ExternalName
