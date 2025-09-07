@@ -35,32 +35,8 @@ spec:
     - kind: ConfigMap
       name: cilium-values
   values:
-    egressGateway:
-      enabled: true
     enableIPv4Masquerade: true
     masqueradeInterfaces:
       - tailscale0
     hubble:
-      enabled: true
-      metrics:
-        enabled:
-          - dns:query
-          - drop
-          - tcp
-          - flow
-          - port-distribution
-          - icmp
-          - http
-        serviceMonitor:
-          enabled: true
-        dashboards:
-          enabled: true
-      relay:
-        enabled: true
-        rollOutPods: true
-        prometheus:
-          serviceMonitor:
-            enabled: true
-      ui:
-        enabled: true
-        rollOutPods: true
+      enabled: false
