@@ -152,11 +152,6 @@ spec:
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
-        flux-logs:
-          url: https://raw.githubusercontent.com/fluxcd/flux2-monitoring-example/main/monitoring/configs/dashboards/logs.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
       kubernetes:
         kubernetes-api-server:
           # renovate: depName="Kubernetes / System / API Server"
