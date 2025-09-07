@@ -9,8 +9,6 @@ spec:
     - targets:
         - atlas-nl.rya-tone.ts.net:9100
         - atlas-ru.rya-tone.ts.net:9100
-        - keenetic-fm.rya-tone.ts.net:9100
-        - keenetic-hm.rya-tone.ts.net:9100
   metricsPath: /metrics
   relabelings:
     - action: replace
