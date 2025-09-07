@@ -36,6 +36,7 @@ spec:
     remediation:
       retries: 3
   values:
+    fullnameOverride: *app
     operatorConfig:
       hostname: "tailscale-operator"
       defaultTags:
