@@ -142,11 +142,6 @@ spec:
           datasource:
             - name: DS_PROMETHEUS
               value: Prometheus
-        bitmagnet:
-          url: https://raw.githubusercontent.com/bitmagnet-io/bitmagnet/refs/heads/main/observability/grafana-dashboards/bitmagnet.json
-          datasource:
-            - name: DS_PROMETHEUS
-              value: Prometheus
       kubernetes:
         kubernetes-api-server:
           # renovate: depName="Kubernetes / System / API Server"
@@ -235,7 +230,7 @@ spec:
         enabled: true
         hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
         parentRefs:
-          - name: tailscale
+          - name: internal
             namespace: kube-system
             sectionName: https
     persistence:
