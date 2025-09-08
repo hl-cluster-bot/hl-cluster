@@ -235,7 +235,7 @@ spec:
         enabled: true
         hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
         parentRefs:
-          - name: internal
+          - name: tailscale
             namespace: kube-system
             sectionName: https
     persistence:
