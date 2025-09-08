@@ -20,14 +20,6 @@ spec:
     controllers:
       torrserver:
         strategy: RollingUpdate
-        defaultPodOptions:
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: node-role.kubernetes.io/control-plane
-                        operator: DoesNotExist
         containers:
           app:
             image:
@@ -51,6 +43,13 @@ spec:
               limits:
                 memory: 512Mi
     defaultPodOptions:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: DoesNotExist
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
