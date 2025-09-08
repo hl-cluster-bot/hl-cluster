@@ -19,7 +19,17 @@ spec:
   values:
     controllers:
       isponsorblocktv:
+        annotations:
+          reloader.stakater.com/auto: "true"
         strategy: RollingUpdate
+        defaultPodOptions:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                  - matchExpressions:
+                      - key: node-role.kubernetes.io/control-plane
+                        operator: DoesNotExist
         containers:
           app:
             image:
