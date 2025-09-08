@@ -45,7 +45,7 @@ spec:
     vmcluster:
       enabled: true
       spec:
-        retentionPeriod: "1y"
+        retentionPeriod: "7d"
         replicationFactor: 2
         vmstorage:
           replicaCount: 3
@@ -187,8 +187,9 @@ spec:
                 send_resolved: true
                 sound: gamelan
                 title: >-
-                  [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}]
-                  {{ .CommonLabels.alertname }}
+                  [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{
+                  .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname
+                  }}
                 ttl: 86400s
                 token:
                   name: *secret

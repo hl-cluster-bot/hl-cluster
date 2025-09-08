@@ -35,8 +35,5 @@ spec:
     - kind: ConfigMap
       name: cilium-values
   values:
-    enableIPv4Masquerade: true
-    masqueradeInterfaces:
-      - tailscale0
     hubble:
       enabled: false

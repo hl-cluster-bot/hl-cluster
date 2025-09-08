@@ -18,23 +18,3 @@ metadata:
 spec:
   externalName: placeholder
   type: ExternalName
----
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    tailscale.com/tailnet-fqdn: keenetic-fm.rya-tone.ts.net
-  name: keenetic-fm
-spec:
-  externalName: placeholder
-  type: ExternalName
----
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    tailscale.com/tailnet-fqdn: keenetic-hm.rya-tone.ts.net
-  name: keenetic-hm
-spec:
-  externalName: placeholder
-  type: ExternalName
