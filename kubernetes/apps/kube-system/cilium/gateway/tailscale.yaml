@@ -10,7 +10,7 @@ spec:
   gatewayClassName: cilium
   addresses:
     - type: IPAddress
-      value: "100.78.100.124"
+      value: "100.124.156.59"
   infrastructure:
     annotations:
       tailscale.com/hostname: "gateway-tailscale"
