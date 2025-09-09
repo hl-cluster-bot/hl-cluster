@@ -184,8 +184,8 @@ spec:
         vmalert:
           url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/vmalert.json
           datasource: Prometheus
-        vmauth:
-          url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/vmauth.json
+        query-stats:
+          url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/query-stats.json
           datasource: Prometheus
     sidecar:
       image:
