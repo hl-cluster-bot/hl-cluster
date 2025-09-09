@@ -74,7 +74,7 @@ spec:
             access: proxy
             url: http://vmselect-stack.observability.svc.cluster.local.:8481/select/0/prometheus
           - name: VictoriaMetrics
-            type: victoriametrics-datasource
+            type: victoriametrics-metrics-datasource
             uid: victoriametrics
             access: proxy
             url: http://vmselect-stack.observability.svc.cluster.local:8481/select/0/prometheus
