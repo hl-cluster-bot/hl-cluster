@@ -71,7 +71,6 @@ spec:
               cpu: 500m
               memory: 512Mi
             limits:
-              cpu: 2000m
               memory: 1Gi
         vmselect:
           enabled: true
@@ -91,7 +90,6 @@ spec:
               cpu: 500m
               memory: 256Mi
             limits:
-              cpu: 1000m
               memory: 512Mi
         vminsert:
           enabled: true
@@ -101,7 +99,6 @@ spec:
               cpu: 500m
               memory: 256Mi
             limits:
-              cpu: 1000m
               memory: 512Mi
 
     vmagent:
@@ -117,7 +114,6 @@ spec:
             cpu: 500m
             memory: 256Mi
           limits:
-            cpu: 1000m
             memory: 512Mi
 
     prometheus-node-exporter:
