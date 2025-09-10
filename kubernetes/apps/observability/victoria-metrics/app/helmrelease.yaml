@@ -207,17 +207,6 @@ spec:
         extraArgs:
           external.url: https://vm.${SECRET_DOMAIN}
 
-    kubeEtcd:
-      enabled: true
-      endpoints:
-        - 10.101.0.101
-        - 10.101.0.102
-        - 10.101.0.103
-      service:
-        enabled: true
-        port: 2381
-        targetPort: 2381
-
     kubelet:
       vmScrape:
         spec:
@@ -310,4 +299,7 @@ spec:
       enabled: false
 
     kubeProxy:
+      enabled: false
+
+    kubeEtcd:
       enabled: false
