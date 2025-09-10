@@ -171,9 +171,9 @@ spec:
           revision: 36
           datasource: Prometheus
         etcd:
-          # renovate: depName="Kubernetes / ETCD"
-          gnetId: 20330
-          revision: 8
+          # renovate: depName="Etcd Cluster Overview"
+          gnetId: 21473
+          revision: 3
           datasource: Prometheus
       victoria-metrics:
         operator:
