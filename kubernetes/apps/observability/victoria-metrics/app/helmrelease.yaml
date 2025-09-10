@@ -207,23 +207,16 @@ spec:
         extraArgs:
           external.url: https://vm.${SECRET_DOMAIN}
 
-    grafana:
-      enabled: false
-
-    defaultDashboards:
-      enabled: false
-
-    kubeControllerManager:
-      enabled: false
-
     kubeEtcd:
-      enabled: false
-
-    kubeScheduler:
-      enabled: false
-
-    kubeProxy:
-      enabled: false
+      enabled: true
+      endpoints:
+        - 10.101.0.101
+        - 10.101.0.102
+        - 10.101.0.103
+      service:
+        enabled: true
+        port: 2381
+        targetPort: 2381
 
     kubelet:
       vmScrape:
@@ -303,3 +296,18 @@ spec:
                   == 1
                 labels:
                   severity: critical
+
+    grafana:
+      enabled: false
+
+    defaultDashboards:
+      enabled: false
+
+    kubeControllerManager:
+      enabled: false
+
+    kubeScheduler:
+      enabled: false
+
+    kubeProxy:
+      enabled: false

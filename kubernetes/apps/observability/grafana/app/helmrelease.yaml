@@ -170,6 +170,11 @@ spec:
           gnetId: 15760
           revision: 36
           datasource: Prometheus
+        etcd:
+          # renovate: depName="Kubernetes / ETCD"
+          gnetId: 20330
+          revision: 8
+          datasource: Prometheus
       victoria-metrics:
         operator:
           url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/vm/operator.json
