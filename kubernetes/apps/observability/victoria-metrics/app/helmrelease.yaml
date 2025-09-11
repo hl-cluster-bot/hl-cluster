@@ -57,7 +57,7 @@ spec:
         vmstorage:
           replicaCount: 3
           extraArgs:
-            memory.allowedPercent: "40"
+            memory.allowedPercent: "20"
           storageDataPath: /vm-data
           storage:
             volumeClaimTemplate:
