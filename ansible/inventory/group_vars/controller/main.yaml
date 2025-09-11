@@ -27,12 +27,25 @@ k3s_server:
   tls-san:
     - "{{ kube_vip_addr }}"
 
+  etcd-arg:
+    - quota-backend-bytes=2147483648
+    - auto-compaction-mode=periodic
+    - auto-compaction-retention=1h
+    - snapshot-count=5000
   kube-apiserver-arg:
-    - anonymous-auth=true # Required for HAProxy health-checks
+    - anonymous-auth=true
+    - watch-cache-sizes=events#0
+    - event-ttl=1h
+    - max-requests-inflight=200
+    - max-mutating-requests-inflight=100
   kube-controller-manager-arg:
     - bind-address=0.0.0.0
+    - kube-api-qps=20
+    - kube-api-burst=30
   kube-scheduler-arg:
     - bind-address=0.0.0.0
+    - kube-api-qps=10
+    - kube-api-burst=20
 
 # kubeconfig
 retrieve_kubeconfig_server_address:
