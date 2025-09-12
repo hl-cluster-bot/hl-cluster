@@ -86,7 +86,7 @@ spec:
                 value: "true"
             securityContext:
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+              readOnlyRootFilesystem: false
               capabilities: { drop: ["ALL"] }
             resources:
               requests:
@@ -119,8 +119,3 @@ spec:
           - backendRefs:
               - name: *app
                 port: *port
-    persistence:
-      data:
-        type: emptyDir
-        globalMounts:
-          - path: /app/node_modules/.pnpm
