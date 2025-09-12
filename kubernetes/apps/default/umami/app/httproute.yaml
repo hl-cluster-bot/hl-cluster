@@ -6,7 +6,7 @@ metadata:
   name: umami-script
   namespace: default
 spec:
-  hostnames: ["umm.popov.wtf"]
+  hostnames: ["umm.${SECRET_DOMAIN}"]
   parentRefs:
     - name: external
       namespace: kube-system
@@ -20,3 +20,6 @@ spec:
         - path:
             type: PathPrefix
             value: /script.js
+        - path:
+            type: PathPrefix
+            value: /api/send
