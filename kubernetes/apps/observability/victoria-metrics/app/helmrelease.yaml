@@ -108,7 +108,6 @@ spec:
       replicaCount: 1
       spec:
         extraArgs:
-          memory.allowedPercent: "20"
           promscrape.maxScrapeSize: 50MiB
           promscrape.streamParse: "true"
           promscrape.dropOriginalLabels: "true"
