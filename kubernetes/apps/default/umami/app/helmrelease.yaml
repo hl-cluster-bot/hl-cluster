@@ -113,7 +113,7 @@ spec:
           - "umm.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal
-            namespace: networking
+            namespace: kube-system
             sectionName: https
         rules:
           - backendRefs:
