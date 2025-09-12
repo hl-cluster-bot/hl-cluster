@@ -119,3 +119,8 @@ spec:
           - backendRefs:
               - name: *app
                 port: *port
+    persistence:
+      data:
+        type: emptyDir
+        globalMounts:
+          - path: /app/node_modules
