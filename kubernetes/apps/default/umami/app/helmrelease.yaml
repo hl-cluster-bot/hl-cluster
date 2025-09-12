@@ -123,4 +123,4 @@ spec:
       data:
         type: emptyDir
         globalMounts:
-          - path: /app/node_modules
+          - path: /app/node_modules/.pnpm
