@@ -76,7 +76,7 @@ spec:
               memory: 512Gi
         vmselect:
           enabled: true
-          replicaCount: 2
+          replicaCount: 1
           extraArgs:
             memory.allowedPercent: "20"
           cacheMountPath: "/select-cache"
@@ -92,20 +92,20 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 64Mi
-            limits:
               memory: 128Mi
+            limits:
+              memory: 256Mi
         vminsert:
           enabled: true
-          replicaCount: 2
+          replicaCount: 1
           extraArgs:
             memory.allowedPercent: "20"
           resources:
             requests:
               cpu: 500m
-              memory: 64Mi
-            limits:
               memory: 128Mi
+            limits:
+              memory: 256Mi
 
     vmagent:
       enabled: true
