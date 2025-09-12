@@ -76,9 +76,7 @@ spec:
               memory: 512Gi
         vmselect:
           enabled: true
-          replicaCount: 1
-          extraArgs:
-            memory.allowedPercent: "20"
+          replicaCount: 2
           cacheMountPath: "/select-cache"
           storage:
             volumeClaimTemplate:
