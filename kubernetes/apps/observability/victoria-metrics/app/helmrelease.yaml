@@ -97,9 +97,7 @@ spec:
               memory: 256Mi
         vminsert:
           enabled: true
-          replicaCount: 1
-          extraArgs:
-            memory.allowedPercent: "20"
+          replicaCount: 2
           resources:
             requests:
               cpu: 500m
