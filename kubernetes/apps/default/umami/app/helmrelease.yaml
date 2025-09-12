@@ -35,6 +35,10 @@ spec:
               - secretRef:
                   name: umami-secret
             env:
+              - name: INIT_POSTGRES_HOST
+                value: postgres17-rw.database.svc.cluster.local
+              - name: INIT_POSTGRES_PORT
+                value: "5432"
               - name: INIT_POSTGRES_DBNAME
                 valueFrom:
                   secretKeyRef:
@@ -45,11 +49,16 @@ spec:
                   secretKeyRef:
                     name: umami-secret
                     key: UMAMI_DB_USER
-              - name: INIT_POSTGRES_PASSWORD
+              - name: INIT_POSTGRES_PASS
                 valueFrom:
                   secretKeyRef:
                     name: umami-secret
                     key: UMAMI_DB_PASS
+              - name: INIT_POSTGRES_SUPER_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: umami-secret
+                    key: POSTGRES_SUPER_USER
               - name: INIT_POSTGRES_SUPER_PASS
                 valueFrom:
                   secretKeyRef:
