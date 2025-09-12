@@ -57,7 +57,7 @@ spec:
         vmstorage:
           replicaCount: 3
           extraArgs:
-            memory.allowedPercent: "40"
+            memory.allowedPercent: "20"
           storageDataPath: /vm-data
           storage:
             volumeClaimTemplate:
@@ -73,7 +73,7 @@ spec:
               cpu: 500m
               memory: 256Mi
             limits:
-              memory: 512Mi
+              memory: 1Gi
         vmselect:
           enabled: true
           replicaCount: 2
