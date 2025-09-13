@@ -1,0 +1,19 @@
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: test-external
+  namespace: kube-system
+spec:
+  gatewayClassName: cilium
+  addresses:
+    - type: IPAddress
+      value: "10.101.0.201"
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      hostname: "*.popov.wtf"
+      allowedRoutes:
+        namespaces:
+          from: All

@@ -31,7 +31,7 @@ k3s_server:
     - quota-backend-bytes=2147483648
     - auto-compaction-mode=periodic
     - auto-compaction-retention=1h
-    - snapshot-count=5000
+    - snapshot-count=10000
   kube-apiserver-arg:
     - anonymous-auth=true
     - watch-cache-sizes=events#0
