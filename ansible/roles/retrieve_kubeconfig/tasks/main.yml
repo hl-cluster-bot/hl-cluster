@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks
 - name: Retrieve kubeconfig
-  when: inventory_hostname == play_hosts[0]
+  when: inventory_hostname == ansible_play_hosts[0]
   ansible.builtin.fetch:
     src: /etc/rancher/k3s/k3s.yaml
     dest: "{{ retrieve_kubeconfig_local_path }}"
