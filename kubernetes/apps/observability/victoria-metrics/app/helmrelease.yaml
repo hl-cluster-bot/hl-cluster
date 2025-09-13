@@ -90,9 +90,9 @@ spec:
           resources:
             requests:
               cpu: 500m
-              memory: 128Mi
-            limits:
               memory: 256Mi
+            limits:
+              memory: 512Mi
         vminsert:
           enabled: true
           replicaCount: 2
