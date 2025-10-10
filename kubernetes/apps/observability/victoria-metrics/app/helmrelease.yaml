@@ -221,7 +221,7 @@ spec:
             # Drop less useful / always zero container memory metrics.
             - sourceLabels: [__name__]
               action: drop
-              regex: "container_memory_(failures_total|mapped_file|swap)"
+              regex: "container_memory_(failures_total|mapped_file)"
             # Drop less useful container process metrics.
             - sourceLabels: [__name__]
               action: drop
