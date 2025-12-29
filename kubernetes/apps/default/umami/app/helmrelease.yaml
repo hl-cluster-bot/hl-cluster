@@ -86,8 +86,6 @@ spec:
                 value: "1"
               - name: DISABLE_TELEMETRY
                 value: "true"
-              - name: SKIP_LOCATION_HEADERS
-                value: "1"
               - name: LINKS_URL
                 value: "https://umm.${SECRET_DOMAIN}/q"
               - name: PIXELS_URL
