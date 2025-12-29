@@ -86,6 +86,8 @@ spec:
                 value: "1"
               - name: DISABLE_TELEMETRY
                 value: "true"
+              - name: LINKS_URL
+                value: "https://umm.${SECRET_DOMAIN}"
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
