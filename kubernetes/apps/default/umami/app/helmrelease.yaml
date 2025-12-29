@@ -87,9 +87,9 @@ spec:
               - name: DISABLE_TELEMETRY
                 value: "true"
               - name: LINKS_URL
-                value: "https://umm.${SECRET_DOMAIN}/q/"
+                value: "https://umm.${SECRET_DOMAIN}/q"
               - name: PIXELS_URL
-                value: "https://umm.${SECRET_DOMAIN}/p/"
+                value: "https://umm.${SECRET_DOMAIN}/p"
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
