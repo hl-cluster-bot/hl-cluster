@@ -23,3 +23,9 @@ spec:
         - path:
             type: PathPrefix
             value: /api/send
+        - path:
+            type: PathPrefix
+            value: /q/
+        - path:
+            type: PathPrefix
+            value: /p/
