@@ -5,7 +5,7 @@ name: "Update devenv.lock"
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
   schedule:
-    - cron: 0 0 * * 1 # Runs at 00:00 on Monday UTC
+    - cron: 0 0 * * 2 # Runs at 00:00 on Tuesday UTC
 
 jobs:
   update-devenv-lock:
