@@ -24,9 +24,9 @@
 
 <div align="center">
 
-![Home Network](https://img.shields.io/uptimerobot/status/m802337331-b8cce90b210a48a9aca3b6e0?style=for-the-badge&logoColor=white&label=Home%20Network&labelColor=45475a)&nbsp;&nbsp;
-![Cluster Status](https://img.shields.io/uptimerobot/status/m801091926-010c803363d731fd23336aee?style=for-the-badge&logoColor=white&label=Cluster%20Status&labelColor=45475a)&nbsp;&nbsp;
-![Alertmanager](https://img.shields.io/uptimerobot/status/m801095660-6ff37a7d0c145febc4bb2cf4?style=for-the-badge&logoColor=white&label=Alertmanager&labelColor=45475a)&nbsp;&nbsp;
+![Home Network](https://img.shields.io/uptimerobot/status/m802337331-b8cce90b210a48a9aca3b6e0?style=for-the-badge&label=Home%20Network&labelColor=45475a&up_color=a6e3a1&down_color=f38ba8)&nbsp;&nbsp;
+![Cluster Status](https://img.shields.io/uptimerobot/status/m801091926-010c803363d731fd23336aee?style=for-the-badge&label=Cluster%20Status&labelColor=45475a&up_color=a6e3a1&down_color=f38ba8)&nbsp;&nbsp;
+![Alertmanager](https://img.shields.io/uptimerobot/status/m801095660-6ff37a7d0c145febc4bb2cf4?style=for-the-badge&label=Alertmanager&labelColor=45475a&up_color=a6e3a1&down_color=f38ba8)&nbsp;&nbsp;
 
 </div>
 
