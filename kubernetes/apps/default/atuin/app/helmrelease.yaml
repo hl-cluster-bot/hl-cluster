@@ -76,6 +76,7 @@ spec:
               ATUIN_HOST: 0.0.0.0
               ATUIN_PORT: &port 80
               ATUIN_DB_URI: postgresql://$(ATUIN_DB_USER):$(ATUIN_DB_PASS)@postgres17-rw.database.svc.cluster.local:5432/$(ATUIN_DBNAME)
+              ATUIN_OPEN_REGISTRATION: "true"
             args:
               - start
             probes:
