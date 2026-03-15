@@ -23,7 +23,7 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@565684385bcd71bad329742eefe8d12f2e765b39 # v13
 
       - name: Install devenv.sh
-        run: nix profile add nixpkgs#devenv
+        run: nix profile add github:cachix/devenv/v1.11.2 -L --accept-flake-config
 
       - name: Run devenv update
         run: devenv update
