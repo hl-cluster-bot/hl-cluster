@@ -1,0 +1,61 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/source.toolkit.fluxcd.io/ocirepository_v1.json
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: kubernetes-mcp-server
+spec:
+  interval: 5m
+  layerSelector:
+    mediaType: application/vnd.cncf.helm.chart.content.v1.tar+gzip
+    operation: copy
+  ref:
+    tag: 0.1.0
+  url: oci://ghcr.io/containers/charts/kubernetes-mcp-server
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kubernetes-mcp-server
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: kubernetes-mcp-server
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    image:
+      # renovate: datasource=docker depName=quay.io/containers/kubernetes_mcp_server
+      version: v0.0.58
+    service:
+      type: ClusterIP
+    ingress:
+      enabled: false
+    metrics:
+      serviceMonitor:
+        enabled: true
+    rbac:
+      extraClusterRoleBindings:
+        - name: view
+          roleRef:
+            name: view
+            external: true
+    config:
+      port: "{{ .Values.service.port }}"
+      read_only: true
+      stateless: true
+      validation_enabled: true
+      toolsets:
+        - core
+        - helm
+      server_instructions: |
+        Use this server for read-only Kubernetes troubleshooting in this homelab cluster.
+        Prefer it for listing resources, inspecting workloads, reading pod logs,
+        checking events, and viewing Helm releases in the current cluster.
