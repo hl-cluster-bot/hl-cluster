@@ -31,7 +31,7 @@ spec:
             env:
               MCP_LISTEN_ADDR: 0.0.0.0:8080
               MCP_DISABLE_RESOURCES: "true"
-              MCP_DISABLED_TOOLS: documentation
+              MCP_DISABLED_TOOLS: export,flags,metric_relabel_debug,downsampling_filters_debug,retention_filters_debug,test_rules,documentation
               MCP_LOG_FORMAT: json
               MCP_LOG_LEVEL: debug
               MCP_SERVER_MODE: sse
@@ -59,7 +59,7 @@ spec:
                   initialDelaySeconds: 10
                   periodSeconds: 10
                   timeoutSeconds: 1
-                  failureThreshold: 3
+                  failureThreshold: 10
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
