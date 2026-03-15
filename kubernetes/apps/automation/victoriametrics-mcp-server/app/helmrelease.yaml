@@ -30,6 +30,8 @@ spec:
               tag: v1.18.0
             env:
               MCP_LISTEN_ADDR: 0.0.0.0:8080
+              MCP_DISABLE_RESOURCES: "true"
+              MCP_DISABLED_TOOLS: documentation
               MCP_LOG_FORMAT: json
               MCP_LOG_LEVEL: debug
               MCP_SERVER_MODE: sse
