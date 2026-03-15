@@ -32,7 +32,7 @@ spec:
               MCP_LISTEN_ADDR: 0.0.0.0:8080
               MCP_LOG_FORMAT: json
               MCP_SERVER_MODE: http
-              VM_INSTANCE_ENTRYPOINT: http://vmselect-stack.observability.svc.cluster.local:8481/select/0/prometheus
+              VM_INSTANCE_ENTRYPOINT: http://vmselect-stack.observability.svc.cluster.local:8481/
               VM_INSTANCE_TYPE: cluster
             probes:
               liveness:
