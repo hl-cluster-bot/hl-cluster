@@ -32,7 +32,7 @@ spec:
               MCP_LISTEN_ADDR: 0.0.0.0:8080
               MCP_LOG_FORMAT: json
               MCP_LOG_LEVEL: debug
-              MCP_SERVER_MODE: http
+              MCP_SERVER_MODE: sse
               VM_INSTANCE_ENTRYPOINT: http://vmselect-stack.observability.svc.cluster.local:8481/
               VM_INSTANCE_TYPE: cluster
             probes:
