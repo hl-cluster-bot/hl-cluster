@@ -7,4 +7,4 @@ components:
   - ../../components/common
 resources:
   - ./kubernetes-mcp-server/ks.yaml
-  # - ./victoriametrics-mcp-server/ks.yaml
+  - ./victoriametrics-mcp-server/ks.yaml

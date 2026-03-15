@@ -30,12 +30,9 @@ spec:
               tag: v1.18.0
             env:
               MCP_LISTEN_ADDR: 0.0.0.0:8080
-              MCP_DISABLE_RESOURCES: "true"
-              MCP_DISABLED_TOOLS: export,flags,metric_relabel_debug,downsampling_filters_debug,retention_filters_debug,test_rules,documentation
               MCP_LOG_FORMAT: json
-              MCP_LOG_LEVEL: debug
               MCP_SERVER_MODE: sse
-              VM_INSTANCE_ENTRYPOINT: http://vmselect-stack.observability.svc.cluster.local:8481/
+              VM_INSTANCE_ENTRYPOINT: http://vmselect-stack.observability.svc.cluster.local:8481
               VM_INSTANCE_TYPE: cluster
             probes:
               liveness:
@@ -66,8 +63,8 @@ spec:
               capabilities: { drop: ["ALL"] }
             resources:
               requests:
-                cpu: 10m
-                memory: 128Mi
+                cpu: 100m
+                memory: 256Mi
               limits:
                 memory: 512Mi
     defaultPodOptions:
