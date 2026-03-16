@@ -39,6 +39,7 @@ spec:
               ONE_MCP_PORT: "3050"
               ONE_MCP_TRANSPORT: http
               XDG_CONFIG_HOME: /config/.config
+              ONE_MCP_EXTERNAL_URL: "https://mcp.${SECRET_DOMAIN}"
             probes:
               liveness:
                 enabled: true
@@ -97,7 +98,6 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
           - "mcp.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal
