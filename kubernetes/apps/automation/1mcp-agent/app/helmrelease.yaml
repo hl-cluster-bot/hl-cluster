@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: 1mcp-agent
+  name: one-mcp-agent
 spec:
   interval: 1h
   chartRef:
@@ -21,7 +21,7 @@ spec:
     - name: kubernetes-mcp-server
   values:
     controllers:
-      1mcp-agent:
+      one-mcp-agent:
         strategy: RollingUpdate
         annotations:
           reloader.stakater.com/auto: "true"
