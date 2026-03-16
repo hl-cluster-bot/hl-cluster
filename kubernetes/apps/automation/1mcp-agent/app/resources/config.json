@@ -1,0 +1,16 @@
+{
+  "$schema": "https://docs.1mcp.app/schemas/v1.0.0/mcp-config.json",
+  "version": "1.0.0",
+  "mcpServers": {
+    "flux-operator-mcp": {
+      "type": "sse",
+      "url": "http://flux-operator-mcp.automation.svc.cluster.local:9090/sse",
+      "tags": ["automation", "flux", "kubernetes"]
+    },
+    "kubernetes-mcp-server": {
+      "type": "sse",
+      "url": "http://kubernetes-mcp-server.automation.svc.cluster.local:8080/sse",
+      "tags": ["automation", "kubernetes", "read-only"]
+    }
+  }
+}
