@@ -27,6 +27,7 @@
     moreutils
     sops
     stern
+    yaml-language-server
     yq
   ];
 
