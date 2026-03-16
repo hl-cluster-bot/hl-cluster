@@ -31,12 +31,14 @@ spec:
               repository: ghcr.io/1mcp-app/agent
               tag: v0.30.1
             env:
+              HOME: /config
               ONE_MCP_CONFIG: /app/mcp.json
               ONE_MCP_ENABLE_SESSION_PERSISTENCE: "false"
               ONE_MCP_HEALTH_INFO_LEVEL: minimal
               ONE_MCP_HOST: 0.0.0.0
               ONE_MCP_PORT: "3050"
               ONE_MCP_TRANSPORT: sse
+              XDG_CONFIG_HOME: /config/.config
             probes:
               liveness:
                 enabled: true
@@ -81,6 +83,10 @@ spec:
           http:
             port: *port
     persistence:
+      runtime-config:
+        type: emptyDir
+        globalMounts:
+          - path: /config
       config-file:
         type: configMap
         name: 1mcp-agent-configmap
