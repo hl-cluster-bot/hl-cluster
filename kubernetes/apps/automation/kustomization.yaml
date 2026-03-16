@@ -6,5 +6,6 @@ namespace: automation
 components:
   - ../../components/common
 resources:
+  - ./flux-operator-mcp/ks.yaml
   - ./kubernetes-mcp-server/ks.yaml
   # - ./victoriametrics-mcp-server/ks.yaml
