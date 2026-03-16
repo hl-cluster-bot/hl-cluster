@@ -37,7 +37,7 @@ spec:
               ONE_MCP_HEALTH_INFO_LEVEL: minimal
               ONE_MCP_HOST: 0.0.0.0
               ONE_MCP_PORT: "3050"
-              ONE_MCP_TRANSPORT: sse
+              ONE_MCP_TRANSPORT: http
               XDG_CONFIG_HOME: /config/.config
             probes:
               liveness:
