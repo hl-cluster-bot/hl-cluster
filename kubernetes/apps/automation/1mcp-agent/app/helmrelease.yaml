@@ -33,6 +33,7 @@ spec:
             env:
               HOME: /config
               ONE_MCP_CONFIG: /app/mcp.json
+              ONE_MCP_ENABLE_ASYNC_LOADING: "true"
               ONE_MCP_ENABLE_SESSION_PERSISTENCE: "false"
               ONE_MCP_HEALTH_INFO_LEVEL: minimal
               ONE_MCP_HOST: 0.0.0.0
