@@ -198,6 +198,9 @@ spec:
         alert-statistics:
           url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/alert-statistics.json
           datasource: Prometheus
+        mcp-victoriametrics:
+          url: https://raw.githubusercontent.com/VictoriaMetrics/mcp-victoriametrics/refs/heads/main/dashboard/mcp-victoriametrics-grafana.json
+          datasource: Prometheus
     sidecar:
       image:
         registry: ghcr.io
