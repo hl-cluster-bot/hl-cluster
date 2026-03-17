@@ -10,7 +10,12 @@
     "kubernetes-mcp-server": {
       "type": "sse",
       "url": "http://kubernetes-mcp-server.automation.svc.cluster.local:8080/sse",
-      "tags": ["automation", "kubernetes", "read-only"]
+      "tags": ["automation", "kubernetes"]
+    },
+    "victoriametrics-mcp-server": {
+      "type": "sse",
+      "url": "http://victoriametrics-mcp-server.automation.svc.cluster.local:8080/sse",
+      "tags": ["observability", "victoriametrics"]
     }
   }
 }

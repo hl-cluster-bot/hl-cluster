@@ -19,6 +19,7 @@ spec:
   dependsOn:
     - name: flux-operator-mcp
     - name: kubernetes-mcp-server
+    - name: victoriametrics-mcp-server
   values:
     controllers:
       one-mcp-agent:
