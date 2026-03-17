@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "cluster": {
+      "type": "http",
+      "url": "https://1mcp.popov.wtf/mcp?app=vscode"
+    }
+  }
+}

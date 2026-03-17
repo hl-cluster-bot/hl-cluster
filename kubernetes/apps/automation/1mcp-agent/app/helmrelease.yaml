@@ -40,7 +40,7 @@ spec:
               ONE_MCP_PORT: "3050"
               ONE_MCP_TRANSPORT: http
               XDG_CONFIG_HOME: /config/.config
-              ONE_MCP_EXTERNAL_URL: "https://mcp.${SECRET_DOMAIN}"
+              ONE_MCP_EXTERNAL_URL: "https://1mcp.${SECRET_DOMAIN}"
             probes:
               liveness:
                 enabled: true
@@ -99,7 +99,7 @@ spec:
     route:
       app:
         hostnames:
-          - "mcp.${SECRET_DOMAIN}"
+          - "1mcp.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal
             namespace: kube-system
