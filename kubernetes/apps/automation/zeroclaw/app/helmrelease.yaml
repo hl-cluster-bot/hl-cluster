@@ -149,6 +149,16 @@ spec:
           - path: /zeroclaw-data/.zeroclaw/config.toml
             subPath: config.toml
             readOnly: true
+          - path: /zeroclaw-data/.zeroclaw/identity.json
+            subPath: identity.json
+            readOnly: true
+      pushover-env:
+        type: secret
+        name: zeroclaw-secret
+        globalMounts:
+          - path: /zeroclaw-data/workspace/.env
+            subPath: .env
+            readOnly: true
     serviceMonitor:
       app:
         endpoints:

@@ -9,5 +9,6 @@ configMapGenerator:
   - name: zeroclaw-configmap
     files:
       - config.toml=./resources/config.toml
+      - identity.json=./resources/identity.json
 generatorOptions:
   disableNameSuffixHash: true
