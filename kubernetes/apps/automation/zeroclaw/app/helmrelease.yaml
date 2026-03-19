@@ -66,11 +66,13 @@ spec:
               repository: ghcr.io/zeroclaw-labs/zeroclaw
               tag: v0.5.0
             args:
-              - gateway
+              - daemon
             envFrom:
               - secretRef:
                   name: zeroclaw-secret
             env:
+              PATH: /usr/local/bin:/usr/bin:/bin
+              SHELL: /bin/bash
               ZEROCLAW_GATEWAY_PORT: "42617"
               ZEROCLAW_CONFIG_DIR: /zeroclaw-data/.zeroclaw
               ZEROCLAW_WORKSPACE: /zeroclaw-data/workspace
