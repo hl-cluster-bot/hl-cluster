@@ -74,8 +74,8 @@ spec:
               ZEROCLAW_GATEWAY_PORT: "42617"
               ZEROCLAW_CONFIG_DIR: /zeroclaw-data/.zeroclaw
               ZEROCLAW_WORKSPACE: /zeroclaw-data/workspace
-              ZEROCLAW_STORAGE_PROVIDER: postgres
-              ZEROCLAW_STORAGE_DB_URL: postgresql://$(ZEROCLAW_DB_USER):$(ZEROCLAW_DB_PASS)@postgres17-rw.database.svc.cluster.local:5432/$(ZEROCLAW_DBNAME)
+              # ZEROCLAW_STORAGE_PROVIDER: postgres
+              # ZEROCLAW_STORAGE_DB_URL: postgresql://$(ZEROCLAW_DB_USER):$(ZEROCLAW_DB_PASS)@postgres17-rw.database.svc.cluster.local:5432/$(ZEROCLAW_DBNAME)
               ZEROCLAW_STORAGE_CONNECT_TIMEOUT_SECS: "5"
               HOME: /zeroclaw-data
             probes:
