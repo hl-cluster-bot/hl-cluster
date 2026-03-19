@@ -14,7 +14,7 @@ backend = "prometheus"
 
 [identity]
 format = "aieos"
-aieos_path = "identity.json"
+aieos_path = "/zeroclaw-data/.zeroclaw/identity.json"
 
 [[model_routes]]
 hint = "fast"
@@ -55,6 +55,7 @@ priority = 10
 port = 42617
 host = "[::]"
 allow_public_bind = true
+require_pairing = false
 
 [mcp]
 enabled = true
