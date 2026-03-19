@@ -32,7 +32,9 @@ spec:
       retries: 3
   values:
     image:
-      # renovate: datasource=docker depName=quay.io/containers/kubernetes_mcp_server
+      registry: ghcr.io
+      repository: containers/kubernetes-mcp-server
+      # renovate: datasource=docker depName=ghcr.io/containers/kubernetes-mcp-server
       version: v0.0.59
     service:
       type: ClusterIP
