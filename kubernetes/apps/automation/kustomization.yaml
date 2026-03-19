@@ -6,7 +6,7 @@ namespace: automation
 components:
   - ../../components/common
 resources:
-  - ./zeroclaw/ks.yaml
+  # - ./zeroclaw/ks.yaml
   - ./1mcp-agent/ks.yaml
   - ./flux-operator-mcp/ks.yaml
   - ./kubernetes-mcp-server/ks.yaml
