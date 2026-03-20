@@ -5,7 +5,7 @@ kind: Cluster
 metadata:
   name: tolstoy
 spec:
-  instances: 2
+  instances: 1
   imageName: ghcr.io/tensorchord/cloudnative-vectorchord:18.3
   primaryUpdateStrategy: unsupervised
   primaryUpdateMethod: switchover
@@ -49,3 +49,10 @@ spec:
       memory: 512Mi
   monitoring:
     enablePodMonitor: true
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: DoesNotExist
