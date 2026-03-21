@@ -142,7 +142,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /
+                    path: /health
                     port: *webPort
                   initialDelaySeconds: 5
                   periodSeconds: 10
@@ -153,7 +153,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /
+                    path: /health
                     port: *webPort
                   failureThreshold: 30
                   periodSeconds: 10
@@ -223,20 +223,9 @@ spec:
                 subPath: default.conf
                 readOnly: true
     route:
-      app:
-        hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
-        parentRefs:
-          - name: internal
-            namespace: kube-system
-            sectionName: https
-        rules:
-          - backendRefs:
-              - identifier: app
-                port: *port
       web:
         hostnames:
-          - "goclaw-web.${SECRET_DOMAIN}"
+          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:
           - name: internal
             namespace: kube-system
