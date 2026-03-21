@@ -253,16 +253,22 @@ spec:
     persistence:
       data:
         type: emptyDir
-        globalMounts:
-          - path: /app/data
+        advancedMounts:
+          goclaw:
+            app:
+              - path: /app/data
       workspace:
         type: emptyDir
-        globalMounts:
-          - path: /app/workspace
+        advancedMounts:
+          goclaw:
+            app:
+              - path: /app/workspace
       skills:
         type: emptyDir
         advancedMounts:
           goclaw:
+            03-init-skills:
+              - path: /app/data/skills
             app:
               - path: /app/data/skills
       config-file:
