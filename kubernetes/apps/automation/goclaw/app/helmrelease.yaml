@@ -132,7 +132,7 @@ spec:
               GOCLAW_CONFIG: /app/data/config.json
               GOCLAW_DATA_DIR: /app/data
               GOCLAW_WORKSPACE: /app/workspace
-              GOCLAW_SKILLS_DIR: /app/data/skills
+              GOCLAW_SKILLS_DIR: /app/skills
               GOCLAW_POSTGRES_DSN: postgresql://$(GOCLAW_DB_USER):$(GOCLAW_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(GOCLAW_DBNAME)
               PUSHOVER_USER_KEY:
                 valueFrom:
