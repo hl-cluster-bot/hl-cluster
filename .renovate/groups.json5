@@ -29,8 +29,8 @@
       },
     },
     {
-      description: "Goclaw Group",
-      groupName: "Goclaw",
+      description: "GoClaw Group",
+      groupName: "GoClaw",
       matchDatasources: ["docker"],
       matchPackageNames: ["/goclaw/", "/goclaw-web/"],
       group: {
