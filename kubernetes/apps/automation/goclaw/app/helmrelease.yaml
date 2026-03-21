@@ -116,6 +116,61 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 1Gi
+      goclaw-web:
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/nextlevelbuilder/goclaw-web
+              tag: v1.61.1
+            probes:
+              liveness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: &webPort 80
+                  initialDelaySeconds: 10
+                  periodSeconds: 10
+                  timeoutSeconds: 3
+                  failureThreshold: 3
+              readiness:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *webPort
+                  initialDelaySeconds: 5
+                  periodSeconds: 10
+                  timeoutSeconds: 3
+                  failureThreshold: 3
+              startup:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *webPort
+                  failureThreshold: 30
+                  periodSeconds: 10
+                  timeoutSeconds: 3
+            securityContext:
+              runAsUser: 0
+              runAsGroup: 0
+              runAsNonRoot: false
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 25m
+                memory: 64Mi
+              limits:
+                memory: 256Mi
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
@@ -128,6 +183,11 @@ spec:
         ports:
           http:
             port: *port
+      web:
+        controller: goclaw-web
+        ports:
+          http:
+            port: *webPort
     persistence:
       data:
         type: emptyDir
@@ -162,3 +222,14 @@ spec:
           - backendRefs:
               - identifier: app
                 port: *port
+      web:
+        hostnames:
+          - "goclaw-web.${SECRET_DOMAIN}"
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: web
+                port: *webPort
