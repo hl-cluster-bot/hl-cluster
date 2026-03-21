@@ -251,12 +251,6 @@ spec:
           - path: /app/data/config.json
             subPath: config.json
             readOnly: true
-          - path: /app/workspace/IDENTITY.md
-            subPath: IDENTITY.md
-            readOnly: true
-          - path: /app/workspace/SOUL.md
-            subPath: SOUL.md
-            readOnly: true
       nginx-config:
         type: configMap
         name: goclaw-web-nginx-config
