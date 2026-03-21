@@ -6,7 +6,6 @@ namespace: automation
 components:
   - ../../components/common
 resources:
-  # - ./zeroclaw/ks.yaml
   - ./1mcp-agent/ks.yaml
   - ./flux-operator-mcp/ks.yaml
   - ./goclaw/ks.yaml
