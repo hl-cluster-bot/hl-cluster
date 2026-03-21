@@ -213,6 +213,15 @@ spec:
           - path: /app/workspace/SOUL.md
             subPath: SOUL.md
             readOnly: true
+      nginx-config:
+        type: configMap
+        name: goclaw-web-nginx-config
+        advancedMounts:
+          goclaw-web:
+            app:
+              - path: /etc/nginx/conf.d/default.conf
+                subPath: default.conf
+                readOnly: true
     route:
       app:
         hostnames:
