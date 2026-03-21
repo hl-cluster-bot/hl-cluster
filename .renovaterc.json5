@@ -9,6 +9,7 @@
     "github>tolkonepiu/hl-cluster//.renovate/groups.json5",
     "github>tolkonepiu/hl-cluster//.renovate/labels.json5",
     "github>tolkonepiu/hl-cluster//.renovate/semanticCommits.json5",
+    "github>tolkonepiu/hl-cluster//.renovate/customVersioning.json5",
     ":automergeBranch",
     ":dependencyDashboard",
     ":disableRateLimiting",

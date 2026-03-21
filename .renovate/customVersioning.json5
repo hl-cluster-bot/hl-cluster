@@ -1,0 +1,11 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  packageRules: [
+    {
+      description: "Keep GoClaw full image updates",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["ghcr.io/nextlevelbuilder/goclaw"],
+      versioning: "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:-(?<compatibility>full))?$",
+    },
+  ],
+}
