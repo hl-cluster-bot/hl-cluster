@@ -180,6 +180,7 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
     service:
       app:
+        controller: goclaw
         ports:
           http:
             port: *port
