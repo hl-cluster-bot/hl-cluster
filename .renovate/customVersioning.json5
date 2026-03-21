@@ -7,5 +7,11 @@
       matchPackageNames: ["ghcr.io/nextlevelbuilder/goclaw"],
       versioning: "regex:^v?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)(?:-(?<compatibility>full))?$",
     },
+    {
+      description: "Handle TorrServer MatriX image tags",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["ghcr.io/yourok/torrserver"],
+      versioning: "regex:^MatriX\\.(?<major>\\d+)$",
+    },
   ],
 }
