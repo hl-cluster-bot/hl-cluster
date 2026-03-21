@@ -84,8 +84,7 @@ spec:
             command:
               - bash
               - -lc
-              - psql -v ON_ERROR_STOP=1 -c 'CREATE EXTENSION IF NOT EXISTS pgcrypto;'
-              - psql -v ON_ERROR_STOP=1 -c 'CREATE EXTENSION IF NOT EXISTS vector;'
+              - psql -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS pgcrypto; CREATE EXTENSION IF NOT EXISTS vector;"
           03-migrate-db:
             image:
               repository: ghcr.io/nextlevelbuilder/goclaw
