@@ -86,6 +86,21 @@ spec:
               - bash
               - -lc
               - psql -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS pgcrypto; CREATE EXTENSION IF NOT EXISTS vector;"
+          03-migrate-db:
+            image:
+              repository: ghcr.io/nextlevelbuilder/goclaw
+              tag: v1.74.1
+            envFrom:
+              - secretRef:
+                  name: goclaw-secret
+            env:
+              - name: GOCLAW_MIGRATIONS_DIR
+                value: /app/migrations
+              - name: GOCLAW_POSTGRES_DSN
+                value: postgresql://$(GOCLAW_DB_USER):$(GOCLAW_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(GOCLAW_DBNAME)
+            command:
+              - /app/goclaw
+              - upgrade
         containers:
           app:
             image:
@@ -136,10 +151,9 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 3
             securityContext:
-              runAsUser: 0
-              runAsGroup: 0
-              runAsNonRoot: false
+              allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
+              capabilities: { drop: ["ALL"] }
             resources:
               requests:
                 cpu: 50m
