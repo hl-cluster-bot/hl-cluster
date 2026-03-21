@@ -101,7 +101,7 @@ spec:
               - -ec
               - |
                 rm -rf /tmp/skills-installer
-                mkdir -p /app/data/skills /tmp/skills-installer
+                mkdir -p /app/workspace/skills /tmp/skills-installer
                 cd /tmp/skills-installer || exit 1
 
                 npx --yes skills add github/awesome-copilot -a "$SKILLS_AGENT" --copy -y \
@@ -114,8 +114,8 @@ spec:
 
                 for skill in /tmp/skills-installer/skills/*; do
                     name=$(basename "$skill")
-                    if [ ! -e "/app/data/skills/$name" ]; then
-                        cp -R "$skill" /app/data/skills/
+                    if [ ! -e "/app/workspace/skills/$name" ]; then
+                        cp -R "$skill" /app/workspace/skills/
                     fi
                 done
         containers:
@@ -268,16 +268,10 @@ spec:
         type: emptyDir
         advancedMounts:
           goclaw:
+            03-init-skills:
+              - path: /app/workspace
             app:
               - path: /app/workspace
-      skills:
-        type: emptyDir
-        advancedMounts:
-          goclaw:
-            03-init-skills:
-              - path: /app/data/skills
-            app:
-              - path: /app/data/skills
       config-file:
         type: configMap
         name: goclaw-configmap
