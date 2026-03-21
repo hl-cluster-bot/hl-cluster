@@ -28,5 +28,14 @@
         commitMessageTopic: "{{{groupName}}} group",
       },
     },
+    {
+      description: "Goclaw Group",
+      groupName: "Goclaw",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/goclaw/", "/goclaw-web/"],
+      group: {
+        commitMessageTopic: "{{{groupName}}} group",
+      },
+    },
   ],
 }
