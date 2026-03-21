@@ -110,6 +110,8 @@ spec:
                     --skill 'create-implementation-plan' \
                     --skill 'git-commit'
 
+                npx --yes skills add digitallyborn/pushover-notify -a "$SKILLS_AGENT" --copy -y
+
                 for skill in /tmp/skills-installer/skills/*; do
                     name=$(basename "$skill")
                     if [ ! -e "/app/data/skills/$name" ]; then
@@ -132,6 +134,11 @@ spec:
               GOCLAW_WORKSPACE: /app/workspace
               GOCLAW_SKILLS_DIR: /app/data/skills
               GOCLAW_POSTGRES_DSN: postgresql://$(GOCLAW_DB_USER):$(GOCLAW_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(GOCLAW_DBNAME)
+              PUSHOVER_USER_KEY:
+                valueFrom:
+                  secretKeyRef:
+                    name: cluster-secrets
+                    key: PUSHOVER_USER_KEY
             probes:
               liveness:
                 enabled: true
