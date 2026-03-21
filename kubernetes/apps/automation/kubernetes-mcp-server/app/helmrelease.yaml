@@ -44,11 +44,20 @@ spec:
       serviceMonitor:
         enabled: true
     rbac:
+      extraClusterRoles:
+        - name: nodes-list
+          rules:
+            - apiGroups: [""]
+              resources: ["nodes"]
+              verbs: ["list"]
       extraClusterRoleBindings:
         - name: view
           roleRef:
             name: view
             external: true
+        - name: nodes-list
+          roleRef:
+            name: kubernetes-mcp-server-nodes-list
     config:
       port: "{{ .Values.service.port }}"
       read_only: true
