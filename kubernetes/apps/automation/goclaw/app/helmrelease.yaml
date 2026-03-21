@@ -57,35 +57,21 @@ spec:
                   secretKeyRef:
                     name: cluster-secrets
                     key: POSTGRES_SUPER_PASS
-          02-init-extensions:
+          02-migrate-db:
             image:
-              repository: postgres
-              tag: "18"
+              repository: ghcr.io/nextlevelbuilder/goclaw
+              tag: v1.74.1
+            envFrom:
+              - secretRef:
+                  name: goclaw-secret
             env:
-              - name: PGHOST
-                value: tolstoy-rw.database.svc.cluster.local
-              - name: PGPORT
-                value: "5432"
-              - name: PGDATABASE
-                valueFrom:
-                  secretKeyRef:
-                    name: goclaw-secret
-                    key: GOCLAW_DBNAME
-              - name: PGUSER
-                valueFrom:
-                  secretKeyRef:
-                    name: cluster-secrets
-                    key: POSTGRES_SUPER_USER
-              - name: PGPASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: cluster-secrets
-                    key: POSTGRES_SUPER_PASS
+              - name: GOCLAW_MIGRATIONS_DIR
+                value: /app/migrations
+              - name: GOCLAW_POSTGRES_DSN
+                value: postgresql://$(GOCLAW_DB_USER):$(GOCLAW_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(GOCLAW_DBNAME)
             command:
-              - bash
-              - -lc
-              - psql -v ON_ERROR_STOP=1 -c 'CREATE EXTENSION IF NOT EXISTS pgcrypto;'
-              - psql -v ON_ERROR_STOP=1 -c 'CREATE EXTENSION IF NOT EXISTS vector;'
+              - /app/goclaw
+              - upgrade
         containers:
           app:
             image:
