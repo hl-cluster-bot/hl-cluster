@@ -86,6 +86,36 @@ spec:
               - bash
               - -lc
               - psql -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS pgcrypto; CREATE EXTENSION IF NOT EXISTS vector;"
+          03-init-skills:
+            image:
+              repository: node
+              tag: "22-alpine"
+            env:
+              HOME: /tmp
+              NPM_CONFIG_CACHE: /tmp/npm
+              DISABLE_TELEMETRY: "1"
+              CI: "true"
+              SKILLS_AGENT: openclaw
+            command:
+              - /bin/sh
+              - -ec
+              - |
+                rm -rf /tmp/skills-installer
+                mkdir -p /app/data/skills /tmp/skills-installer
+                cd /tmp/skills-installer || exit 1
+
+                npx --yes skills add github/awesome-copilot -a "$SKILLS_AGENT" --copy -y \
+                    --skill 'agent-governance' \
+                    --skill 'context-map' \
+                    --skill 'create-implementation-plan' \
+                    --skill 'git-commit'
+
+                for skill in /tmp/skills-installer/skills/*; do
+                    name=$(basename "$skill")
+                    if [ ! -e "/app/data/skills/$name" ]; then
+                        cp -R "$skill" /app/data/skills/
+                    fi
+                done
         containers:
           app:
             image:
@@ -229,6 +259,12 @@ spec:
         type: emptyDir
         globalMounts:
           - path: /app/workspace
+      skills:
+        type: emptyDir
+        advancedMounts:
+          goclaw:
+            app:
+              - path: /app/data/skills
       config-file:
         type: configMap
         name: goclaw-configmap
