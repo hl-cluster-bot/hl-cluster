@@ -60,8 +60,20 @@
     }
   },
   "providers": {
+    "openai": {
+      "api_key": "env:GOCLAW_OPENAI_API_KEY"
+    },
     "openrouter": {
       "api_key": "env:GOCLAW_OPENROUTER_API_KEY"
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "token": "env:GOCLAW_TELEGRAM_TOKEN",
+      "dm_policy": "allowlist",
+      "group_policy": "disabled",
+      "allow_from": ["env:ALLOW_FROM_TELEGRAM_USERNAME"]
     }
   },
   "tools": {
