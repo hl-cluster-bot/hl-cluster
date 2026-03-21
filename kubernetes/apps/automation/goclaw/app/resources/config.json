@@ -73,7 +73,7 @@
       "token": "env:GOCLAW_TELEGRAM_TOKEN",
       "dm_policy": "allowlist",
       "group_policy": "disabled",
-      "allow_from": "env:ALLOW_FROM_TELEGRAM_USERNAMES"
+      "allow_from": ["@chchmthrfckr"]
     }
   },
   "tools": {
