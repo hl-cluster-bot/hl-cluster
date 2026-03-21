@@ -1,0 +1,15 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./helmrelease.yaml
+  - ./secret.sops.yaml
+configMapGenerator:
+  - name: goclaw-configmap
+    files:
+      - config.json=./resources/config.json
+      - IDENTITY.md=./resources/IDENTITY.md
+      - SOUL.md=./resources/SOUL.md
+generatorOptions:
+  disableNameSuffixHash: true

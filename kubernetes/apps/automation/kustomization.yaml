@@ -9,5 +9,6 @@ resources:
   # - ./zeroclaw/ks.yaml
   - ./1mcp-agent/ks.yaml
   - ./flux-operator-mcp/ks.yaml
+  - ./goclaw/ks.yaml
   - ./kubernetes-mcp-server/ks.yaml
   - ./victoriametrics-mcp-server/ks.yaml

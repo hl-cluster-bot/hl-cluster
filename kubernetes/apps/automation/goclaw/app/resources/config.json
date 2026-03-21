@@ -1,0 +1,84 @@
+{
+  "gateway": {
+    "host": "0.0.0.0",
+    "port": 18790,
+    "token": "env:GOCLAW_GATEWAY_TOKEN"
+  },
+  "agents": {
+    "defaults": {
+      "workspace": "/app/workspace",
+      "restrict_to_workspace": false,
+      "provider": "openrouter",
+      "model": "openai/gpt-5.4",
+      "temperature": 0.4,
+      "max_tool_iterations": 15,
+      "max_tool_calls": 25,
+      "context_window": 128000,
+      "agent_type": "predefined"
+    },
+    "list": {
+      "default": {
+        "displayName": "Kestrel",
+        "default": true,
+        "provider": "openrouter",
+        "model": "openai/gpt-5.4",
+        "temperature": 0.4,
+        "max_tool_iterations": 15,
+        "max_tool_calls": 25,
+        "agent_type": "predefined",
+        "identity": {
+          "name": "Kestrel",
+          "emoji": "🛰️"
+        }
+      },
+      "fast": {
+        "displayName": "Kestrel Fast",
+        "provider": "openrouter",
+        "model": "openai/gpt-5.4-mini",
+        "temperature": 0.4,
+        "max_tool_iterations": 15,
+        "max_tool_calls": 25,
+        "agent_type": "predefined",
+        "identity": {
+          "name": "Kestrel Fast",
+          "emoji": "⚡"
+        }
+      },
+      "coding": {
+        "displayName": "Kestrel Coding",
+        "provider": "openrouter",
+        "model": "openai/gpt-5.3-codex",
+        "temperature": 0.4,
+        "max_tool_iterations": 15,
+        "max_tool_calls": 25,
+        "agent_type": "predefined",
+        "identity": {
+          "name": "Kestrel Coding",
+          "emoji": "🛠️"
+        }
+      }
+    }
+  },
+  "providers": {
+    "openrouter": {
+      "api_key": "env:GOCLAW_OPENROUTER_API_KEY"
+    }
+  },
+  "tools": {
+    "profile": "full",
+    "mcp_servers": {
+      "kubernetes-mcp": {
+        "transport": "sse",
+        "url": "http://kubernetes-mcp-server.automation.svc.cluster.local:8080/sse"
+      },
+      "victoria-metrics-mcp": {
+        "transport": "sse",
+        "url": "http://victoriametrics-mcp-server.automation.svc.cluster.local:8080/sse"
+      },
+      "flux-mcp": {
+        "transport": "sse",
+        "url": "http://flux-operator-mcp.automation.svc.cluster.local:9090/sse"
+      }
+    }
+  }
+}
