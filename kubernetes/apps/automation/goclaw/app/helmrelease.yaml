@@ -164,7 +164,9 @@ spec:
               runAsNonRoot: false
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
-              capabilities: { drop: ["ALL"] }
+              capabilities:
+                drop: ["ALL"]
+                add: ["CHOWN"]
             resources:
               requests:
                 cpu: 25m
