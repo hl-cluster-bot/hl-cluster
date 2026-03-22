@@ -89,7 +89,7 @@ spec:
           03-init-skills:
             image:
               repository: node
-              tag: "22"
+              tag: "24"
             env:
               HOME: /tmp
               NPM_CONFIG_CACHE: /tmp/npm
