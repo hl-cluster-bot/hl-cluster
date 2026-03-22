@@ -9,6 +9,14 @@ configMapGenerator:
   - name: goclaw-configmap
     files:
       - config.json=./resources/config.json
+  - name: goclaw-context-config
+    files:
+      - AGENTS.md=./resources/context/AGENTS.md
+      - BOOTSTRAP.md=./resources/context/BOOTSTRAP.md
+      - IDENTITY.md=./resources/context/IDENTITY.md
+      - SOUL.md=./resources/context/SOUL.md
+      - TOOLS.md=./resources/context/TOOLS.md
+      - USER.md=./resources/context/USER.md
   - name: goclaw-web-nginx-config
     files:
       - default.conf=./resources/web/goclaw-web-nginx.conf

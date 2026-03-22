@@ -280,6 +280,30 @@ spec:
           - path: /app/data/config.json
             subPath: config.json
             readOnly: true
+      context-files:
+        type: configMap
+        name: goclaw-context-config
+        advancedMounts:
+          goclaw:
+            app:
+              - path: /app/workspace/AGENTS.md
+                subPath: AGENTS.md
+                readOnly: true
+              - path: /app/workspace/BOOTSTRAP.md
+                subPath: BOOTSTRAP.md
+                readOnly: true
+              - path: /app/workspace/IDENTITY.md
+                subPath: IDENTITY.md
+                readOnly: true
+              - path: /app/workspace/SOUL.md
+                subPath: SOUL.md
+                readOnly: true
+              - path: /app/workspace/TOOLS.md
+                subPath: TOOLS.md
+                readOnly: true
+              - path: /app/workspace/USER.md
+                subPath: USER.md
+                readOnly: true
       nginx-config:
         type: configMap
         name: goclaw-web-nginx-config
