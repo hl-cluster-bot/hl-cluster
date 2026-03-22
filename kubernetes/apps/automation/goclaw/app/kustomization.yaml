@@ -11,6 +11,6 @@ configMapGenerator:
       - config.json=./resources/config.json
   - name: goclaw-web-nginx-config
     files:
-      - default.conf=./resources/goclaw-web-nginx.conf
+      - default.conf=./resources/web/goclaw-web-nginx.conf
 generatorOptions:
   disableNameSuffixHash: true

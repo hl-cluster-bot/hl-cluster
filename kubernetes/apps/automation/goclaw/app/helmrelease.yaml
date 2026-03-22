@@ -134,6 +134,7 @@ spec:
               GOCLAW_WORKSPACE: /app/workspace
               GOCLAW_SKILLS_DIR: /app/skills
               GOCLAW_POSTGRES_DSN: postgresql://$(GOCLAW_DB_USER):$(GOCLAW_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(GOCLAW_DBNAME)
+              GITHUB_BEARER_TOKEN: Bearer $(GITHUB_TOKEN)
               PUSHOVER_USER_KEY:
                 valueFrom:
                   secretKeyRef:
