@@ -269,17 +269,25 @@ spec:
         type: emptyDir
         advancedMounts:
           goclaw:
+            app:
+              - path: /app/workspace
+      skills:
+        type: emptyDir
+        advancedMounts:
+          goclaw:
             03-init-skills:
               - path: /app/bundled-skills
             app:
-              - path: /app/workspace
+              - path: /app/bundled-skills
       config-file:
         type: configMap
         name: goclaw-configmap
-        globalMounts:
-          - path: /app/data/config.json
-            subPath: config.json
-            readOnly: true
+        advancedMounts:
+          goclaw:
+            app:
+              - path: /app/data/config.json
+                subPath: config.json
+                readOnly: true
       context-files:
         type: configMap
         name: goclaw-context-config
