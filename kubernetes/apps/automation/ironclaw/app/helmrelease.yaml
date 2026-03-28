@@ -111,7 +111,7 @@ spec:
               IRONCLAW_MAX_FAILURES: "10"
               SANDBOX_ENABLED: "false"
               HEARTBEAT_ENABLED: "false"
-              EMBEDDING_ENABLED: "false"
+              EMBEDDING_ENABLED: "true"
               LLM_BACKEND: openai_compatible
               LLM_BASE_URL: https://openrouter.ai/api/v1
               LLM_MODEL: anthropic/claude-sonnet-4
