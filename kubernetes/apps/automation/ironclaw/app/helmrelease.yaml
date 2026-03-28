@@ -103,6 +103,7 @@ spec:
               GATEWAY_HOST: 0.0.0.0
               GATEWAY_PORT: "3000"
               IRONCLAW_IN_DOCKER: "true"
+              ONBOARD_COMPLETED: "true"
               IRONCLAW_RESTART_DELAY: "5"
               IRONCLAW_MAX_FAILURES: "10"
               SANDBOX_ENABLED: "false"
