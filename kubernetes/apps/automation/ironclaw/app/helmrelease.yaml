@@ -171,6 +171,8 @@ spec:
         ports:
           http:
             port: *port
+          webhook:
+            port: 8080
     persistence:
       state:
         type: emptyDir
