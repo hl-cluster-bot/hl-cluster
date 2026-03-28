@@ -97,6 +97,7 @@ spec:
             env:
               DATABASE_URL: postgres://$(IRONCLAW_DB_USER):$(IRONCLAW_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(IRONCLAW_DBNAME)
               DATABASE_POOL_SIZE: "10"
+              DATABASE_SSLMODE: disable
               AGENT_NAME: ironclaw
               CLI_ENABLED: "false"
               GATEWAY_ENABLED: "true"
