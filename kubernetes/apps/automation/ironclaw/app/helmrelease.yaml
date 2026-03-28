@@ -102,9 +102,9 @@ spec:
               CLI_ENABLED: "false"
               GATEWAY_ENABLED: "true"
               GATEWAY_HOST: 0.0.0.0
-              GATEWAY_PORT: "3000"
+              GATEWAY_PORT: &port 3000
               HTTP_HOST: 0.0.0.0
-              HTTP_PORT: "8080"
+              HTTP_PORT: &webhookPort 8080
               IRONCLAW_IN_DOCKER: "true"
               ONBOARD_COMPLETED: "true"
               IRONCLAW_RESTART_DELAY: "5"
@@ -122,7 +122,7 @@ spec:
                 spec:
                   httpGet:
                     path: /api/health
-                    port: &port 3000
+                    port: *port
                   initialDelaySeconds: 10
                   periodSeconds: 10
                   timeoutSeconds: 3
@@ -172,7 +172,7 @@ spec:
           http:
             port: *port
           webhook:
-            port: 8080
+            port: *webhookPort
     persistence:
       state:
         type: emptyDir
