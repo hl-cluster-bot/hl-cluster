@@ -19,4 +19,4 @@ spec:
       matches:
         - path:
             type: PathPrefix
-            value: /webhook/github
+            value: /webhook/tools/github
