@@ -83,7 +83,7 @@ spec:
               - name: PORT
                 value: &port 3000
               - name: DISABLE_LOGIN
-                value: "1"
+                value: "0"
               - name: DISABLE_TELEMETRY
                 value: "true"
               - name: LINKS_URL
