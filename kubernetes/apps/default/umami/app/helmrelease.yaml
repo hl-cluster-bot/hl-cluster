@@ -36,7 +36,7 @@ spec:
                   name: umami-secret
             env:
               - name: INIT_POSTGRES_HOST
-                value: postgres17-rw.database.svc.cluster.local
+                value: tolstoy-rw.database.svc.cluster.local
               - name: INIT_POSTGRES_PORT
                 value: "5432"
               - name: INIT_POSTGRES_DBNAME
@@ -74,7 +74,7 @@ spec:
                   name: umami-secret
             env:
               - name: DATABASE_URL
-                value: postgresql://$(UMAMI_DB_USER):$(UMAMI_DB_PASS)@postgres17-rw.database.svc.cluster.local:5432/$(UMAMI_DBNAME)
+                value: postgresql://$(UMAMI_DB_USER):$(UMAMI_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(UMAMI_DBNAME)
               - name: APP_SECRET
                 valueFrom:
                   secretKeyRef:

@@ -36,7 +36,7 @@ spec:
                   name: atuin-secret
             env:
               - name: INIT_POSTGRES_HOST
-                value: postgres17-rw.database.svc.cluster.local
+                value: tolstoy-rw.database.svc.cluster.local
               - name: INIT_POSTGRES_PORT
                 value: "5432"
               - name: INIT_POSTGRES_DBNAME
@@ -75,7 +75,7 @@ spec:
             env:
               ATUIN_HOST: 0.0.0.0
               ATUIN_PORT: &port 80
-              ATUIN_DB_URI: postgresql://$(ATUIN_DB_USER):$(ATUIN_DB_PASS)@postgres17-rw.database.svc.cluster.local:5432/$(ATUIN_DBNAME)
+              ATUIN_DB_URI: postgresql://$(ATUIN_DB_USER):$(ATUIN_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(ATUIN_DBNAME)
               ATUIN_OPEN_REGISTRATION: "true"
               ATUIN_METRICS__ENABLE: "true"
               ATUIN_METRICS__HOST: 0.0.0.0
