@@ -11,6 +11,9 @@ spec:
   envFrom:
     - secretRef:
         name: openclaw-secret
+  env:
+    - name: NODE_OPTIONS
+      value: "--max-old-space-size=300"
   storage:
     persistence:
       enabled: true
@@ -18,6 +21,10 @@ spec:
       size: 10Gi
       accessModes:
         - ReadWriteOnce
+  resources:
+    limits:
+      cpu: "1"
+      memory: "512Mi"
   availability:
     affinity:
       nodeAffinity:
@@ -29,6 +36,9 @@ spec:
   config:
     mergeMode: merge
     raw:
+      agents:
+        defaults:
+          memorySearch:
+            enabled: false
       plugins:
-        slots:
-          memory: "none"
+        enabled: false
