@@ -38,4 +38,4 @@ spec:
       toPorts:
         - ports:
             - protocol: TCP
-              port: 18789
+              port: "18789"
