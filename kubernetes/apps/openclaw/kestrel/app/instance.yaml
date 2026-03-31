@@ -44,7 +44,7 @@ spec:
       - "https://openclaw.${SECRET_DOMAIN}"
     existingSecret: openclaw-secret
   config:
-    mergeMode: merge
+    mergeMode: overwrite
     raw:
       agents:
         defaults:
