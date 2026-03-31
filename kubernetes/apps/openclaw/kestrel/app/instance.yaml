@@ -1,0 +1,25 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/openclaw-rocks/openclaw-operator/main/bundle/manifests/openclaw.rocks_openclawinstances.yaml
+apiVersion: openclaw.rocks/v1alpha1
+kind: OpenClawInstance
+metadata:
+  name: kestrel
+spec:
+  image:
+    repository: ghcr.io/openclaw/openclaw
+    tag: 2026.3.28
+  envFrom:
+    - secretRef:
+        name: openclaw-secret
+  storage:
+    persistence:
+      enabled: true
+      storageClass: openebs-hostpath
+      size: 10Gi
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node-role.kubernetes.io/control-plane
+                operator: DoesNotExist
