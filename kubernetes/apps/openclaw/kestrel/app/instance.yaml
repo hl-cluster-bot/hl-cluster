@@ -42,6 +42,10 @@ spec:
   config:
     mergeMode: merge
     raw:
+      gateway:
+        controlUi:
+          allowedOrigins:
+            - https://openclaw.${SECRET_DOMAIN}
       agents:
         defaults:
           memorySearch:
