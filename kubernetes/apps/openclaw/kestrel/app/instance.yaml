@@ -38,11 +38,7 @@ spec:
                   operator: DoesNotExist
   security:
     networkPolicy:
-      enabled: true
-      allowedIngressNamespaces:
-        - kube-system
-      allowedIngressCIDRs:
-        - 10.101.0.0/24
+      enabled: false
   config:
     mergeMode: merge
     raw:
