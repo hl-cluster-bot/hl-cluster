@@ -18,7 +18,7 @@ spec:
               kubernetes.io/metadata.name: kube-system
       ports:
         - protocol: TCP
-          port: 18790
+          port: 18789
 ---
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
@@ -37,5 +37,5 @@ spec:
         - kube-apiserver
       toPorts:
         - ports:
-            - port: "18790"
-              protocol: TCP
+            - protocol: TCP
+              port: 18789
