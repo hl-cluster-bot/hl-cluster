@@ -39,6 +39,15 @@ spec:
   security:
     networkPolicy:
       enabled: false
+  observability:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+      prometheusRule:
+        enabled: true
+      grafanaDashboard:
+        enabled: true
   gateway:
     controlUiOrigins:
       - "https://openclaw.${SECRET_DOMAIN}"
@@ -46,9 +55,14 @@ spec:
   config:
     mergeMode: overwrite
     raw:
+      gateway:
+        reload:
+          mode: "off"
       agents:
         defaults:
           memorySearch:
             enabled: false
+      channels:
+        enabled: false
       plugins:
         enabled: false
