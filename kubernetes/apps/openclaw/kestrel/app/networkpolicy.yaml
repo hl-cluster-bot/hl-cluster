@@ -19,3 +19,23 @@ spec:
       ports:
         - protocol: TCP
           port: 18790
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: kestrel-gateway-ingress
+  namespace: openclaw
+spec:
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/instance: kestrel
+      app.kubernetes.io/name: openclaw
+  ingress:
+    - fromEntities:
+        - host
+        - remote-node
+        - kube-apiserver
+      toPorts:
+        - ports:
+            - port: "18790"
+              protocol: TCP
