@@ -39,14 +39,13 @@ spec:
   security:
     networkPolicy:
       enabled: false
+  gateway:
+    controlUiOrigins:
+      - "https://openclaw.${SECRET_DOMAIN}"
+    existingSecret: openclaw-secret
   config:
     mergeMode: merge
     raw:
-      gateway:
-        existingSecret: openclaw-secret
-        controlUi:
-          allowedOrigins:
-            - https://openclaw.${SECRET_DOMAIN}
       agents:
         defaults:
           memorySearch:
