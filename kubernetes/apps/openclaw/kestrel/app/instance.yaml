@@ -43,6 +43,7 @@ spec:
     mergeMode: merge
     raw:
       gateway:
+        existingSecret: openclaw-secret
         controlUi:
           allowedOrigins:
             - https://openclaw.${SECRET_DOMAIN}
