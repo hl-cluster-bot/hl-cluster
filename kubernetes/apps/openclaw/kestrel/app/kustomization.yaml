@@ -5,5 +5,4 @@ kind: Kustomization
 resources:
   - ./instance.yaml
   - ./httproute.yaml
-  - ./networkpolicy.yaml
   - ./secret.sops.yaml

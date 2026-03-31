@@ -36,6 +36,13 @@ spec:
             - matchExpressions:
                 - key: node-role.kubernetes.io/control-plane
                   operator: DoesNotExist
+  security:
+    networkPolicy:
+      enabled: true
+      allowedIngressNamespaces:
+        - kube-system
+      allowedIngressCIDRs:
+        - 10.101.0.0/24
   config:
     mergeMode: merge
     raw:
