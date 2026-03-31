@@ -10,8 +10,8 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2
-      kind: HelmRelease
+    - apiVersion: openclaw.rocks/v1alpha1
+      kind: OpenClawInstance
       name: *app
       namespace: *namespace
   interval: 1h
