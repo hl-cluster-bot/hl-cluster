@@ -7,4 +7,4 @@ components:
   - ../../components/common
 resources:
   - ./openclaw-operator/ks.yaml
-  # - ./kestrel/ks.yaml
+  - ./kestrel/ks.yaml
