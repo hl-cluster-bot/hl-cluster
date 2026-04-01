@@ -9,6 +9,6 @@ resources:
 configMapGenerator:
   - name: kestrel-configmap
     files:
-      - openclaw.json=./resources/openclaw.json
+      - openclaw.json5=./resources/openclaw.json5
 generatorOptions:
   disableNameSuffixHash: true
