@@ -115,7 +115,29 @@ spec:
     - "@mem0/openclaw-mem0@0.4.1"
   config:
     mergeMode: overwrite
-    format: json5
-    configMapRef:
-      name: kestrel-configmap
-      key: openclaw.json5
+    raw:
+      gateway:
+        reload:
+          mode: "off"
+      agents:
+        defaults:
+          memorySearch:
+            enabled: false
+      plugins:
+        enabled: true
+        allow:
+          - openclaw-mem0
+        # slots:
+        #   memory: openclaw-mem0
+        # entries:
+        #   openclaw-mem0:
+        #     enabled: true
+        #     config:
+        #       mode: open-source
+        #       userId: default
+        #       oss:
+        #         vectorStore:
+        #           provider: pgvector
+        #           config:
+        #             connection_string: postgresql://${OPENCLAW_MEM0_DB_USER}:${OPENCLAW_MEM0_DB_PASS}@tolstoy-rw.database.svc.cluster.local:5432/${OPENCLAW_MEM0_DBNAME}
+        #             sslmode: disable
