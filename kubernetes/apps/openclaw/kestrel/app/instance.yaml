@@ -124,12 +124,12 @@ spec:
           memorySearch:
             enabled: false
       plugins:
-        enabled: true
-        allow:
-          - diagnostics-otel
-        entries:
-          diagnostics-otel:
-            enabled: true
+        enabled: false
+        # allow:
+        #   - diagnostics-otel
+        # entries:
+        #   diagnostics-otel:
+        #     enabled: true
         # slots:
         #   memory: openclaw-mem0
         # entries:
