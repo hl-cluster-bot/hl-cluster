@@ -127,6 +127,9 @@ spec:
         enabled: true
         allow:
           - diagnostics-otel
+        entries:
+          diagnostics-otel:
+            enabled: true
         # slots:
         #   memory: openclaw-mem0
         # entries:
