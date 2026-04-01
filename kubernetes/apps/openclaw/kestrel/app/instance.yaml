@@ -48,10 +48,75 @@ spec:
         enabled: true
       grafanaDashboard:
         enabled: true
+  initContainers:
+    - name: init-db
+      image:
+        repository: ghcr.io/home-operations/postgres-init
+        tag: "18"
+      env:
+        - name: INIT_POSTGRES_HOST
+          value: tolstoy-rw.database.svc.cluster.local
+        - name: INIT_POSTGRES_PORT
+          value: "5432"
+        - name: INIT_POSTGRES_DBNAME
+          valueFrom:
+            secretKeyRef:
+              name: openclaw-secret
+              key: OPENCLAW_MEM0_DBNAME
+        - name: INIT_POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: openclaw-secret
+              key: OPENCLAW_MEM0_DB_USER
+        - name: INIT_POSTGRES_PASS
+          valueFrom:
+            secretKeyRef:
+              name: openclaw-secret
+              key: OPENCLAW_MEM0_DB_PASS
+        - name: INIT_POSTGRES_SUPER_USER
+          valueFrom:
+            secretKeyRef:
+              name: cluster-secrets
+              key: POSTGRES_SUPER_USER
+        - name: INIT_POSTGRES_SUPER_PASS
+          valueFrom:
+            secretKeyRef:
+              name: cluster-secrets
+              key: POSTGRES_SUPER_PASS
+    - name: init-extensions
+      image:
+        repository: postgres
+        tag: "18"
+      env:
+        - name: PGHOST
+          value: tolstoy-rw.database.svc.cluster.local
+        - name: PGPORT
+          value: "5432"
+        - name: PGDATABASE
+          valueFrom:
+            secretKeyRef:
+              name: openclaw-secret
+              key: OPENCLAW_MEM0_DBNAME
+        - name: PGUSER
+          valueFrom:
+            secretKeyRef:
+              name: cluster-secrets
+              key: POSTGRES_SUPER_USER
+        - name: PGPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cluster-secrets
+              key: POSTGRES_SUPER_PASS
+      command:
+        - bash
+        - -lc
+        - psql -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS vector;"
   gateway:
     controlUiOrigins:
       - "https://openclaw.${SECRET_DOMAIN}"
     existingSecret: openclaw-gateway-token
+  plugins:
+    - "@mem0/openclaw-mem0@0.4.1"
   config:
     mergeMode: overwrite
     raw:
@@ -63,4 +128,16 @@ spec:
           memorySearch:
             enabled: false
       plugins:
-        enabled: false
+        slots:
+          memory: openclaw-mem0
+        openclaw-mem0:
+          enabled: true
+          config:
+            mode: open-source
+            userId: default
+            oss:
+              vectorStore:
+                provider: pgvector
+                config:
+                  connection_string: postgresql://$(OPENCLAW_MEM0_DB_USER):$(OPENCLAW_MEM0_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(OPENCLAW_MEM0_DBNAME)
+                  sslmode: disable
