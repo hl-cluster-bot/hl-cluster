@@ -41,13 +41,13 @@ spec:
       enabled: false
   observability:
     metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: true
-      prometheusRule:
-        enabled: true
-      grafanaDashboard:
-        enabled: true
+      enabled: false
+      # serviceMonitor:
+      #   enabled: true
+      # prometheusRule:
+      #   enabled: true
+      # grafanaDashboard:
+      #   enabled: true
   initContainers:
     - name: init-db
       image: ghcr.io/home-operations/postgres-init:18
