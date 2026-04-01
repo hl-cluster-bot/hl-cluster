@@ -124,9 +124,9 @@ spec:
           memorySearch:
             enabled: false
       plugins:
-        enabled: true
-        allow:
-          - openclaw-mem0
+        enabled: false
+        # allow:
+        #   - openclaw-mem0
         # slots:
         #   memory: openclaw-mem0
         # entries:
