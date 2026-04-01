@@ -115,7 +115,7 @@ spec:
     - "@mem0/openclaw-mem0@0.4.1"
   config:
     mergeMode: overwrite
+    format: json5
     configMapRef:
       name: kestrel-configmap
       key: openclaw.json5
-      format: json5
