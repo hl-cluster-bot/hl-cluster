@@ -11,7 +11,7 @@
       },
     },
   },
-  plugins: {
+  // plugins: {
     // Temporarily disable the mem0 plugin
     // slots: {
     //   memory: "openclaw-mem0",
