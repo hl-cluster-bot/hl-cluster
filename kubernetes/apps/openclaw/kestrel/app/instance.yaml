@@ -51,7 +51,7 @@ spec:
   gateway:
     controlUiOrigins:
       - "https://openclaw.${SECRET_DOMAIN}"
-    existingSecret: openclaw-secret
+    existingSecret: openclaw-gateway-token
   config:
     mergeMode: overwrite
     raw:
