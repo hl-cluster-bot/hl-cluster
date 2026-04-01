@@ -65,4 +65,11 @@ spec:
           memorySearch:
             enabled: false
       plugins:
-        enabled: false
+        enabled: true
+        allow:
+          - hindsight-openclaw
+        slots:
+          memory: hindsight-openclaw
+        entries:
+          hindsight-openclaw:
+            enabled: true
