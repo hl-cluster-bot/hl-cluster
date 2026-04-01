@@ -50,9 +50,7 @@ spec:
         enabled: true
   initContainers:
     - name: init-db
-      image:
-        repository: ghcr.io/home-operations/postgres-init
-        tag: "18"
+      image: ghcr.io/home-operations/postgres-init:18
       env:
         - name: INIT_POSTGRES_HOST
           value: tolstoy-rw.database.svc.cluster.local
@@ -84,9 +82,7 @@ spec:
               name: cluster-secrets
               key: POSTGRES_SUPER_PASS
     - name: init-extensions
-      image:
-        repository: postgres
-        tag: "18"
+      image: postgres:18
       env:
         - name: PGHOST
           value: tolstoy-rw.database.svc.cluster.local
