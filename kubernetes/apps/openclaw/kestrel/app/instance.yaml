@@ -88,6 +88,17 @@ spec:
           security: allowlist
           ask: on-miss
           strictInlineEval: true
+          safeBins:
+            - cut
+            - uniq
+            - head
+            - tail
+            - tr
+            - wc
+            - grep
+            - sort
+            - git
+            - gh
       plugins:
         enabled: true
         allow:
