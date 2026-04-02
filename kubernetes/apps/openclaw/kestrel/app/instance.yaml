@@ -85,6 +85,9 @@ spec:
         entries:
           hindsight-openclaw:
             enabled: true
+            config:
+              dynamicBankGranularity:
+                - user
       session:
         scope: per-sender
         maintenance:
