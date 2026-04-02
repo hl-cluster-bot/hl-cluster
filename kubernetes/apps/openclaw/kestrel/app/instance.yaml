@@ -6,8 +6,8 @@ metadata:
   name: kestrel
 spec:
   image:
-    repository: ghcr.io/openclaw/openclaw
-    tag: 2026.4.1
+    repository: ghcr.io/tolkonepiu/openclaw-node22
+    tag: v2026.4.1
   envFrom:
     - secretRef:
         name: openclaw-secret
@@ -57,9 +57,6 @@ spec:
   config:
     mergeMode: overwrite
     raw:
-      gateway:
-        reload:
-          mode: "off"
       agents:
         defaults:
           memorySearch:
