@@ -75,12 +75,6 @@ spec:
             headers:
               Authorization: Bearer ${GITHUB_TOKEN}
             connectionTimeoutMs: 30000
-          context7:
-            transport: streamable-http
-            url: https://mcp.context7.com/mcp
-            headers:
-              CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
-            connectionTimeoutMs: 30000
           kubernetes-mcp:
             transport: sse
             url: http://kubernetes-mcp-server.automation.svc.cluster.local:8080/sse
