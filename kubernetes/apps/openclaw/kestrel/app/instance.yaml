@@ -6,8 +6,8 @@ metadata:
   name: kestrel
 spec:
   image:
-    repository: ghcr.io/tolkonepiu/openclaw-node22
-    tag: v2026.4.1
+    repository: ghcr.io/openclaw/openclaw
+    tag: 2026.4.1
   envFrom:
     - secretRef:
         name: openclaw-secret
@@ -59,8 +59,40 @@ spec:
     raw:
       agents:
         defaults:
-          memorySearch:
-            enabled: false
+          model:
+            primary: openai/gpt-5.4
+        list:
+          - id: kestrel
+            default: true
+            identity:
+              name: Kestrel
+              emoji: 🤖
+      mcp:
+        servers:
+          github-mcp-server:
+            transport: streamable-http
+            url: https://api.githubcopilot.com/mcp/
+            headers:
+              Authorization: Bearer ${GITHUB_TOKEN}
+            connectionTimeoutMs: 30000
+          context7:
+            transport: streamable-http
+            url: https://mcp.context7.com/mcp
+            headers:
+              CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
+            connectionTimeoutMs: 30000
+          kubernetes-mcp:
+            transport: sse
+            url: http://kubernetes-mcp-server.automation.svc.cluster.local:8080/sse
+            connectionTimeoutMs: 30000
+          victoria-metrics-mcp:
+            transport: sse
+            url: http://victoriametrics-mcp-server.automation.svc.cluster.local:8080/sse
+            connectionTimeoutMs: 30000
+          flux-mcp:
+            transport: sse
+            url: http://flux-operator-mcp.automation.svc.cluster.local:9090/sse
+            connectionTimeoutMs: 30000
       plugins:
         enabled: true
         allow:
