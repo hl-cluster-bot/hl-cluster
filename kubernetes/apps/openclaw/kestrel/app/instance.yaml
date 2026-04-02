@@ -48,9 +48,14 @@ spec:
         enabled: false
       grafanaDashboard:
         enabled: false
+  selfConfigure:
+    enabled: true
+    allowedActions:
+      - skills
+      - workspaceFiles
   gateway:
     controlUiOrigins:
-      - "https://openclaw.${SECRET_DOMAIN}"
+      - "https://openclaw.popov.wtf"
     existingSecret: openclaw-gateway-token
   plugins:
     - "@vectorize-io/hindsight-openclaw@0.5.1"
@@ -75,7 +80,14 @@ spec:
               emoji: 🤖
       skills:
         allowBundled:
-          - weather
+          - clawhub
+          - skill-creator
+      tools:
+        exec:
+          host: gateway
+          security: allowlist
+          ask: on-miss
+          strictInlineEval: true
       plugins:
         enabled: true
         allow:
