@@ -84,21 +84,10 @@ spec:
           - skill-creator
       tools:
         exec:
-          host: gateway
-          security: allowlist
-          ask: on-miss
-          strictInlineEval: true
-          safeBins:
-            - cut
-            - uniq
-            - head
-            - tail
-            - tr
-            - wc
-            - grep
-            - sort
-            - git
-            - gh
+          security: full
+          ask: "off"
+          askFallback: full
+          strictInlineEval: false
       plugins:
         enabled: true
         allow:
