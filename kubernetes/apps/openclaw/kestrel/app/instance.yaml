@@ -13,7 +13,7 @@ spec:
         name: openclaw-secret
   env:
     - name: NODE_OPTIONS
-      value: "--max-old-space-size=384"
+      value: "--max-old-space-size=448"
   storage:
     persistence:
       enabled: true
