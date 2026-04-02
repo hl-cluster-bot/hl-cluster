@@ -49,7 +49,7 @@ spec:
       news:
         news_feed_enabled: false
       server:
-        root_url: https://grafana.${SECRET_DOMAIN}
+        root_url: https://grafana.popov.wtf
       analytics:
         check_for_updates: false
         check_for_plugin_updates: false
@@ -235,7 +235,7 @@ spec:
     route:
       main:
         enabled: true
-        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
+        hostnames: ["{{ .Release.Name }}.popov.wtf"]
         parentRefs:
           - name: internal
             namespace: kube-system

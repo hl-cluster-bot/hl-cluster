@@ -3,20 +3,16 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: ironclaw-webhook
+  name: openclaw
   namespace: automation
 spec:
-  hostnames: ["ic.${SECRET_DOMAIN}"]
+  hostnames: ["openclaw.popov.wtf"]
   parentRefs:
-    - name: external
+    - name: internal
       namespace: kube-system
       sectionName: https
   rules:
     - backendRefs:
-        - name: ironclaw
+        - name: openclaw
           namespace: automation
-          port: 8080
-      matches:
-        - path:
-            type: PathPrefix
-            value: /webhook/tools/github
+          port: 18789

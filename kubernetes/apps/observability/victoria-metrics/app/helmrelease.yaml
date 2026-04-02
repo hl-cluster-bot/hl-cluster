@@ -50,8 +50,6 @@ spec:
       enabled: true
       spec:
         retentionPeriod: "7d"
-        nodeSelector:
-          kubernetes.io/hostname: olympus-phobos
         extraArgs:
           memory.allowedPercent: "20"
         storage:
@@ -98,7 +96,7 @@ spec:
 
     alertmanager:
       spec:
-        externalURL: https://am.${SECRET_DOMAIN}
+        externalURL: https://am.popov.wtf
       useManagedConfig: true
       config:
         route:
@@ -175,7 +173,7 @@ spec:
     vmalert:
       spec:
         extraArgs:
-          external.url: https://vm.${SECRET_DOMAIN}
+          external.url: https://vm.popov.wtf
 
     kubelet:
       vmScrape:

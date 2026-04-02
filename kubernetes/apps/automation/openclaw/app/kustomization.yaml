@@ -2,23 +2,19 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: openclaw
 resources:
-  - ./helmrelease.yaml
+  - ./instance.yaml
+  - ./httproute.yaml
   - ./secret.sops.yaml
 configMapGenerator:
-  - name: goclaw-configmap
-    files:
-      - config.json=./resources/config.json
-  - name: goclaw-context-config
+  - name: openclaw-context-config
     files:
       - AGENTS.md=./resources/context/AGENTS.md
-      - BOOTSTRAP.md=./resources/context/BOOTSTRAP.md
       - IDENTITY.md=./resources/context/IDENTITY.md
+      - MEMORY.md=./resources/context/MEMORY.md
       - SOUL.md=./resources/context/SOUL.md
       - TOOLS.md=./resources/context/TOOLS.md
       - USER.md=./resources/context/USER.md
-  - name: goclaw-web-nginx-config
-    files:
-      - default.conf=./resources/web/goclaw-web-nginx.conf
 generatorOptions:
   disableNameSuffixHash: true

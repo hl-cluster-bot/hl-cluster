@@ -33,11 +33,6 @@ spec:
   values:
     transport: sse
     readonly: true
-    networkPolicy:
-      ingress:
-        namespaces:
-          - automation
-          - openclaw
     rbac:
       create: true
     ingress:

@@ -64,7 +64,7 @@ spec:
             port: *port
     route:
       app:
-        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
+        hostnames: ["{{ .Release.Name }}.popov.wtf"]
         parentRefs:
           - name: internal
             namespace: kube-system

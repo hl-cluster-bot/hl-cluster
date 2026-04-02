@@ -3,7 +3,7 @@
 apiVersion: openclaw.rocks/v1alpha1
 kind: OpenClawInstance
 metadata:
-  name: kestrel
+  name: openclaw
 spec:
   image:
     repository: ghcr.io/openclaw/openclaw
@@ -73,7 +73,7 @@ spec:
     - "@vectorize-io/hindsight-openclaw@0.5.1"
   workspace:
     configMapRef:
-      name: kestrel-context-config
+      name: openclaw-context-config
   config:
     mergeMode: overwrite
     raw:
@@ -105,8 +105,8 @@ spec:
         enabled: true
         allow:
           - hindsight-openclaw
-        slots:
-          memory: hindsight-openclaw
+        # slots:
+        #   memory: hindsight-openclaw
         entries:
           hindsight-openclaw:
             enabled: true

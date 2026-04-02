@@ -6,7 +6,7 @@ metadata:
   name: umami-script
   namespace: default
 spec:
-  hostnames: ["umm.${SECRET_DOMAIN}"]
+  hostnames: ["umm.popov.wtf"]
   parentRefs:
     - name: external
       namespace: kube-system

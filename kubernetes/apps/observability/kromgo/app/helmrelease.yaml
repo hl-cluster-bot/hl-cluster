@@ -70,7 +70,7 @@ spec:
             port: *healthPort
     route:
       app:
-        hostnames: ["{{ .Release.Name }}.${SECRET_DOMAIN}"]
+        hostnames: ["{{ .Release.Name }}.popov.wtf"]
         parentRefs:
           - name: external
             namespace: kube-system

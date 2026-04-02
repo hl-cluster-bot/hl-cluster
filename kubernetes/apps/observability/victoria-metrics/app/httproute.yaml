@@ -5,7 +5,7 @@ kind: HTTPRoute
 metadata:
   name: vmalertmanager
 spec:
-  hostnames: ["am.${SECRET_DOMAIN}"]
+  hostnames: ["am.popov.wtf"]
   parentRefs:
     - name: internal
       namespace: kube-system
@@ -22,7 +22,7 @@ kind: HTTPRoute
 metadata:
   name: vmalert
 spec:
-  hostnames: ["vm.${SECRET_DOMAIN}"]
+  hostnames: ["vm.popov.wtf"]
   parentRefs:
     - name: internal
       namespace: kube-system

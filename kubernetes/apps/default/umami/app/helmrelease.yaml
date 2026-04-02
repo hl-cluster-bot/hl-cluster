@@ -85,9 +85,9 @@ spec:
               - name: DISABLE_TELEMETRY
                 value: "true"
               - name: LINKS_URL
-                value: "https://umm.${SECRET_DOMAIN}/q"
+                value: "https://umm.popov.wtf/q"
               - name: PIXELS_URL
-                value: "https://umm.${SECRET_DOMAIN}/p"
+                value: "https://umm.popov.wtf/p"
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: false
@@ -121,7 +121,7 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - "{{ .Release.Name }}.popov.wtf"
         parentRefs:
           - name: internal
             namespace: kube-system

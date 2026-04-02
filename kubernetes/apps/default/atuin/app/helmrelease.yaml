@@ -149,7 +149,7 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - "{{ .Release.Name }}.popov.wtf"
         parentRefs:
           - name: internal
             namespace: kube-system
