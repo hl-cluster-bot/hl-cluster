@@ -62,9 +62,9 @@ spec:
         resources:
           requests:
             cpu: 500m
-            memory: 256Mi
-          limits:
             memory: 1Gi
+          limits:
+            memory: 2Gi
 
     vmcluster:
       enabled: false
