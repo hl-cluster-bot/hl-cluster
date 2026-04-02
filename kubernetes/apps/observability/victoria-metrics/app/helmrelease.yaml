@@ -52,7 +52,6 @@ spec:
         retentionPeriod: "7d"
         extraArgs:
           memory.allowedPercent: "20"
-        storageDataPath: /vm-data
         storage:
           volumeClaimTemplate:
             spec:
