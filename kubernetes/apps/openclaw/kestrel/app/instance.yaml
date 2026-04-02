@@ -84,6 +84,7 @@ spec:
           - skill-creator
       tools:
         exec:
+          host: gateway
           security: full
           ask: "off"
           askFallback: full
