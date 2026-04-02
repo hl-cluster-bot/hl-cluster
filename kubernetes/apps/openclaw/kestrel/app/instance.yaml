@@ -67,6 +67,18 @@ spec:
             identity:
               name: Kestrel
               emoji: 🤖
+      skills:
+        allowBundled:
+          - weather
+      plugins:
+        enabled: true
+        allow:
+          - hindsight-openclaw
+        slots:
+          memory: hindsight-openclaw
+        entries:
+          hindsight-openclaw:
+            enabled: true
       mcp:
         servers:
           github-mcp-server:
@@ -87,12 +99,3 @@ spec:
             transport: sse
             url: http://flux-operator-mcp.automation.svc.cluster.local:9090/sse
             connectionTimeoutMs: 30000
-      plugins:
-        enabled: true
-        allow:
-          - hindsight-openclaw
-        slots:
-          memory: hindsight-openclaw
-        entries:
-          hindsight-openclaw:
-            enabled: true
