@@ -7,13 +7,13 @@ metadata:
 spec:
   image:
     repository: ghcr.io/openclaw/openclaw
-    tag: 2026.3.2
+    tag: 2026.4.1
   envFrom:
     - secretRef:
         name: openclaw-secret
   env:
     - name: NODE_OPTIONS
-      value: "--max-old-space-size=300"
+      value: "--max-old-space-size=384"
   storage:
     persistence:
       enabled: true
@@ -24,10 +24,10 @@ spec:
   resources:
     requests:
       cpu: "100m"
-      memory: "384Mi"
+      memory: "512Mi"
     limits:
       cpu: "1"
-      memory: "512Mi"
+      memory: "768Mi"
   availability:
     affinity:
       nodeAffinity:
