@@ -53,14 +53,12 @@ spec:
         extraArgs:
           memory.allowedPercent: "20"
         storage:
-          volumeClaimTemplate:
-            spec:
-              accessModes:
-                - ReadWriteOnce
-              resources:
-                requests:
-                  storage: 50Gi
-              storageClassName: openebs-hostpath
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 50Gi
+          storageClassName: openebs-hostpath
         resources:
           requests:
             cpu: 500m
