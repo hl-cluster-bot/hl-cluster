@@ -47,61 +47,30 @@ spec:
         enable_converter_ownership: true # Required to allow VM to remove VM rules it imports if a prometheus rule is deleted
 
     vmsingle:
-      enabled: false
-
-    vmcluster:
       enabled: true
       spec:
         retentionPeriod: "7d"
-        replicationFactor: 2
-        vmstorage:
-          replicaCount: 3
-          extraArgs:
-            memory.allowedPercent: "20"
-          storageDataPath: /vm-data
-          storage:
-            volumeClaimTemplate:
-              spec:
-                accessModes:
-                  - ReadWriteOnce
-                resources:
-                  requests:
-                    storage: 50Gi
-                storageClassName: openebs-hostpath
-          resources:
-            requests:
-              cpu: 500m
-              memory: 256Mi
-            limits:
-              memory: 1Gi
-        vmselect:
-          enabled: true
-          replicaCount: 2
-          cacheMountPath: "/select-cache"
-          storage:
-            volumeClaimTemplate:
-              spec:
-                accessModes:
-                  - ReadWriteOnce
-                resources:
-                  requests:
-                    storage: 2Gi
-                storageClassName: openebs-hostpath
-          resources:
-            requests:
-              cpu: 500m
-              memory: 256Mi
-            limits:
-              memory: 512Mi
-        vminsert:
-          enabled: true
-          replicaCount: 2
-          resources:
-            requests:
-              cpu: 500m
-              memory: 256Mi
-            limits:
-              memory: 512Mi
+        extraArgs:
+          memory.allowedPercent: "20"
+        storageDataPath: /vm-data
+        storage:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 50Gi
+              storageClassName: openebs-hostpath
+        resources:
+          requests:
+            cpu: 500m
+            memory: 256Mi
+          limits:
+            memory: 1Gi
+
+    vmcluster:
+      enabled: false
 
     vmagent:
       enabled: true

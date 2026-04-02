@@ -72,12 +72,12 @@ spec:
             type: prometheus
             uid: prometheus
             access: proxy
-            url: http://vmselect-stack.observability.svc.cluster.local.:8481/select/0/prometheus
+            url: http://vmsingle-stack.observability.svc.cluster.local:8428
           - name: VictoriaMetrics
             type: victoriametrics-metrics-datasource
             uid: victoriametrics
             access: proxy
-            url: http://vmselect-stack.observability.svc.cluster.local:8481/select/0/prometheus
+            url: http://vmsingle-stack.observability.svc.cluster.local:8428
           - name: Alertmanager
             type: alertmanager
             uid: alertmanager
@@ -186,8 +186,8 @@ spec:
         operator:
           url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/vm/operator.json
           datasource: VictoriaMetrics
-        victoriametrics-cluster:
-          url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/vm/victoriametrics-cluster.json
+        victoriametrics:
+          url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/vm/victoriametrics.json
           datasource: VictoriaMetrics
         vmagent:
           url: https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/refs/heads/master/dashboards/vm/vmagent.json
