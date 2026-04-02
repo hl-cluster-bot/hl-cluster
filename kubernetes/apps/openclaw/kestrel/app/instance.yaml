@@ -87,7 +87,7 @@ spec:
             enabled: true
             config:
               dynamicBankGranularity:
-                - user
+                - agent
       session:
         scope: per-sender
         maintenance:
