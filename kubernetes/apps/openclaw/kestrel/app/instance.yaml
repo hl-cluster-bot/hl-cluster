@@ -48,6 +48,18 @@ spec:
         enabled: false
       grafanaDashboard:
         enabled: false
+  probes:
+    startup:
+      timeoutSeconds: 5
+      failureThreshold: 90
+    liveness:
+      initialDelaySeconds: 60
+      timeoutSeconds: 10
+      failureThreshold: 5
+    readiness:
+      initialDelaySeconds: 15
+      timeoutSeconds: 5
+      failureThreshold: 5
   selfConfigure:
     enabled: true
     allowedActions:
