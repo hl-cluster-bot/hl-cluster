@@ -102,9 +102,9 @@ spec:
           strictInlineEval: false
       plugins:
         enabled: true
-        load:
-          paths:
-            - /home/node/.openclaw/node_modules/@vectorize-io/hindsight-openclaw
+        # load:
+        #   paths:
+        #     - /home/node/.openclaw/node_modules/@vectorize-io/hindsight-openclaw
         allow:
           - hindsight-openclaw
         # slots:
