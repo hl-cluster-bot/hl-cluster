@@ -99,7 +99,6 @@ spec:
           host: gateway
           security: full
           ask: "off"
-          askFallback: full
           strictInlineEval: false
       plugins:
         enabled: true
