@@ -6,8 +6,8 @@ metadata:
   name: openclaw
 spec:
   image:
-    repository: ghcr.io/openclaw/openclaw
-    tag: 2026.4.2
+    repository: ghcr.io/tolkonepiu/openclaw-full
+    tag: v2026.4.2
   envFrom:
     - secretRef:
         name: openclaw-secret
