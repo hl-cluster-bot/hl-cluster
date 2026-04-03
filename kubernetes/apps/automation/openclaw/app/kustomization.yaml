@@ -11,6 +11,7 @@ configMapGenerator:
   - name: openclaw-context-config
     files:
       - AGENTS.md=./resources/context/AGENTS.md
+      - HEARTBEAT.md=./resources/context/HEARTBEAT.md
       - IDENTITY.md=./resources/context/IDENTITY.md
       - MEMORY.md=./resources/context/MEMORY.md
       - SOUL.md=./resources/context/SOUL.md
