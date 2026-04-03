@@ -77,6 +77,9 @@ spec:
   config:
     mergeMode: overwrite
     raw:
+      gateway:
+        reload:
+          mode: "off"
       agents:
         defaults:
           model:
@@ -84,6 +87,8 @@ spec:
           contextPruning:
             mode: cache-ttl
             ttl: 15m
+          thinkingDefault: medium
+          skipBootstrap: true
         list:
           - id: kestrel
             default: true
@@ -91,6 +96,10 @@ spec:
               name: Kestrel
               emoji: 🤖
       skills:
+        load:
+          watch: false
+        install:
+          nodeManager: npm
         allowBundled:
           - clawhub
           - skill-creator
@@ -119,6 +128,21 @@ spec:
         scope: per-sender
         maintenance:
           rotateBytes: 10mb
+      update:
+        auto:
+          enabled: false
+      cli:
+        banner:
+          taglineMode: "off"
+      canvasHost:
+        enabled: false
+      discovery:
+        mdns:
+          mode: "off"
+        wideArea:
+          enabled: false
+      acp:
+        enabled: false
       mcp:
         servers:
           github-mcp-server:
