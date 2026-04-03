@@ -8,7 +8,7 @@ components:
 resources:
   - ./1mcp-agent/ks.yaml
   - ./flux-operator-mcp/ks.yaml
-  # - ./goclaw/ks.yaml
-  # - ./ironclaw/ks.yaml
   - ./kubernetes-mcp-server/ks.yaml
+  - ./openclaw-operator/ks.yaml
+  - ./openclaw/ks.yaml
   - ./victoriametrics-mcp-server/ks.yaml
