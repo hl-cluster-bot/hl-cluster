@@ -230,8 +230,7 @@ spec:
                 vectorStore:
                   provider: pgvector
                   config:
-                    connection_string: postgresql://${OPENCLAW_MEM0_DB_USER}:${OPENCLAW_MEM0_DB_PASS}@tolstoy-rw.database.svc.cluster.local:5432/${OPENCLAW_MEM0_DBNAME}
-                    sslmode: disable
+                    connection_string: postgresql://${OPENCLAW_MEM0_DB_USER}:${OPENCLAW_MEM0_DB_PASS}@tolstoy-rw.database.svc.cluster.local:5432/${OPENCLAW_MEM0_DBNAME}?sslmode=disable
       session:
         scope: per-sender
         maintenance:
