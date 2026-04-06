@@ -70,7 +70,7 @@ spec:
       - "https://openclaw.popov.wtf"
     existingSecret: openclaw-gateway-token
   plugins:
-    - "@vectorize-io/hindsight-openclaw@0.5.1"
+    - "@mem0/openclaw-mem0@1.0.4"
   workspace:
     configMapRef:
       name: openclaw-context-config
