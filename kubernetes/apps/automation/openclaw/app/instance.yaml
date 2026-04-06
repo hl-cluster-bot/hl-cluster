@@ -159,8 +159,7 @@ spec:
             transport: sse
             url: http://victoriametrics-mcp-server.automation.svc.cluster.local:8080/sse
             connectionTimeoutMs: 30000
-          # Temporarily disable flux-mcp until (openclaw/openclaw#60158) is fixed.
-          # flux-mcp:
-          #   transport: sse
-          #   url: http://flux-operator-mcp.automation.svc.cluster.local:9090/sse
-          #   connectionTimeoutMs: 30000
+          flux-mcp:
+            transport: sse
+            url: http://flux-operator-mcp.automation.svc.cluster.local:9090/sse
+            connectionTimeoutMs: 30000
