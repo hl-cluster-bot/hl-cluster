@@ -175,8 +175,6 @@ spec:
             - /home/openclaw/.openclaw/node_modules/@mem0/openclaw-mem0
         allow:
           - openclaw-mem0
-          - openai
-          - openrouter
         deny:
           - amazon-bedrock
           - amazon-bedrock-mantle
