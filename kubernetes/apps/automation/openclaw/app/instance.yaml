@@ -50,15 +50,16 @@ spec:
         enabled: false
   probes:
     startup:
-      timeoutSeconds: 5
+      initialDelaySeconds: 30
+      timeoutSeconds: 10
       failureThreshold: 90
     liveness:
       initialDelaySeconds: 60
       timeoutSeconds: 10
       failureThreshold: 5
     readiness:
-      initialDelaySeconds: 15
-      timeoutSeconds: 5
+      initialDelaySeconds: 30
+      timeoutSeconds: 10
       failureThreshold: 5
   selfConfigure:
     enabled: true
