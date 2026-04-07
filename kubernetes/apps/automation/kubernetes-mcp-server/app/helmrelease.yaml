@@ -44,11 +44,7 @@ spec:
       serviceMonitor:
         enabled: true
     rbac:
-      extraClusterRoleBindings:
-        - name: view
-          roleRef:
-            name: view
-            external: true
+      create: true
     config:
       port: "{{ .Values.service.port }}"
       read_only: true

@@ -1,8 +1,16 @@
 {
   "mcpServers": {
-    "cluster": {
-      "type": "http",
-      "url": "https://1mcp.popov.wtf/mcp?app=claude-code"
+    "kubernetes-mcp-server": {
+      "type": "sse",
+      "url": "https://kubernetes-mcp-server.popov.wtf/sse"
+    },
+    "flux-operator-mcp": {
+      "type": "sse",
+      "url": "https://flux-operator-mcp.popov.wtf/sse"
+    },
+    "mcp-victoriametrics": {
+      "type": "sse",
+      "url": "https://mcp-victoriametrics.popov.wtf/sse"
     }
   }
 }

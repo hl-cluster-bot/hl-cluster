@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app one-mcp-agent
+  name: &app victoriametrics-mcp-server
   namespace: &namespace automation
 spec:
   commonMetadata:
@@ -14,12 +14,10 @@ spec:
     secretRef:
       name: sops-age
   dependsOn:
-    - name: flux-operator-mcp
-      namespace: automation
-    - name: kubernetes-mcp-server
-      namespace: automation
+    - name: victoria-metrics
+      namespace: observability
   interval: 1h
-  path: ./kubernetes/apps/automation/1mcp-agent/app
+  path: ./kubernetes/apps/automation/mcp-victoriametrics/app
   postBuild:
     substituteFrom:
       - name: cluster-secrets

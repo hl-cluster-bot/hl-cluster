@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: victoriametrics-mcp-server
+  name: &app mcp-victoriametrics
 spec:
   interval: 1h
   chartRef:
@@ -21,7 +21,7 @@ spec:
       namespace: observability
   values:
     controllers:
-      victoriametrics-mcp-server:
+      mcp-victoriametrics:
         strategy: RollingUpdate
         containers:
           app:
@@ -84,3 +84,15 @@ spec:
         endpoints:
           - port: http
             path: /metrics
+    route:
+      app:
+        hostnames:
+          - "{{ .Release.Name }}.popov.wtf"
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port
