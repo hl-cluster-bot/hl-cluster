@@ -35,6 +35,8 @@ spec:
     readonly: true
     rbac:
       create: true
+    networkPolicy:
+      create: false
     ingress:
       enabled: false
     httpRoute:
