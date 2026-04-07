@@ -102,6 +102,7 @@ spec:
               DERIVER_ENABLED: "false"
               DREAM_ENABLED: "false"
               SUMMARY_ENABLED: "false"
+              SUMMARY_PROVIDER: openai
               METRICS_ENABLED: "true"
               VECTOR_STORE_TYPE: pgvector
               AUTH_USE_AUTH: "false"
