@@ -154,6 +154,10 @@ spec:
             identity:
               name: Kestrel
               emoji: 🤖
+      diagnostics:
+        enabled: true
+        otel:
+          enabled: true
       skills:
         load:
           watch: false
