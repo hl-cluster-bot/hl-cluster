@@ -236,8 +236,6 @@ spec:
             enabled: true
           openclaw-honcho:
             enabled: true
-            config:
-              apiKey: ${HONCHO_API_KEY}
           # openclaw-mem0:
           #   enabled: true
           #   config:
