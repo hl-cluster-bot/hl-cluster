@@ -40,7 +40,7 @@ spec:
     httpRoute:
       enabled: true
       hostnames:
-        - "flux-operator-mcp.popov.wtf"
+        - flux-operator-mcp.popov.wtf
       parentRefs:
         - name: internal
           namespace: kube-system
