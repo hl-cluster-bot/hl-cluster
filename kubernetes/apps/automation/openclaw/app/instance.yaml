@@ -18,6 +18,8 @@ spec:
       value: "1"
     - name: OPENCLAW_SKIP_GMAIL_WATCHER
       value: "1"
+    - name: OPENCLAW_SKIP_CANVAS_HOST
+      value: "1"
   storage:
     persistence:
       enabled: true
@@ -279,7 +281,7 @@ spec:
             connectionTimeoutMs: 30000
           victoria-metrics-mcp:
             transport: sse
-            url: http://victoriametrics-mcp-server.automation.svc.cluster.local:8080/sse
+            url: http://mcp-victoriametrics.automation.svc.cluster.local:8080/sse
             connectionTimeoutMs: 30000
           flux-mcp:
             transport: sse
