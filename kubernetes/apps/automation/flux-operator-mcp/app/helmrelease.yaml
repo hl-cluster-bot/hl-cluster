@@ -31,7 +31,7 @@ spec:
     remediation:
       retries: 3
   values:
-    transport: sse
+    transport: http
     readonly: true
     rbac:
       create: true

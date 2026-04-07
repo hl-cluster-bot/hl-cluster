@@ -1,16 +1,16 @@
 {
   "mcpServers": {
     "kubernetes-mcp-server": {
-      "type": "sse",
-      "url": "https://kubernetes-mcp-server.popov.wtf/sse"
+      "type": "http",
+      "url": "https://kubernetes-mcp-server.popov.wtf/mcp"
     },
     "flux-operator-mcp": {
-      "type": "sse",
-      "url": "https://flux-operator-mcp.popov.wtf/sse"
+      "type": "http",
+      "url": "https://flux-operator-mcp.popov.wtf/mcp"
     },
     "mcp-victoriametrics": {
-      "type": "sse",
-      "url": "https://mcp-victoriametrics.popov.wtf/sse"
+      "type": "http",
+      "url": "https://mcp-victoriametrics.popov.wtf/mcp"
     }
   }
 }

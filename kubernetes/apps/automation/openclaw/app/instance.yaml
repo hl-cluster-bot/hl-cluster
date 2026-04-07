@@ -278,14 +278,14 @@ spec:
               Authorization: Bearer ${GITHUB_TOKEN}
             connectionTimeoutMs: 30000
           kubernetes-mcp:
-            transport: sse
-            url: http://kubernetes-mcp-server.automation.svc.cluster.local:8080/sse
+            transport: streamable-http
+            url: http://kubernetes-mcp-server.automation.svc.cluster.local:8080/mcp
             connectionTimeoutMs: 30000
           victoria-metrics-mcp:
-            transport: sse
-            url: http://mcp-victoriametrics.automation.svc.cluster.local:8080/sse
+            transport: streamable-http
+            url: http://mcp-victoriametrics.automation.svc.cluster.local:8080/mcp
             connectionTimeoutMs: 30000
           flux-mcp:
-            transport: sse
-            url: http://flux-operator-mcp.automation.svc.cluster.local:9090/sse
+            transport: streamable-http
+            url: http://flux-operator-mcp.automation.svc.cluster.local:9090/mcp
             connectionTimeoutMs: 30000

@@ -32,7 +32,7 @@ spec:
               MCP_DISABLED_TOOLS: documentation,export,flags,metric_relabel_debug,downsampling_filters_debug,retention_filters_debug,test_rules
               MCP_LISTEN_ADDR: 0.0.0.0:8080
               MCP_LOG_FORMAT: json
-              MCP_SERVER_MODE: sse
+              MCP_SERVER_MODE: http
               VM_INSTANCE_ENTRYPOINT: http://vmsingle-stack.observability.svc.cluster.local:8428
               VM_INSTANCE_TYPE: single
             probes:
