@@ -158,6 +158,8 @@ spec:
         enabled: true
         otel:
           enabled: true
+          endpoint: http://localhost:4318
+          metrics: true
       skills:
         load:
           watch: false
