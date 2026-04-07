@@ -91,7 +91,7 @@ spec:
         containers:
           app:
             image:
-              repository: docker.io/plasticlabs/honcho
+              repository: ghcr.io/plastic-labs/honcho
               tag: v3.0.5
             command:
               - sh
