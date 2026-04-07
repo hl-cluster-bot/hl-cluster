@@ -40,13 +40,13 @@ spec:
       enabled: false
   observability:
     metrics:
-      enabled: false
+      enabled: true
       serviceMonitor:
-        enabled: false
+        enabled: true
       prometheusRule:
-        enabled: false
+        enabled: true
       grafanaDashboard:
-        enabled: false
+        enabled: true
   probes:
     startup:
       initialDelaySeconds: 30
@@ -174,6 +174,7 @@ spec:
           paths:
             - /home/openclaw/.openclaw/node_modules/@mem0/openclaw-mem0
         allow:
+          - diagnostics-otel
           - openclaw-mem0
         deny:
           - amazon-bedrock
@@ -219,6 +220,8 @@ spec:
         slots:
           memory: openclaw-mem0
         entries:
+          diagnostics-otel:
+            enabled: true
           openclaw-mem0:
             enabled: true
             config:
