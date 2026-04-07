@@ -135,6 +135,8 @@ spec:
                   failureThreshold: 30
             securityContext:
               allowPrivilegeEscalation: false
+              runAsUser: 1000
+              runAsGroup: 1000
               runAsNonRoot: true
               readOnlyRootFilesystem: false
               capabilities: { drop: ["ALL"] }
