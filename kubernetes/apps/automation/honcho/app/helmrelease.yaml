@@ -135,6 +135,7 @@ spec:
                   failureThreshold: 30
             securityContext:
               allowPrivilegeEscalation: false
+              runAsNonRoot: true
               readOnlyRootFilesystem: false
               capabilities: { drop: ["ALL"] }
             resources:
@@ -143,9 +144,6 @@ spec:
                 memory: 256Mi
               limits:
                 memory: 512Mi
-    defaultPodOptions:
-      securityContext:
-        runAsNonRoot: true
     service:
       app:
         type: ClusterIP
