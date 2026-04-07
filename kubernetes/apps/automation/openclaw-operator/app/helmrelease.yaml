@@ -33,6 +33,5 @@ spec:
       retries: 3
   values:
     metrics:
-      secure: false
       serviceMonitor:
         enabled: true
