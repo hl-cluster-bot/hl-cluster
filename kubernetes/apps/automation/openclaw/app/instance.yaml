@@ -76,7 +76,7 @@ spec:
       - "https://openclaw.popov.wtf"
     existingSecret: openclaw-gateway-token
   plugins:
-    - "@honcho-ai/openclaw-honcho@1.0.4"
+    - "@honcho-ai/openclaw-honcho@1.2.2"
   workspace:
     configMapRef:
       name: openclaw-context-config
