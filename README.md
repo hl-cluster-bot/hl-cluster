@@ -49,6 +49,9 @@ This repository is my home Kubernetes cluster in a declarative state.
 [Flux](https://github.com/fluxcd/flux2) watches the [kubernetes](./kubernetes/)
 folder and will make the changes to the cluster based on the YAML manifests.
 
+For a concise operator-oriented map of the repository, see
+[docs/repository-guide.md](./docs/repository-guide.md).
+
 The cluster runs on [k3s](https://k3s.io/) and consists of nodes based on
 [Rock Pi 4B](https://radxa.com/products/rock4/4b/) single-board computers, each
 equipped with 1TB NVME storage. Power to the boards is supplied through
@@ -105,6 +108,21 @@ For observability and monitoring of the cluster the following software is used:
   formatting and running periodic jobs
 - [Renovate](https://github.com/renovatebot/renovate) keeps the application
   charts and container images up-to-date
+
+<!-- markdownlint-disable -->
+
+## <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f5fa_fe0f/512.gif" alt="🗺" width="16" height="16"> Repository Map
+
+<!-- markdownlint-enable -->
+
+- `kubernetes/` contains the GitOps-managed cluster manifests
+- `kubernetes/flux/cluster/` is the main Flux reconciliation entrypoint
+- `kubernetes/apps/` groups workloads by namespace or operational domain
+- `kubernetes/components/` contains reusable shared resources
+- `ansible/` contains inventory, roles, and playbooks for nodes and k3s lifecycle work
+- `bootstrap/` contains initial bootstrap resources and setup helpers
+- `scripts/` and `Taskfile.yaml` provide operator workflows and utilities
+- secrets are expected to remain encrypted with SOPS (`.sops.yaml`, `*.sops.yaml`)
 
 <!-- markdownlint-disable -->
 
