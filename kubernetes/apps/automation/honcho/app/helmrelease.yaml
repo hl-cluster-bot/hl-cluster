@@ -1,0 +1,167 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app honcho
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    controllers:
+      honcho:
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        initContainers:
+          01-init-db:
+            image:
+              repository: ghcr.io/home-operations/postgres-init
+              tag: "18"
+            envFrom:
+              - secretRef:
+                  name: honcho-secret
+            env:
+              - name: INIT_POSTGRES_HOST
+                value: tolstoy-rw.database.svc.cluster.local
+              - name: INIT_POSTGRES_PORT
+                value: "5432"
+              - name: INIT_POSTGRES_DBNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: honcho-secret
+                    key: HONCHO_DBNAME
+              - name: INIT_POSTGRES_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: honcho-secret
+                    key: HONCHO_DB_USER
+              - name: INIT_POSTGRES_PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: honcho-secret
+                    key: HONCHO_DB_PASS
+              - name: INIT_POSTGRES_SUPER_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: cluster-secrets
+                    key: POSTGRES_SUPER_USER
+              - name: INIT_POSTGRES_SUPER_PASS
+                valueFrom:
+                  secretKeyRef:
+                    name: cluster-secrets
+                    key: POSTGRES_SUPER_PASS
+          02-init-extensions:
+            image:
+              repository: postgres
+              tag: "18"
+            env:
+              - name: PGHOST
+                value: tolstoy-rw.database.svc.cluster.local
+              - name: PGPORT
+                value: "5432"
+              - name: PGDATABASE
+                valueFrom:
+                  secretKeyRef:
+                    name: honcho-secret
+                    key: HONCHO_DBNAME
+              - name: PGUSER
+                valueFrom:
+                  secretKeyRef:
+                    name: cluster-secrets
+                    key: POSTGRES_SUPER_USER
+              - name: PGPASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: cluster-secrets
+                    key: POSTGRES_SUPER_PASS
+            command:
+              - bash
+              - -lc
+              - psql -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS vector;"
+        containers:
+          app:
+            image:
+              repository: docker.io/plasticlabs/honcho
+              tag: v3.0.5
+            command:
+              - sh
+              - docker/entrypoint.sh
+            envFrom:
+              - secretRef:
+                  name: honcho-secret
+            env:
+              DB_CONNECTION_URI: postgresql+psycopg://$(HONCHO_DB_USER):$(HONCHO_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(HONCHO_DBNAME)
+              CACHE_ENABLED: "false"
+              DERIVER_ENABLED: "false"
+              DREAM_ENABLED: "false"
+              SUMMARY_ENABLED: "false"
+              METRICS_ENABLED: "true"
+              VECTOR_STORE_TYPE: pgvector
+              AUTH_USE_AUTH: "false"
+              NAMESPACE: honcho
+              LOG_LEVEL: INFO
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: &port 8000
+                  initialDelaySeconds: 10
+                  periodSeconds: 30
+                  timeoutSeconds: 5
+                  failureThreshold: 5
+              readiness: *probes
+              startup:
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /health
+                    port: *port
+                  periodSeconds: 10
+                  timeoutSeconds: 5
+                  failureThreshold: 30
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: false
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 25m
+                memory: 256Mi
+              limits:
+                memory: 512Mi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+    service:
+      app:
+        type: ClusterIP
+        controller: *app
+        ports:
+          http:
+            port: *port
+    route:
+      app:
+        hostnames:
+          - "{{ .Release.Name }}.popov.wtf"
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
+        rules:
+          - backendRefs:
+              - name: *app
+                port: *port
