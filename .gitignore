@@ -28,6 +28,7 @@ ansible/roles/xanmanning.k3s
 kubeconfig
 
 # Misc.
+.agents/
 .private/
 .task/
 .venv/
