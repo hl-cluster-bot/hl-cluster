@@ -49,6 +49,10 @@ spec:
           roleRef:
             name: view
             external: true
+        - name: system-aggregated-metrics-reader
+          roleRef:
+            name: system:aggregated-metrics-reader
+            external: true
     config:
       port: "{{ .Values.service.port }}"
       read_only: true
