@@ -76,7 +76,7 @@ spec:
       - "https://openclaw.popov.wtf"
     existingSecret: openclaw-gateway-token
   plugins:
-    - "@mem0/openclaw-mem0@1.0.4"
+    - "@honcho-ai/openclaw-honcho@1.0.4"
   workspace:
     configMapRef:
       name: openclaw-context-config
@@ -184,10 +184,10 @@ spec:
         enabled: true
         load:
           paths:
-            - /home/openclaw/.openclaw/node_modules/@mem0/openclaw-mem0
+            - /home/openclaw/.openclaw/node_modules/@honcho-ai/openclaw-honcho
         allow:
           - diagnostics-otel
-          - openclaw-mem0
+          - openclaw-honcho
         deny:
           - amazon-bedrock
           - amazon-bedrock-mantle
@@ -230,24 +230,28 @@ spec:
           - xiaomi
           - zai
         slots:
-          memory: openclaw-mem0
+          memory: openclaw-honcho
         entries:
           diagnostics-otel:
             enabled: true
-          openclaw-mem0:
+          openclaw-honcho:
             enabled: true
             config:
-              mode: open-source
-              userId: kestrel
-              oss:
-                vectorStore:
-                  provider: pgvector
-                  config:
-                    host: tolstoy-rw.database.svc.cluster.local
-                    port: 5432
-                    user: ${OPENCLAW_MEM0_DB_USER}
-                    password: ${OPENCLAW_MEM0_DB_PASS}
-                    sslmode: disable
+              apiKey: ${HONCHO_API_KEY}
+          # openclaw-mem0:
+          #   enabled: true
+          #   config:
+          #     mode: open-source
+          #     userId: kestrel
+          #     oss:
+          #       vectorStore:
+          #         provider: pgvector
+          #         config:
+          #           host: tolstoy-rw.database.svc.cluster.local
+          #           port: 5432
+          #           user: ${OPENCLAW_MEM0_DB_USER}
+          #           password: ${OPENCLAW_MEM0_DB_PASS}
+          #           sslmode: disable
       session:
         scope: per-sender
         maintenance:
