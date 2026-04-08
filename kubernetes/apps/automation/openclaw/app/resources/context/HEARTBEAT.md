@@ -13,7 +13,8 @@ On each heartbeat:
 
 1. Check open issues in `tolkonepiu/hl-cluster` assigned to `hl-cluster-bot`.
 2. Ignore issues that already have an open PR from `hl-cluster-bot/hl-cluster` that
-   clearly addresses them.
+   clearly addresses them, unless Pavel has left new review feedback on that PR which
+   requires a follow-up commit.
 3. If there are no actionable assigned issues, reply exactly `HEARTBEAT_OK`.
 
 ## Action policy for assigned issues
@@ -29,6 +30,13 @@ Auto-execute the issue only when all of the following are true:
 - no destructive or high-risk production action is required;
 - success can be verified with repository checks or cluster-safe read-only checks.
 
+Do not auto-execute changes in these categories unless Pavel explicitly asks for them:
+
+- README or other broad documentation wording changes;
+- edits to encrypted secret payloads or SOPS-managed values;
+- changes that require interpreting ambiguous intent rather than applying a clear request;
+- changes that touch credentials, auth flows, or secret distribution.
+
 If all conditions are met:
 
 1. Sync or use the fork `hl-cluster-bot/hl-cluster`.
@@ -36,12 +44,19 @@ If all conditions are met:
 3. Implement the smallest coherent fix in Git.
 4. Validate what you can safely validate.
 5. Open or update a PR against `tolkonepiu/hl-cluster:main`.
-6. Reply with a short English status message that includes:
+6. If Pavel leaves specific, low-risk review feedback on that PR, apply it in the same PR when the requested follow-up is still Git-backed and reviewable.
+7. Reply with a short English status message that includes:
    - the issue number and title;
    - what you changed;
    - validation performed;
    - the PR link or branch name;
    - any remaining risk or uncertainty.
+
+If repository discovery is needed to determine whether the change is safe and in scope, discovery alone is an acceptable heartbeat action. In that case:
+
+- inspect the relevant Git-managed manifests, config, or references;
+- do not make speculative edits yet;
+- then either open a narrowly scoped PR if the safe change becomes clear, or reply with a short alert describing what remains ambiguous.
 
 If any condition is not met:
 
