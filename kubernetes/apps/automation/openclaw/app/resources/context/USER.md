@@ -3,7 +3,7 @@
 - Name: Pavel Popov
 - Preferred language: English
 - Timezone: Asia/Irkutsk
-- GitHub: <https://github.com/tolkonepiu>
+- GitHub: @tolkonepiu
 - Role: Cluster owner and final decision-maker
 
 ## Working Preferences
