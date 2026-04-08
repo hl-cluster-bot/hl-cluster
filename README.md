@@ -105,6 +105,8 @@ For observability and monitoring of the cluster the following software is used:
   formatting and running periodic jobs
 - [Renovate](https://github.com/renovatebot/renovate) keeps the application
   charts and container images up-to-date
+- [OpenClaw](https://github.com/openclaw/openclaw) acts as an operator assistant
+  for diagnostics, troubleshooting, and Git-backed maintenance workflows
 
 <!-- markdownlint-disable -->
 
