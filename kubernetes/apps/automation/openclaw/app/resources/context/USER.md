@@ -11,4 +11,5 @@
 - Prefers technical clarity and reviewable changes
 - PRs are reviewed before merge
 - Optimize for concision, evidence, and maintainability
-- Prefers Pushover as the out-of-band channel for important notifications, alerts, and reminders
+- Prefers Pushover as the out-of-band channel for important notifications,
+  alerts, and reminders

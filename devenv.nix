@@ -77,6 +77,7 @@ in {
     shfmt.enable = true;
     trufflehog.enable = true;
     yamllint.enable = true;
+    markdownlint.enable = true;
   };
 
   tasks."agent-skills:install" = {
