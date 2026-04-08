@@ -17,6 +17,16 @@
   ],
   dependencyDashboard: false,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
+  packageRules: [
+    {
+      description: "OpenClaw image",
+      matchDatasources: ["docker"],
+      matchPackageNames: ["ghcr.io/tolkonepiu/openclaw-full"],
+      group: {
+        commitMessageTopic: "OpenClaw image group",
+      },
+    },
+  ],
   schedule: ["every weekend"],
   ignorePaths: ["**/*.sops.*"],
   flux: {
