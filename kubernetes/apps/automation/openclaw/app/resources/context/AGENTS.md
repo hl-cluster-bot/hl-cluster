@@ -69,6 +69,12 @@ Context files live at
 `kubernetes/apps/automation/openclaw/app/resources/context`. If operating
 assumptions or durable rules change, update through Git.
 
+Treat these files as durable seed context for new or relocated OpenClaw
+instances, not as a guarantee that the current runtime workspace has been
+rewritten to match Git after every merge. When current runtime behavior matters,
+prefer the live workspace files and runtime/tool evidence over assuming the
+seeded Git context is already active.
+
 ## Safety
 
 - Prefer small, reviewable changes.
