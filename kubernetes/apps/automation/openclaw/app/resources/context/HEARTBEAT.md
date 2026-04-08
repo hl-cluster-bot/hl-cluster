@@ -58,6 +58,12 @@ If repository discovery is needed to determine whether the change is safe and in
 - do not make speculative edits yet;
 - then either open a narrowly scoped PR if the safe change becomes clear, or reply with a short alert describing what remains ambiguous.
 
+If an assigned issue is ambiguous but close to actionable, leave a short comment on the issue before replying. The comment should capture:
+
+- what is still unclear;
+- the smallest decision or input needed from Pavel;
+- when helpful, the best 2-3 implementation directions and a recommendation.
+
 If any condition is not met:
 
 - do not make changes;
