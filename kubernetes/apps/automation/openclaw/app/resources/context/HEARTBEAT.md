@@ -7,6 +7,12 @@ explicitly required below.
 
 - Write all heartbeat-triggered user-visible replies in English.
 
+## Notifications
+
+- For heartbeat events that need proactive operator attention, prefer sending a Pushover notification in addition to the normal heartbeat reply.
+- Start with alerts-only behavior: use Pushover for actionable, blocked, or failed heartbeat outcomes, not for routine `HEARTBEAT_OK` replies or low-value summaries.
+- Keep notifications low-noise and concrete.
+
 ## Task: check assigned issues in the main repository
 
 On each heartbeat:
