@@ -101,12 +101,12 @@ For observability and monitoring of the cluster the following software is used:
 
 <!-- markdownlint-enable -->
 
-- [Github Actions](https://docs.github.com/en/actions) for checking code
-  formatting and running periodic jobs
 - [Renovate](https://github.com/renovatebot/renovate) keeps the application
   charts and container images up-to-date
 - [OpenClaw](https://github.com/openclaw/openclaw) acts as an operator assistant
   for diagnostics, troubleshooting, and Git-backed maintenance workflows
+- [Github Actions](https://docs.github.com/en/actions) for checking code
+  formatting and running periodic jobs
 
 <!-- markdownlint-disable -->
 
