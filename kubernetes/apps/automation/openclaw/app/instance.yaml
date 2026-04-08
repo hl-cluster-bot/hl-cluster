@@ -80,33 +80,6 @@ spec:
   workspace:
     configMapRef:
       name: openclaw-context-config
-  initContainers:
-    - name: init-extensions
-      image: postgres:18
-      env:
-        - name: PGHOST
-          value: tolstoy-rw.database.svc.cluster.local
-        - name: PGPORT
-          value: "5432"
-        - name: PGDATABASE
-          valueFrom:
-            secretKeyRef:
-              name: openclaw-secret
-              key: OPENCLAW_MEM0_DBNAME
-        - name: PGUSER
-          valueFrom:
-            secretKeyRef:
-              name: cluster-secrets
-              key: POSTGRES_SUPER_USER
-        - name: PGPASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: cluster-secrets
-              key: POSTGRES_SUPER_PASS
-      command:
-        - bash
-        - -lc
-        - psql -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS vector;"
   config:
     mergeMode: overwrite
     raw:
