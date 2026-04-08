@@ -20,6 +20,11 @@ spec:
       value: "1"
     - name: OPENCLAW_SKIP_CANVAS_HOST
       value: "1"
+    - name: PUSHOVER_USER_KEY
+      valueFrom:
+        secretKeyRef:
+          name: cluster-secrets
+          key: PUSHOVER_USER_KEY
   storage:
     persistence:
       enabled: true
@@ -75,6 +80,8 @@ spec:
     controlUiOrigins:
       - "https://openclaw.popov.wtf"
     existingSecret: openclaw-gateway-token
+  skills:
+    - "@digitallyborn/pushover-notify"
   plugins:
     - "@honcho-ai/openclaw-honcho@1.2.2"
   workspace:
