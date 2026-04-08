@@ -69,6 +69,15 @@ Context files live at
 `kubernetes/apps/automation/openclaw/app/resources/context`. If operating
 assumptions or durable rules change, update through Git.
 
+When runtime workspace context and Git-managed context differ, use this simple
+reconcile rule first:
+- if the runtime copy is newer, sync those changes back into Git with a
+  reviewable PR;
+- if the Git copy is newer, update the runtime workspace to match Git.
+
+Treat this as the default sync model unless a specific file or workflow later
+needs stricter rules.
+
 ## Safety
 
 - Prefer small, reviewable changes.
