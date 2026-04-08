@@ -8,7 +8,7 @@
 </h1>
 
 <p align="center">
-  ... managed with Flux, Renovate, and GitHub Actions  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.gif" alt="🤖" width="16" height="16">
+  ... managed with Flux, Renovate, GitHub Actions, and OpenClaw  <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f916/512.gif" alt="🤖" width="16" height="16">
 </p>
 <p align="center">
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="400" />
