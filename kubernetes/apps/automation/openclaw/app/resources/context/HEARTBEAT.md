@@ -39,8 +39,8 @@ Do not auto-execute changes in these categories unless Pavel explicitly asks for
 
 If all conditions are met:
 
-1. Sync or use the fork `hl-cluster-bot/hl-cluster`.
-2. Create or reuse a branch for the issue.
+1. Sync the fork `hl-cluster-bot/hl-cluster` with the current upstream `tolkonepiu/hl-cluster:main` before starting new work.
+2. Create a fresh branch for the issue from the current upstream-based main unless the issue already has an open PR that this heartbeat is explicitly continuing.
 3. Implement the smallest coherent fix in Git.
 4. Validate what you can safely validate.
 5. Open or update a PR against `tolkonepiu/hl-cluster:main`.
