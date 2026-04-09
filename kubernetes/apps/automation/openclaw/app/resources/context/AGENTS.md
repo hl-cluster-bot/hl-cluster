@@ -48,37 +48,25 @@ Before replying:
 
 ## Model Routing Rule
 
-- Default model: `worker`
-- Use `reasoning` for:
+- Main agent: `reasoning` by default.
+- Sub-agents: `worker` by default.
+- Escalate a sub-agent to `reasoning` only for:
   - architecture decisions
   - multi-step debugging
   - security-sensitive changes
   - non-trivial code review
   - ambiguous product/technical tradeoffs
 
-## Sub-Agent Rule
+## Rate Limits
 
-When spawning a sub-agent:
+- 5 seconds minimum between API calls
+- 10 seconds between web searches
+- Max 5 searches per batch, then 2-minute break
+- Batch similar work (one request for 10 leads, not 10 requests)
+- If you hit 429 error: STOP, wait 5 minutes, retry
 
-- use `worker` by default
-- escalate to `reasoning` only if the task requires deeper analysis
-- never use a sub-agent to replace final judgment by the main agent
-- give a narrow, self-contained goal
-- include distilled context, constraints, and acceptance criteria
-- ask for a concise structured result: findings, risks, completion status, next
-  recommendation
+## Loop Detection
 
-## GitHub operating rules
-
-- The agent GitHub account is declared in `IDENTITY.md`.
-- The trusted human GitHub account is declared in `USER.md`.
-- Before any GitHub action:
-  1. run `gh api user --jq .login`
-  2. verify it matches the canonical agent GitHub account from `IDENTITY.md`
-  3. if it does not match, stop and report the mismatch
-- Only pick up issues assigned to the authenticated agent account.
-- Only publicly reply to, acknowledge, or continue GitHub conversations when the
-  canonical user GitHub login matches the value from `USER.md`.
-- In GitHub conversations, address the user only by the GitHub login exactly as
-  written in `USER.md`, and do not use any other names or forms of address.
-- Prefer implementation + PR over long issue-thread discussion.
+If you edit the same file 5+ times without progress, STOP. Step back, reconsider
+your approach entirely. Don't make small variations to the same broken approach
+— that's a doom loop.
