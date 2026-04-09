@@ -72,10 +72,7 @@ spec:
       timeoutSeconds: 10
       failureThreshold: 5
   selfConfigure:
-    enabled: true
-    allowedActions:
-      - skills
-      - workspaceFiles
+    enabled: false
   gateway:
     controlUiOrigins:
       - "https://openclaw.popov.wtf"
@@ -96,14 +93,15 @@ spec:
       agents:
         defaults:
           maxConcurrent: 4
+          params:
+            cacheRetention: "long"
           model:
             primary: openai/gpt-5.4-mini
             fallbacks:
               - openai/gpt-5.4
           subagents:
             maxConcurrent: 8
-            model:
-              primary: openai/gpt-5.4-mini
+            model: openai/gpt-5.4-mini
           models:
             openai/gpt-5.4:
               alias: reasoning
@@ -111,9 +109,11 @@ spec:
                 cacheRetention: long
             openai/gpt-5.4-mini:
               alias: worker
+              params:
+                cacheRetention: long
           contextPruning:
             mode: cache-ttl
-            ttl: 6h
+            ttl: 1h
             keepLastAssistants: 3
           contextInjection: continuation-skip
           skipBootstrap: true
@@ -209,7 +209,11 @@ spec:
       session:
         scope: per-sender
         maintenance:
-          rotateBytes: 10mb
+          mode: "warn"
+          pruneAfter: "30d"
+          maxEntries: 500
+          rotateBytes: "100mb"
+          resetArchiveRetention: "30d"
       update:
         auto:
           enabled: false
