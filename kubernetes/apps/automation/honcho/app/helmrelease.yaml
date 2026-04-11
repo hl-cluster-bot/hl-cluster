@@ -19,8 +19,8 @@ spec:
   values:
     controllers:
       honcho:
-        strategy: RollingUpdate
-        annotations:
+        strategy: Recreate
+        annotations: &annotations
           reloader.stakater.com/auto: "true"
         initContainers:
           01-init-db:
@@ -90,16 +90,16 @@ spec:
               - psql -v ON_ERROR_STOP=1 -c "CREATE EXTENSION IF NOT EXISTS vector;"
         containers:
           app:
-            image:
+            image: &image
               repository: ghcr.io/plastic-labs/honcho
               tag: v3.0.6
             command:
               - sh
               - /app/docker/entrypoint.sh
-            envFrom:
+            envFrom: &envFrom
               - secretRef:
                   name: honcho-secret
-            env:
+            env: &env
               DB_CONNECTION_URI: postgresql+psycopg://$(HONCHO_DB_USER):$(HONCHO_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(HONCHO_DBNAME)
             probes:
               liveness: &probes
@@ -124,7 +124,7 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 5
                   failureThreshold: 30
-            securityContext:
+            securityContext: &securityContext
               allowPrivilegeEscalation: false
               runAsUser: 1000
               runAsGroup: 1000
@@ -134,9 +134,49 @@ spec:
             resources:
               requests:
                 cpu: 25m
-                memory: 256Mi
+                memory: 128Mi
               limits:
-                memory: 512Mi
+                memory: 256Mi
+    deriver:
+      strategy: Recreate
+      replicas: 1
+      annotations: *annotations
+      initContainers:
+        01-wait-honcho:
+          image:
+            repository: curlimages/curl
+            tag: 8.19.0
+          command:
+            - sh
+            - -ec
+            - |
+              until curl -fsS http://honcho:8000/health; do
+                echo "waiting for honcho migrations/startup"
+                sleep 2
+              done
+      containers:
+        app:
+          image: *image
+          command:
+            - python
+            - -m
+            - src.deriver
+          envFrom: *envFrom
+          env: *env
+          probes:
+            liveness:
+              enabled: false
+            readiness:
+              enabled: false
+            startup:
+              enabled: false
+          securityContext: *securityContext
+          resources:
+            requests:
+              cpu: 25m
+              memory: 128Mi
+            limits:
+              memory: 256Mi
     service:
       app:
         type: ClusterIP
