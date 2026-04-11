@@ -101,16 +101,6 @@ spec:
                   name: honcho-secret
             env:
               DB_CONNECTION_URI: postgresql+psycopg://$(HONCHO_DB_USER):$(HONCHO_DB_PASS)@tolstoy-rw.database.svc.cluster.local:5432/$(HONCHO_DBNAME)
-              CACHE_ENABLED: "false"
-              EMBED_MESSAGES: "true"
-              DERIVER_ENABLED: "false"
-              DREAM_ENABLED: "false"
-              SUMMARY_ENABLED: "false"
-              METRICS_ENABLED: "true"
-              VECTOR_STORE_TYPE: pgvector
-              AUTH_USE_AUTH: "false"
-              NAMESPACE: honcho
-              LOG_LEVEL: INFO
             probes:
               liveness: &probes
                 enabled: true
@@ -154,6 +144,14 @@ spec:
         ports:
           http:
             port: *port
+    persistence:
+      config-file:
+        type: configMap
+        name: honcho-configmap
+        globalMounts:
+          - path: /app/config.toml
+            subPath: config.toml
+            readOnly: true
     route:
       app:
         hostnames:
