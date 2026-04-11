@@ -117,7 +117,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /openapi.json
+                    path: /health
                     port: &port 8000
                   initialDelaySeconds: 10
                   periodSeconds: 30
@@ -129,7 +129,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /openapi.json
+                    path: /health
                     port: *port
                   periodSeconds: 10
                   timeoutSeconds: 5
