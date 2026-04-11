@@ -15,9 +15,8 @@
     ":disableRateLimiting",
     ":semanticCommits",
   ],
-  dependencyDashboard: false,
+  dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
-  schedule: ["every weekend"],
   ignorePaths: ["**/*.sops.*"],
   flux: {
     managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/"],
@@ -34,4 +33,10 @@
   kustomize: {
     managerFilePatterns: ["/^kustomization\\.ya?ml(?:\\.j2)?$/"],
   },
+  packageRules: [
+    {
+      matchUpdateTypes: ["minor", "patch", "pin", "digest"],
+      automerge: true,
+    },
+  ],
 }

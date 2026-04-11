@@ -3,6 +3,15 @@
   customManagers: [
     {
       customType: "regex",
+      description: "Process npm package strings in Yaml files",
+      managerFilePatterns: ["/\\.yaml$/"],
+      matchStrings: [
+        '"(?<depName>@?[-\\w.]+(?:/[-\\w.]+)?)@(?<currentValue>\\d[^\"]*)"',
+      ],
+      datasourceTemplate: "npm",
+    },
+    {
+      customType: "regex",
       description: "Process annotated dependencies",
       managerFilePatterns: [
         "/\\.env(?:\\.j2)?$/",
