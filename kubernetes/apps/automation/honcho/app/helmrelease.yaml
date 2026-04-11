@@ -93,6 +93,9 @@ spec:
             image:
               repository: ghcr.io/plastic-labs/honcho
               tag: v3.0.6
+            command:
+              - sh
+              - /app/docker/entrypoint.sh
             envFrom:
               - secretRef:
                   name: honcho-secret
