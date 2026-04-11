@@ -212,6 +212,8 @@ spec:
             enabled: true
           openclaw-honcho:
             enabled: true
+            baseUrl: http://honcho.automation.svc.cluster.local:8000
+            workspaceId: openclaw
       cron:
         enabled: true
         maxConcurrentRuns: 1
