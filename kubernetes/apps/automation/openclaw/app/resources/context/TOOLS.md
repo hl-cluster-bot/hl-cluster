@@ -18,8 +18,18 @@
 ## Execution
 
 - `sessions_spawn` — use for heavy code/research tasks
-- `exec` — shell work and verification
+- `exec` — shell work, inspection and verification
 - `web_search` / `web_fetch` — current docs, releases, specs
+
+## Local Tooling Hints
+
+Available through `exec`:
+
+- `rg` for repository-wide search
+- `jq` for structured JSON output
+- `gh` for GitHub CLI workflows when MCP is not the best fit
+- `uv` for Python tasks
+- `pnpm` / `bun` for JavaScript tasks
 
 ## Rule
 
