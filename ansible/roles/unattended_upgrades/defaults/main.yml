@@ -1,15 +1,12 @@
 ---
 unattended_upgrades_apt_periodic_settings:
+  Enable: "1"
   Update-Package-Lists: "1"
   Unattended-Upgrade: "1"
   AutocleanInterval: "7"
 
-unattended_upgrades_allowed_origins:
-  - ${distro_id}:${distro_codename}
-  - ${distro_id}:${distro_codename}-security
-  - ${distro_id}ESMApps:${distro_codename}-apps-security
-  - ${distro_id}ESM:${distro_codename}-infra-security
-  - ${distro_id}:${distro_codename}-updates
+unattended_upgrades_origins_pattern:
+  - origin=*
 
 unattended_upgrades_package_blacklist: []
 unattended_upgrades_dev_release: auto
