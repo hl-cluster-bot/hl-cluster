@@ -1,0 +1,18 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks
+- name: Prioritize IPv4 over IPv6 in glibc address selection
+  ansible.builtin.blockinfile:
+    path: /etc/gai.conf
+    create: true
+    owner: root
+    group: root
+    mode: "0644"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK prefer_ipv4"
+    block: |
+      # Preserve glibc's default precedence table and raise IPv4-mapped
+      # addresses so IPv4 is preferred when both A and AAAA records exist.
+      precedence  ::1/128       50
+      precedence  ::/0          40
+      precedence  2002::/16     30
+      precedence ::/96          20
+      precedence ::ffff:0:0/96  100

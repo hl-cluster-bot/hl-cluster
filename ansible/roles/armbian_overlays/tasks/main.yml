@@ -2,8 +2,8 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks
 - name: Armbian overlays
   when:
-    - armbian is defined
-    - armbian.get('vendor') == "Armbian"
+    - ansible_facts.get('armbian') is mapping
+    - ansible_facts.get('armbian', {}).get('vendor') == "Armbian"
   block:
     - name: Ensure overlay directory exists (user overlays)
       become: true
@@ -28,7 +28,7 @@
       become: true
       ansible.builtin.stat:
         path:
-          "{{ armbian.overlay_dir }}/{{ armbian_overlays_prefix |
+          "{{ ansible_facts.get('armbian', {}).get('overlay_dir') }}/{{ armbian_overlays_prefix |
           ternary(armbian_overlays_prefix ~ '-', '') }}{{ item }}.dtbo"
       register: armbian_overlays_std_list_stats
       loop: "{{ armbian_overlays_std_list }}"

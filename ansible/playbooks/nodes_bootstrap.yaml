@@ -7,6 +7,7 @@
   gather_facts: true
   roles:
     - update_sysctl
+    - prefer_ipv4
     - update_hosts
     - unattended_upgrades
     - armbian_overlays
