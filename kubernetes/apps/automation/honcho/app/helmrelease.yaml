@@ -137,46 +137,46 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 256Mi
-    deriver:
-      strategy: RollingUpdate
-      replicas: 1
-      annotations: *annotations
-      initContainers:
-        01-wait-honcho:
-          image:
-            repository: curlimages/curl
-            tag: 8.19.0
-          command:
-            - sh
-            - -ec
-            - |
-              until curl -fsS http://honcho:8000/health; do
-                echo "waiting for honcho migrations/startup"
-                sleep 2
-              done
-      containers:
-        app:
-          image: *image
-          command:
-            - python
-            - -m
-            - src.deriver
-          envFrom: *envFrom
-          env: *env
-          probes:
-            liveness:
-              enabled: false
-            readiness:
-              enabled: false
-            startup:
-              enabled: false
-          securityContext: *securityContext
-          resources:
-            requests:
-              cpu: 25m
-              memory: 128Mi
-            limits:
-              memory: 256Mi
+      deriver:
+        strategy: RollingUpdate
+        replicas: 1
+        annotations: *annotations
+        initContainers:
+          01-wait-honcho:
+            image:
+              repository: curlimages/curl
+              tag: 8.19.0
+            command:
+              - sh
+              - -ec
+              - |
+                until curl -fsS http://honcho:8000/health; do
+                  echo "waiting for honcho migrations/startup"
+                  sleep 2
+                done
+        containers:
+          app:
+            image: *image
+            command:
+              - python
+              - -m
+              - src.deriver
+            envFrom: *envFrom
+            env: *env
+            probes:
+              liveness:
+                enabled: false
+              readiness:
+                enabled: false
+              startup:
+                enabled: false
+            securityContext: *securityContext
+            resources:
+              requests:
+                cpu: 25m
+                memory: 128Mi
+              limits:
+                memory: 256Mi
     service:
       app:
         type: ClusterIP
