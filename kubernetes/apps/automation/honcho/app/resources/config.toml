@@ -40,13 +40,13 @@ MAX_MESSAGE_CONTENT_CHARS = 2000  # Max chars per message in tool results
 
 # Deriver settings
 [deriver]
-ENABLED = false
+ENABLED = true
 WORKERS = 1
 POLLING_SLEEP_INTERVAL_SECONDS = 1.0
 STALE_SESSION_TIMEOUT_MINUTES = 5
 # QUEUE_ERROR_RETENTION_SECONDS = 2592000  # 30 days
-PROVIDER = "google"
-MODEL = "gemini-2.5-flash-lite"
+PROVIDER = "anthropic"
+MODEL = "claude-haiku-4-5"
 DEDUPLICATE = true
 MAX_OUTPUT_TOKENS = 4096
 THINKING_BUDGET_TOKENS = 1024
@@ -58,7 +58,7 @@ FLUSH_ENABLED = false  # Bypass batch token threshold, process work immediately
 
 # Peer card settings
 [peer_card]
-ENABLED = false
+ENABLED = true
 
 # Dialectic settings
 [dialectic]
@@ -70,15 +70,15 @@ SESSION_HISTORY_MAX_TOKENS = 4096
 # Per-level settings for reasoning levels
 # MAX_OUTPUT_TOKENS is optional per level; if not set, uses global MAX_OUTPUT_TOKENS
 [dialectic.levels.minimal]
-PROVIDER = "google"
-MODEL = "gemini-2.5-flash-lite"
+PROVIDER = "anthropic"
+MODEL = "claude-haiku-4-5"
 THINKING_BUDGET_TOKENS = 0
 MAX_TOOL_ITERATIONS = 1
 MAX_OUTPUT_TOKENS = 250
 
 [dialectic.levels.low]
-PROVIDER = "google"
-MODEL = "gemini-2.5-flash-lite"
+PROVIDER = "anthropic"
+MODEL = "claude-haiku-4-5"
 THINKING_BUDGET_TOKENS = 0
 MAX_TOOL_ITERATIONS = 5
 # MAX_OUTPUT_TOKENS = 8192  # Optional: override global default
@@ -109,8 +109,8 @@ MAX_TOOL_ITERATIONS = 10
 ENABLED = false
 MESSAGES_PER_SHORT_SUMMARY = 20
 MESSAGES_PER_LONG_SUMMARY = 60
-PROVIDER = "google"
-MODEL = "gemini-2.5-flash"
+PROVIDER = "openai"
+MODEL = "gpt-4o-mini-2024-07-18"
 MAX_TOKENS_SHORT = 1000
 MAX_TOKENS_LONG = 4000
 THINKING_BUDGET_TOKENS = 512
