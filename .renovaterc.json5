@@ -14,7 +14,7 @@
     ":disableRateLimiting",
     ":semanticCommits",
   ],
-  dependencyDashboard: true,
+  dependencyDashboard: false,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
   ignorePaths: ["**/*.sops.*"],
   flux: {
