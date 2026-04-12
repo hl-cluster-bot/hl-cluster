@@ -13,10 +13,6 @@ spec:
     - secretRef:
         name: openclaw-secret
   env:
-    - name: NODE_OPTIONS
-      value: "--max-old-space-size=512"
-    - name: XDG_CONFIG_HOME
-      value: /home/openclaw/.openclaw/.config
     - name: OPENCLAW_SKIP_CHANNELS
       value: "1"
     - name: OPENCLAW_SKIP_GMAIL_WATCHER
@@ -30,6 +26,12 @@ spec:
         secretKeyRef:
           name: cluster-secrets
           key: PUSHOVER_USER_KEY
+    - name: NODE_OPTIONS
+      value: "--max-old-space-size=512"
+    - name: XDG_CONFIG_HOME
+      value: /home/openclaw/.openclaw/.config
+    - name: GH_CONFIG_DIR
+      value: /home/openclaw/.openclaw/.config/gh
   storage:
     persistence:
       enabled: true
