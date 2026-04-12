@@ -230,8 +230,6 @@ spec:
         slots:
           memory: openclaw-honcho
         entries:
-          diagnostics-otel:
-            enabled: true
           openclaw-honcho:
             enabled: true
             config:
