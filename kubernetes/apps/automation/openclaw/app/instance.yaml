@@ -23,6 +23,8 @@ spec:
       value: "1"
     - name: OPENCLAW_SKIP_CANVAS_HOST
       value: "1"
+    - name: OPENCLAW_LOAD_SHELL_ENV
+      value: "1"
     - name: PUSHOVER_USER_KEY
       valueFrom:
         secretKeyRef:
