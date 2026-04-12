@@ -175,8 +175,6 @@ spec:
           security: full
           ask: "off"
           strictInlineEval: false
-          env:
-            GH_TOKEN: ${GH_TOKEN}
         web:
           search:
             provider: exa
