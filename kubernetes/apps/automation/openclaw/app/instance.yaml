@@ -55,13 +55,13 @@ spec:
       enabled: false
   observability:
     metrics:
-      enabled: true
+      enabled: false
       serviceMonitor:
-        enabled: true
+        enabled: false
       prometheusRule:
-        enabled: true
+        enabled: false
       grafanaDashboard:
-        enabled: true
+        enabled: false
   probes:
     startup:
       initialDelaySeconds: 30
@@ -139,12 +139,6 @@ spec:
             identity:
               name: Kestrel
               emoji: 🤖
-      diagnostics:
-        enabled: true
-        otel:
-          enabled: true
-          endpoint: http://localhost:4318
-          metrics: true
       skills:
         load:
           watch: false
@@ -186,7 +180,6 @@ spec:
           paths:
             - /home/openclaw/.openclaw/node_modules/@honcho-ai/openclaw-honcho
         allow:
-          - diagnostics-otel
           - exa
           - openclaw-honcho
         deny:
